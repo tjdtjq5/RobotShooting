@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 278099747113968230}
   m_Layer: 8
   m_Name: EnemyObj
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -94,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e532692d9d054428936c7eeffdf257, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spriteTrans: {fileID: 278099748288483430}
   spriteRenderer: {fileID: 278099748288483425}
   bulletTrans: {fileID: 7941896002756049221}
 --- !u!1 &278099748288483431

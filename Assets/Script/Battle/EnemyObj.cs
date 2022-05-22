@@ -7,6 +7,7 @@ using DG.Tweening;
 [RequireComponent(typeof(Rigidbody2D))]
 public class EnemyObj : MonoBehaviour
 {
+    public Transform spriteTrans;
     public SpriteRenderer spriteRenderer;
     public Transform bulletTrans;
 
@@ -52,7 +53,23 @@ public class EnemyObj : MonoBehaviour
     {
         hp -= dmg;
 
-        Debug.Log("ENEMY HP: " + hp);
+        DmgSpawn.Instance.Spawn(this.transform.position, dmg.ToString());
+
+        spriteTrans.DOKill();
+        spriteTrans.localScale = Vector3.one;
+        spriteTrans.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f)
+                   .OnComplete(() => {
+                       spriteTrans.DOScale(Vector3.one, 0.1f);
+                   });
+
+        spriteRenderer.DOKill();
+        spriteRenderer.color = Color.white;
+        spriteRenderer.DOColor(new Color(1, 194f / 255f, 194f / 255f, 1), 0.1f)
+                      .OnComplete(() => {
+                          spriteRenderer.DOColor(Color.white, 0.1f);
+                      });
+
+        HitSpawn.Instance.Spawn(this.transform.position);
 
         if (hp <= 0)
         {
@@ -64,12 +81,18 @@ public class EnemyObj : MonoBehaviour
     {
         a_time = 0;
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
-        BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, BulletHost.적, 10, 10, 10, 1);
+        BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , 10, 10, 10, 1);
     }
 
     void Destroy()
     {
+        BreakSpawn.Instance.Spawn(this.transform.position);
         this.gameObject.SetActive(false);
+    }
+
+    private void OnDisable()
+    {
+        BattleManager.Instance.WaveCheck();
     }
 
     private void FixedUpdate()

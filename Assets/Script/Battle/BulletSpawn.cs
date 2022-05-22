@@ -37,6 +37,17 @@ public class BulletSpawn : Singleton<BulletSpawn>
         obj.transform.position = _startTrans.position;
         obj.GetComponent<BulletObj>().Spawn(_bulletSO, _bulletType, _target, _angle, _bulletHost, _atk, _cri, _cridmg, _duration);
     }
+    public void AllDestroy()
+    {
+        foreach (var item in spawnObjList)
+        {
+            List<GameObject> objs = item.Value;
+            for (int i = 0; i < objs.Count; i++)
+            {
+                objs[i].SetActive(false);
+            }
+        }
+    }
 }
 public enum BulletHost
 {

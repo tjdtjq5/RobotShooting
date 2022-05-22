@@ -88,3 +88,18 @@ MonoBehaviour:
     en: 
     jp: 
     cn: 
+  - code: BattleSO_name_0
+    ko: "\uC77C\uBC18"
+    en: 
+    jp: 
+    cn: 
+  - code: BattleSO_name_1
+    ko: "\uD558\uB4DC1"
+    en: 
+    jp: 
+    cn: 
+  - code: BattleSO_name_2
+    ko: "\uD558\uB4DC2"
+    en: 
+    jp: 
+    cn: 

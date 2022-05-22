@@ -15,5 +15,5 @@ MonoBehaviour:
   code: weapon_0
   nameCode: weapon_name_0
   sprite: {fileID: 21300000, guid: f9855ff9ad844f94bb4295ce74a1a866, type: 3}
-  bulletSO: {fileID: 11400000, guid: bc79aa6c3ee7caf4f8ba70ee48c38902, type: 2}
+  bulletSO: {fileID: 11400000, guid: 1440c64d225ac0e4a966040d15d035a2, type: 2}
   coreCount: 0

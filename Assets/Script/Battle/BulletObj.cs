@@ -129,11 +129,14 @@ public class BulletObj : MonoBehaviour
                         Destroy();
                     target = tempTarget;
                 }
-                break;
+           
+                break; 
             case BulletType.다발:
                 this.transform.Translate(Vector2.up * movespeed * Time.fixedDeltaTime);
                 break;
             case BulletType.관통:
+               
+
                 this.transform.Translate(Vector2.up * movespeed * Time.fixedDeltaTime);
                 break;
             case BulletType.위성레이저:

@@ -7,6 +7,7 @@ public class UserMove : MonoBehaviour
     public JoyStick joyStick;
     public UserAbility userAbility;
     public AniManager aniManager;
+    public Player player;
 
     [Header("Clamp")]
     public BoxCollider2D bound;
@@ -16,9 +17,9 @@ public class UserMove : MonoBehaviour
     float clampedY = 0;
     float speedVelocity = 0.025f;
 
-    string waitAniKey = "Wait";
-    string walkL = "WalkL";
-    string walkR = "WalkR";
+    [HideInInspector] public string waitAniKey = "Wait";
+    [HideInInspector] public string walkL = "WalkL";
+    [HideInInspector] public string walkR = "WalkR";
 
 
     private void Start()
@@ -29,6 +30,11 @@ public class UserMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!player.isBattle)
+        {
+            return;
+        }
+
         if (joyStick.movePosition != Vector3.zero)
         {
             // Move

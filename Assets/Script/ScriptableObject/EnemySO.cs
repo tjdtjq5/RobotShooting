@@ -11,6 +11,7 @@ public class EnemySO : ScriptableObject
     [PreviewField(100)] public Sprite sprite;
     [MinValue(1)] public int atk, hp , atkspeed, movespeed;
     public BulletSO bulletSO;
+    public BulletHost bulletHost;
     public EnemyMovePattern enemyMovePattern;
     [MinValue(0)] public float spawnTime;
     public Vector2 colliderSize;
