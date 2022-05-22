@@ -1,0 +1,90 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85de7cc5b0e956746b4c1a4266983fc0, type: 3}
+  m_Name: TextSO
+  m_EditorClassIdentifier: 
+  textDatas:
+  - code: upgrade_name_atk
+    ko: "\uACF5\uACA9\uB825"
+    en: Attack
+    jp: Attack
+    cn: Attack
+  - code: upgrade_name_atkspeed
+    ko: "\uACF5\uACA9\uC18D\uB3C4"
+    en: Atkspeed
+    jp: Atkspeed
+    cn: Atkspeed
+  - code: upgrade_name_hp
+    ko: "\uCCB4\uB825"
+    en: Hp
+    jp: Hp
+    cn: Hp
+  - code: bullet_name_0
+    ko: "\uAE30\uBCF8 \uBC1C\uC0AC\uCCB4"
+    en: bullet_0
+    jp: bullet_0
+    cn: bullet_0
+  - code: bullet_name_1
+    ko: "\uC720\uB3C4 \uBC1C\uC0AC\uCCB4"
+    en: bullet_1
+    jp: bullet_1
+    cn: bullet_1
+  - code: bullet_name_2
+    ko: "\uB2E4\uBC1C \uBC1C\uC0AC\uCCB4"
+    en: bullet_2
+    jp: bullet_2
+    cn: bullet_2
+  - code: bullet_name_3
+    ko: "\uAD00\uD1B5 \uBC1C\uC0AC\uCCB4"
+    en: bullet_3
+    jp: bullet_3
+    cn: bullet_3
+  - code: bullet_name_4
+    ko: "\uC704\uC131 \uB808\uC774\uC800 \uBC1C\uC0AC\uCCB4"
+    en: bullet_4
+    jp: bullet_4
+    cn: bullet_4
+  - code: bullet_name_5
+    ko: "\uC804\uAE30 \uBC1C\uC0AC\uCCB4"
+    en: bullet_5
+    jp: bullet_5
+    cn: bullet_5
+  - code: bullet_name_6
+    ko: "\uC804\uAE30 \uBC1C\uC0AC\uCCB42"
+    en: bullet_6
+    jp: bullet_6
+    cn: bullet_6
+  - code: weapon_name_0
+    ko: "\uB85C\uBD07\uD314"
+    en: 
+    jp: 
+    cn: 
+  - code: weapon_name_1
+    ko: "\uC790\uC11D\uD314"
+    en: 
+    jp: 
+    cn: 
+  - code: weapon_name_2
+    ko: "\uD3EC\uD06C"
+    en: 
+    jp: 
+    cn: 
+  - code: weapon_name_3
+    ko: "\uC7AC\uBD09\uD2C0"
+    en: 
+    jp: 
+    cn: 
+  - code: weapon_name_4
+    ko: "\uB9C8\uC774\uD06C"
+    en: 
+    jp: 
+    cn: 

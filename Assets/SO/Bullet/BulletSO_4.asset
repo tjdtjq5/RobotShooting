@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c33147d9ae8c7e44c964e468f6bc280a, type: 3}
+  m_Name: BulletSO_4
+  m_EditorClassIdentifier: 
+  code: bullet_4
+  nameCode: bullet_name_4
+  obj: {fileID: 7441247634341068922, guid: 53cbc10e7f611634e9eb15a8733d4651, type: 3}
+  atk: 10
+  atkPlus: 10
+  atkspeed: 1
+  bulletDuration: 5
+  movespeed: 30
+  bulletType: 4
