@@ -102,8 +102,8 @@ public class Player : MonoBehaviour
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
         BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어, 
             userAbility.GetAbility(Ability.발사체공격력),
-            userAbility.GetAbility(Ability.치명타확률)
-            , userAbility.GetAbility(Ability.치명데미지)
+            userAbility.GetAbility(Ability.치명데미지_최대1000)
+            , userAbility.GetAbility(Ability.치명데미지_최대1000)
             , userAbility.GetAbility(Ability.발사체내구도));
     }
 
