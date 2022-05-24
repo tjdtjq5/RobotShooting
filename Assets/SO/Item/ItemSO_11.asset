@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8f309f179c5c77438b4746cc8a2ff5f, type: 3}
-  m_Name: ItemSO_0
+  m_Name: ItemSO_11
   m_EditorClassIdentifier: 
-  code: 
-  nameCode: 
-  sprite: {fileID: 0}
-  itemGrade: 0
-  itemType: 19
+  code: ItemSO_11
+  nameCode: ItemSO_name_11
+  sprite: {fileID: 21300000, guid: a68ebe746981a4140a06e676878b9e18, type: 3}
+  itemGrade: 1
+  itemType: 10
   boosterCount: 0
   boosterCount_levelup: 0
   bulletCount: 0
@@ -37,8 +37,8 @@ MonoBehaviour:
   bulletStabilityCount_levelup: 0
   ironballCount: 0
   ironballCount_levelup: 0
-  heatTreatmentCount: 0
-  heatTreatmentCount_levelup: 0
+  heatTreatmentCount: 1
+  heatTreatmentCount_levelup: 1
   chargeCount: 0
   chargeCount_levelup: 0
   energeAbsorptionCount: 0
@@ -62,6 +62,24 @@ MonoBehaviour:
   machineGun_levelup: 0
   mixedOil: 0
   mixedOil_levelup: 0
-  maxLevel: 1
-  plusItemLevel: 1
+  magnum: 0
+  laser: 0
+  superRobot_maxhp: 0
+  superRobot_size: 0
+  collection_drop: 0
+  collection_maxhp: 0
+  redbool_hp: 0
+  thornsArmor: 0
+  packman: 0
+  composure: 0
+  electricField: 0
+  sponge: 0
+  luckyBag: 0
+  restart: 0
+  pokebot: 0
+  autoCAD: 0
+  reflector: 0
+  bunker: 0
+  maxLevel: 3
+  plusItemLevel: 3
   plusItemCode: 

@@ -81,15 +81,50 @@ public class ItemSO : ScriptableObject
     [LabelText("가만히 있을때 공격속도 증가")] [ShowIf("itemType", ItemType.머신건)] [MinValue(0)] public int machineGun;
     [LabelText("+ 가만히 있을때 공격속도 증가")] [ShowIf("itemType", ItemType.머신건)] [MinValue(0)] public int machineGun_levelup;
 
+    [LabelText("아이템 복사 확률")] [ShowIf("itemType", ItemType.복사기)] [MinValue(0)] [MaxValue(1000)] public int copy;
+
     [LabelText("적에게 피해를 주면 손상피해")] [ShowIf("itemType", ItemType.혼합기름)] [MinValue(0)] public int mixedOil;
     [LabelText("+ 적에게 피해를 주면 손상피해")] [ShowIf("itemType", ItemType.혼합기름)] [MinValue(0)] public int mixedOil_levelup;
+
+    [LabelText("회피확률")] [ShowIf("itemType", ItemType.니트로)] [MinValue(0)] [MaxValue(1000)] public int nitro;
+
+    [LabelText("발사체 공격력 증가")] [ShowIf("itemType", ItemType.매그넘44)] [MinValue(0)] public int magnum;
+
+    [LabelText("최대 HP증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] public int superRobot_maxhp;
+    [LabelText("크기 증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] public int superRobot_size;
+
+    [LabelText("코어 획득시 최대HP증가")] [ShowIf("itemType", ItemType.수집가)] [MinValue(0)] public int collection_maxhp;
+
+    [LabelText("웨이브 시작시 체력% 회복")] [ShowIf("itemType", ItemType.레드불)] [MinValue(0)] [MaxValue(1000)] public int redbool_hp;
+
+    [LabelText("고정 수치 : (방어력 + 방어력 * 고정 수치)")] [ShowIf("itemType", ItemType.가시갑옷)] [MinValue(0)] public int thornsArmor;
+
+    [LabelText("발사체 통과시 공격배율% 증가")] [ShowIf("itemType", ItemType.팩맨)] [MinValue(0)] [MaxValue(1000)] public int packman;
+
+    [LabelText("무적상태에서 피격시 HP회복")] [ShowIf("itemType", ItemType.침착)] [MinValue(0)] public int composure;
+
+    [LabelText("1초마다 모든 적의 HP%가 줄어듭니다")] [ShowIf("itemType", ItemType.전기장)] [MinValue(0)] [MaxValue(1000)] public int electricField;
+
+    [LabelText("HP흡수")] [ShowIf("itemType", ItemType.스펀지)] [MinValue(0)] [MaxValue(1000)] public int sponge;
+
+    [LabelText("영웅 아이템 출현확률")] [ShowIf("itemType", ItemType.복주머니)] [MinValue(0)] [MaxValue(1000)] public int luckyBag;
+
+    [LabelText("부활후 남은 HP%")] [ShowIf("itemType", ItemType.재가동)] [MinValue(0)] [MaxValue(1000)] public int restart;
+
+    [LabelText("회피율 증가")] [ShowIf("itemType", ItemType.포켓봇)] [MinValue(0)] [MaxValue(1000)] public int pokebot;
+
+    [LabelText("탐색 포인트 증가")] [ShowIf("itemType", ItemType.오토캐드)] [MinValue(0)] public int autoCAD;
+
+    [LabelText("전기 발사체 고정 공격력")] [ShowIf("itemType", ItemType.반사장치)] [MinValue(0)] public int reflector;
+
+    [LabelText("멈춰 있을 때 점점 방어력 증가")] [ShowIf("itemType", ItemType.벙커)] [MinValue(0)] public int bunker;
     #endregion
 
 
     [LabelText("최대 레벨")] [MinValue(1)] public int maxLevel;
 
     [LabelText("추가 아이템 발생 레벨조건")] [MinValue(1)] public int plusItemLevel;
-    [LabelText("추가 아이템 발생 아이템코드")] public string plusItemCode;
+    [LabelText("추가 아이템 발생 SO")] public ItemSO plusItem;
 }
 
 public enum ItemType
@@ -121,11 +156,11 @@ public enum ItemType
     혼합기름,
     니트로,
     매그넘44,
-    레이저,
     수퍼로봇,
     수집가,
     레드불,
     가시갑옷,
+    레이저,
     자이로스코프,
     팩맨,
     와이퍼,
@@ -142,7 +177,7 @@ public enum ItemType
     오토캐드,
     반사장치,
     벙커,
-    자동생선,
+    자동생성,
     스포일러
 }
 public enum ItemGrade

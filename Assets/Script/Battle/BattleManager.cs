@@ -14,7 +14,7 @@ public class BattleManager : Singleton<BattleManager>
 
     bool isBattle = false;
     bool isWave = false;
-    BattleSO c_battleSO;
+    [HideInInspector] public BattleSO c_battleSO;
     int waveIndex = 0;
 
     public CanvasManager canvasManager;
@@ -104,6 +104,11 @@ public class BattleManager : Singleton<BattleManager>
         // 다음 웨이브 
         waveIndex++;
         WaveSetting();
+
+        // 유저 최대체력 상승
+        int waveHPAbility = UserAbility.Instance.GetAbility(Ability.웨이브마다최대체력상승);
+        UserAbility.Instance.BuffAbility(new AbilityData(Ability.체력, waveHPAbility));
+        Player.Instance.HP_Setting();
     }
     public void BattleClear()
     {
@@ -122,10 +127,6 @@ public class BattleManager : Singleton<BattleManager>
         {
             PlayerPrefs.SetInt(battleKey + c_battleSO.unLockBattleCode, 0);
         }
-
-        // 보상
-        UserInfo.Instance.Core += c_battleSO.rewardCoreCount;
-        CoreUI.Instance.Setting();
     }
     public void BattleFailure()
     {
@@ -145,6 +146,7 @@ public class BattleManager : Singleton<BattleManager>
         {
             waveSequence.Kill();
         }
+        CoreUI.Instance.Setting();
         player.BattleEnd(()=> { canvasManager.LobbySet(); });
     }
 }

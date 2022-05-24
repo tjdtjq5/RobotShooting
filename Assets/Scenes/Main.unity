@@ -612,6 +612,50 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   obj: {fileID: 2136022041085994487, guid: a860b08517868da4099aabec2199565d, type: 3}
+--- !u!1 &179919317
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179919318}
+  - component: {fileID: 179919319}
+  m_Layer: 0
+  m_Name: CoreDrop
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &179919318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179919317}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1337028729}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179919319
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179919317}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0175a402c27fd58448b8ae897cc065ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obj: {fileID: 2136022041085994487, guid: 5d8ab8a6dc887e1489d623467bc9ccf8, type: 3}
 --- !u!1 &194359661
 GameObject:
   m_ObjectHideFlags: 0
@@ -4541,8 +4585,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defaultAbility:
-  - ability: 2
+  - ability: 0
     count: 100
+  - ability: 2
+    count: 1000
   - ability: 3
     count: 1
   - ability: 4
@@ -4550,11 +4596,13 @@ MonoBehaviour:
   - ability: 5
     count: 10
   - ability: 6
-    count: 1
+    count: 10
   - ability: 7
-    count: 5
+    count: 1000
   - ability: 8
     count: 5
+  - ability: 16
+    count: 2
   upgrade: {fileID: 1128604375}
 --- !u!114 &994458270
 MonoBehaviour:
@@ -6587,6 +6635,7 @@ Transform:
   - {fileID: 161435990}
   - {fileID: 869136053}
   - {fileID: 1261090741}
+  - {fileID: 179919318}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6608,6 +6657,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8e8814eb5554ef543a6deba67fab2b2a, type: 2}
   - {fileID: 11400000, guid: cdc10aa993683df458fbde88cbc959c9, type: 2}
   battleKey: Battle
+  c_battleSO: {fileID: 0}
   canvasManager: {fileID: 1048890513}
   player: {fileID: 994458272}
   enemySpawn: {fileID: 2139697112}

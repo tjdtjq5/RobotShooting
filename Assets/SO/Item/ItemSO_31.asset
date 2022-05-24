@@ -1,0 +1,85 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f309f179c5c77438b4746cc8a2ff5f, type: 3}
+  m_Name: ItemSO_31
+  m_EditorClassIdentifier: 
+  code: ItemSO_31
+  nameCode: ItemSO_name_31
+  sprite: {fileID: 21300000, guid: a68ebe746981a4140a06e676878b9e18, type: 3}
+  itemGrade: 0
+  itemType: 28
+  boosterCount: 0
+  boosterCount_levelup: 0
+  bulletCount: 0
+  bulletCount_levelup: 0
+  reloadCount: 0
+  reloadCount_levelup: 0
+  energyCount: 0
+  energyCount_levelup: 0
+  coredropCount: 0
+  coredropCount_levelup: 0
+  energyDringCount: 0
+  energyDringCount_levelup: 0
+  armorCount: 0
+  armorCount_levelup: 0
+  senserCount: 0
+  senserCount_levelup: 0
+  bulletStabilityCount: 0
+  bulletStabilityCount_levelup: 0
+  ironballCount: 0
+  ironballCount_levelup: 0
+  heatTreatmentCount: 0
+  heatTreatmentCount_levelup: 0
+  chargeCount: 0
+  chargeCount_levelup: 0
+  energeAbsorptionCount: 0
+  energeAbsorptionCount_levelup: 0
+  diceCount: 0
+  diceCount_levelup: 0
+  overHeatCount: 0
+  overHeatCount_levelup: 0
+  satelliteAtkCount_levelup: 0
+  satelliteAtkspeedCount_levelup: 0
+  precisionCount: 0
+  precisionCount_levelup: 0
+  smallCount: 0
+  smallCount_levelup: 0
+  electricExplosionCount_levelup: 0
+  dronCount_levelup: 0
+  blueprintCount_levelup: 0
+  barrierTime: 0
+  barrierTime_levelup: 0
+  machineGun: 0
+  machineGun_levelup: 0
+  copy: 0
+  mixedOil: 0
+  mixedOil_levelup: 0
+  nitro: 0
+  magnum: 0
+  superRobot_maxhp: 0
+  superRobot_size: 0
+  collection_maxhp: 1
+  redbool_hp: 0
+  thornsArmor: 0
+  packman: 0
+  composure: 0
+  electricField: 0
+  sponge: 0
+  luckyBag: 0
+  restart: 0
+  pokebot: 0
+  autoCAD: 0
+  reflector: 0
+  bunker: 0
+  maxLevel: 1
+  plusItemLevel: 1
+  plusItemCode: 

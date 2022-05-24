@@ -31,6 +31,7 @@ public class EnemyObj : MonoBehaviour
     private void OnEnable()
     {
         isSpawn = false;
+        spriteRenderer.color = Color.white;
     }
 
     public void Spawn(EnemySO _enemySO, Transform _target, Vector2 _startPos, float _endPosY)
@@ -53,6 +54,7 @@ public class EnemyObj : MonoBehaviour
     {
         hp -= dmg;
 
+
         DmgSpawn.Instance.Spawn(this.transform.position, dmg.ToString());
 
         spriteTrans.DOKill();
@@ -63,13 +65,16 @@ public class EnemyObj : MonoBehaviour
                    });
 
         spriteRenderer.DOKill();
-        spriteRenderer.color = Color.white;
+        Color spriteColor = ((float)hp / enemySO.hp > 0.1f) ? Color.white : Color.gray;
+        spriteRenderer.color = spriteColor;
         spriteRenderer.DOColor(new Color(1, 194f / 255f, 194f / 255f, 1), 0.1f)
                       .OnComplete(() => {
-                          spriteRenderer.DOColor(Color.white, 0.1f);
+                          spriteRenderer.DOColor(spriteColor, 0.1f);
                       });
 
         HitSpawn.Instance.Spawn(this.transform.position);
+
+        
 
         if (hp <= 0)
         {
@@ -87,6 +92,17 @@ public class EnemyObj : MonoBehaviour
     void Destroy()
     {
         BreakSpawn.Instance.Spawn(this.transform.position);
+
+        int dorpAbility = UserAbility.Instance.GetAbility(Ability.코어드랍확률_최대1000);
+        bool isDrop = Function.GameInfo.IsCritical(dorpAbility);
+        Debug.Log(isDrop + " : " + dorpAbility);
+        if (isDrop)
+        {
+            int dropCoin = BattleManager.Instance.c_battleSO.rewardCoreCount;
+            UserInfo.Instance.Core += dropCoin;
+            CoreSpawn.Instance.Spawn(this.transform.position, dropCoin);
+        }
+
         this.gameObject.SetActive(false);
     }
 

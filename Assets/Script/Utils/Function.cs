@@ -833,10 +833,10 @@ namespace Function
             return total;
         }
   
-        public static bool IsCritical(float _criPer)
+        public static bool IsCritical(int _criPer)
         {
             float r = Random.RandomRange(0f, 1f);
-            return r < (_criPer / 100);
+            return r < (_criPer / 1000);
         }
     }
 

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Sirenix.OdinInspector;
 
-public class UserAbility : MonoBehaviour
+public class UserAbility : Singleton<UserAbility>
 {
     [SerializeField] List<AbilityData> defaultAbility = new List<AbilityData>();
 
@@ -63,7 +63,7 @@ public enum Ability
     이동속도,
     치명타확률_최대1000,
     발사체내구도,
-    코어드랍확률,
+    코어드랍확률_최대1000,
     치명데미지_최대1000,
     코어드랍률_최대1000,
     적수에따라HP회복_최대1000,
@@ -71,7 +71,8 @@ public enum Ability
     HP50이하일때공격력증가_최대1000,
     멈춰있을때공격속도증가_최대1000,
     손상피해,
-    회피_최대1000
+    회피_최대1000,
+    웨이브마다최대체력상승
 }
 [System.Serializable]
 public class AbilityData

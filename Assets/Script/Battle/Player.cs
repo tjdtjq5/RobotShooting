@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class Player : MonoBehaviour
+public class Player : Singleton<Player>
 {
     public Transform weaponTransform;
     public Transform bulletPos;
@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    void HP_Setting()
+    public void HP_Setting()
     {
         hp_scrollbar.value = (float)hp / userAbility.GetAbility(Ability.체력);
         hp_text.text = hp + " / " + userAbility.GetAbility(Ability.체력);

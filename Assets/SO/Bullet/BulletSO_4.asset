@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BulletSO_4
   m_EditorClassIdentifier: 
   code: bullet_4
-  nameCode: bullet_name_0
+  nameCode: bullet_name_4
   obj: {fileID: 3237813241132556621, guid: 201874a7730b1fe42b59d66489a1f1d7, type: 3}
   atk: 10
   atkPlus: 10
