@@ -15,12 +15,13 @@ public class BattleManager : Singleton<BattleManager>
     bool isBattle = false;
     bool isWave = false;
     [HideInInspector] public BattleSO c_battleSO;
-    int waveIndex = 0;
+    [HideInInspector] public int waveIndex = 0;
 
     public CanvasManager canvasManager;
     public Player player;
     public EnemySpawn enemySpawn;
     public BulletSpawn bulletSpawn;
+    public ItemSelect itemSelect;
 
     public Text difiText;
     public Text waveText;
@@ -44,6 +45,7 @@ public class BattleManager : Singleton<BattleManager>
             , () => {
                 player.BattleSetting();
                 WaveSetting();
+                itemSelect.BattleStart();
             });
     }
 
@@ -56,11 +58,6 @@ public class BattleManager : Singleton<BattleManager>
         waveText.text = "wave " + (waveIndex + 1);
 
         List<WaveSO> waveSOs = c_battleSO.waveSOs;
-        if (waveSOs.Count <= waveIndex)
-        {
-            BattleClear();
-            return;
-        }
 
         if (waveSequence != null)
         {
@@ -101,6 +98,18 @@ public class BattleManager : Singleton<BattleManager>
             }
         }
 
+        if (c_battleSO.waveSOs.Count <= waveIndex - 1)
+        {
+            BattleClear();
+        }
+        else
+        {
+            itemSelect.Charge_Q();
+            itemSelect.Show();
+        }
+    }
+    public void NextWave()
+    {
         // 다음 웨이브 
         waveIndex++;
         WaveSetting();

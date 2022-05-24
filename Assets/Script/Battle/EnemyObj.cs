@@ -95,7 +95,6 @@ public class EnemyObj : MonoBehaviour
 
         int dorpAbility = UserAbility.Instance.GetAbility(Ability.코어드랍확률_최대1000);
         bool isDrop = Function.GameInfo.IsCritical(dorpAbility);
-        Debug.Log(isDrop + " : " + dorpAbility);
         if (isDrop)
         {
             int dropCoin = BattleManager.Instance.c_battleSO.rewardCoreCount;

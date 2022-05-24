@@ -836,7 +836,7 @@ namespace Function
         public static bool IsCritical(int _criPer)
         {
             float r = Random.RandomRange(0f, 1f);
-            return r < (_criPer / 1000);
+            return r < (_criPer / 1000f);
         }
     }
 

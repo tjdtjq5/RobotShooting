@@ -67,7 +67,6 @@ MonoBehaviour:
   magnum: 20
   superRobot_maxhp: 0
   superRobot_size: 0
-  collection_drop: 0
   collection_maxhp: 0
   redbool_hp: 0
   thornsArmor: 0
@@ -81,6 +80,7 @@ MonoBehaviour:
   autoCAD: 0
   reflector: 0
   bunker: 0
+  script: "~~~ \uC544\uC774\uD15C \uC124\uBA85 ~~~"
   maxLevel: 1
   plusItemLevel: 1
-  plusItemCode: 
+  plusItem: {fileID: 0}

@@ -120,6 +120,7 @@ public class ItemSO : ScriptableObject
     [LabelText("멈춰 있을 때 점점 방어력 증가")] [ShowIf("itemType", ItemType.벙커)] [MinValue(0)] public int bunker;
     #endregion
 
+    [LabelText("아이템 설명")] [Multiline(3)] public string script;
 
     [LabelText("최대 레벨")] [MinValue(1)] public int maxLevel;
 
