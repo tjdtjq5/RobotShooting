@@ -22,10 +22,11 @@ public class BattleManager : Singleton<BattleManager>
     public EnemySpawn enemySpawn;
     public BulletSpawn bulletSpawn;
     public ItemSelect itemSelect;
+    public UserItem userItem;
+    public Satellite satellite;
 
     public Text difiText;
     public Text waveText;
-
 
     public void BattleStart(BattleSO _battleSO)
     {
@@ -39,18 +40,19 @@ public class BattleManager : Singleton<BattleManager>
         waveIndex = 0;
         difiText.text = Language.Instance.GetScript(_battleSO.nameCode);
 
+        itemSelect.BattleStart();
+        userItem.BattleSetting();
+
         canvasManager.BattleSet();
         TextMessage.Instance.Show(
             Language.Instance.GetScript(_battleSO.nameCode) + " 전투를 시작합니다"
             , () => {
                 player.BattleSetting();
                 WaveSetting();
-                itemSelect.BattleStart();
+
             });
     }
-
     Sequence waveSequence;
-
     void WaveSetting()
     {
         isWave = true;
@@ -98,7 +100,7 @@ public class BattleManager : Singleton<BattleManager>
             }
         }
 
-        if (c_battleSO.waveSOs.Count <= waveIndex - 1)
+        if (c_battleSO.waveSOs.Count - 1 <= waveIndex)
         {
             BattleClear();
         }
@@ -145,12 +147,13 @@ public class BattleManager : Singleton<BattleManager>
                  , () => {
                  });
     }
-
     void BattleEnd()
     {
         isBattle = false;
         enemySpawn.AllDestroy();
         bulletSpawn.AllDestroy();
+        satellite.StatelliteStop();
+
         if (waveSequence != null)
         {
             waveSequence.Kill();

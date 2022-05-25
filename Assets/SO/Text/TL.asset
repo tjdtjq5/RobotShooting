@@ -1,0 +1,442 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d28bc752fcd0884b89045e1911af2b2, type: 3}
+  m_Name: TL
+  m_EditorClassIdentifier: 
+  SheetName: Assets/SO/Text/Text.xlsx
+  WorksheetName: TL
+  dataArray:
+  - code: BattleSO_name_0
+    ko: "\uC77C\uBC18"
+    en: "\uC77C\uBC18"
+    jp: "\uC77C\uBC18"
+    ch: "\uC77C\uBC18"
+  - code: BattleSO_name_1
+    ko: "\uD558\uB4DC1"
+    en: "\uD558\uB4DC1"
+    jp: "\uD558\uB4DC1"
+    ch: "\uD558\uB4DC1"
+  - code: BattleSO_name_2
+    ko: "\uD558\uB4DC2"
+    en: "\uD558\uB4DC2"
+    jp: "\uD558\uB4DC2"
+    ch: "\uD558\uB4DC2"
+  - code: BattleSO_name_3
+    ko: "\uD558\uB4DC3"
+    en: "\uD558\uB4DC3"
+    jp: "\uD558\uB4DC3"
+    ch: "\uD558\uB4DC3"
+  - code: bullet_name_0
+    ko: "\uCD1D\uC54C1"
+    en: "\uCD1D\uC54C1"
+    jp: "\uCD1D\uC54C1"
+    ch: "\uCD1D\uC54C1"
+  - code: bullet_name_1
+    ko: "\uCD1D\uC54C2"
+    en: "\uCD1D\uC54C2"
+    jp: "\uCD1D\uC54C2"
+    ch: "\uCD1D\uC54C2"
+  - code: bullet_name_2
+    ko: "\uCD1D\uC54C3"
+    en: "\uCD1D\uC54C3"
+    jp: "\uCD1D\uC54C3"
+    ch: "\uCD1D\uC54C3"
+  - code: bullet_name_3
+    ko: "\uCD1D\uC54C4"
+    en: "\uCD1D\uC54C4"
+    jp: "\uCD1D\uC54C4"
+    ch: "\uCD1D\uC54C4"
+  - code: bullet_name_4
+    ko: "\uCD1D\uC54C5"
+    en: "\uCD1D\uC54C5"
+    jp: "\uCD1D\uC54C5"
+    ch: "\uCD1D\uC54C5"
+  - code: bullet_name_5
+    ko: "\uCD1D\uC54C6"
+    en: "\uCD1D\uC54C6"
+    jp: "\uCD1D\uC54C6"
+    ch: "\uCD1D\uC54C6"
+  - code: bullet_name_6
+    ko: "\uCD1D\uC54C7"
+    en: "\uCD1D\uC54C7"
+    jp: "\uCD1D\uC54C7"
+    ch: "\uCD1D\uC54C7"
+  - code: Enemy_name_0
+    ko: "\uC801\uAE30\uCCB41"
+    en: "\uC801\uAE30\uCCB41"
+    jp: "\uC801\uAE30\uCCB41"
+    ch: "\uC801\uAE30\uCCB41"
+  - code: Enemy_name_1
+    ko: "\uC801\uAE30\uCCB42"
+    en: "\uC801\uAE30\uCCB42"
+    jp: "\uC801\uAE30\uCCB42"
+    ch: "\uC801\uAE30\uCCB42"
+  - code: Enemy_name_2
+    ko: "\uC801\uAE30\uCCB43"
+    en: "\uC801\uAE30\uCCB43"
+    jp: "\uC801\uAE30\uCCB43"
+    ch: "\uC801\uAE30\uCCB43"
+  - code: Enemy_name_3
+    ko: "\uC801\uAE30\uCCB44"
+    en: "\uC801\uAE30\uCCB44"
+    jp: "\uC801\uAE30\uCCB44"
+    ch: "\uC801\uAE30\uCCB44"
+  - code: Enemy_name_4
+    ko: "\uC801\uAE30\uCCB45"
+    en: "\uC801\uAE30\uCCB45"
+    jp: "\uC801\uAE30\uCCB45"
+    ch: "\uC801\uAE30\uCCB45"
+  - code: Enemy_name_5
+    ko: "\uC801\uAE30\uCCB46"
+    en: "\uC801\uAE30\uCCB46"
+    jp: "\uC801\uAE30\uCCB46"
+    ch: "\uC801\uAE30\uCCB46"
+  - code: Enemy_name_6
+    ko: "\uC801\uAE30\uCCB47"
+    en: "\uC801\uAE30\uCCB47"
+    jp: "\uC801\uAE30\uCCB47"
+    ch: "\uC801\uAE30\uCCB47"
+  - code: Enemy_name_7
+    ko: "\uC801\uAE30\uCCB48"
+    en: "\uC801\uAE30\uCCB48"
+    jp: "\uC801\uAE30\uCCB48"
+    ch: "\uC801\uAE30\uCCB48"
+  - code: Enemy_name_8
+    ko: "\uC801\uAE30\uCCB49"
+    en: "\uC801\uAE30\uCCB49"
+    jp: "\uC801\uAE30\uCCB49"
+    ch: "\uC801\uAE30\uCCB49"
+  - code: Enemy_name_9
+    ko: "\uC801\uAE30\uCCB410"
+    en: "\uC801\uAE30\uCCB410"
+    jp: "\uC801\uAE30\uCCB410"
+    ch: "\uC801\uAE30\uCCB410"
+  - code: Enemy_name_10
+    ko: "\uC801\uAE30\uCCB411"
+    en: "\uC801\uAE30\uCCB411"
+    jp: "\uC801\uAE30\uCCB411"
+    ch: "\uC801\uAE30\uCCB411"
+  - code: Enemy_name_11
+    ko: "\uC801\uAE30\uCCB412"
+    en: "\uC801\uAE30\uCCB412"
+    jp: "\uC801\uAE30\uCCB412"
+    ch: "\uC801\uAE30\uCCB412"
+  - code: Enemy_name_12
+    ko: "\uC801\uAE30\uCCB413"
+    en: "\uC801\uAE30\uCCB413"
+    jp: "\uC801\uAE30\uCCB413"
+    ch: "\uC801\uAE30\uCCB413"
+  - code: Enemy_name_13
+    ko: "\uC801\uAE30\uCCB414"
+    en: "\uC801\uAE30\uCCB414"
+    jp: "\uC801\uAE30\uCCB414"
+    ch: "\uC801\uAE30\uCCB414"
+  - code: Enemy_name_14
+    ko: "\uC801\uAE30\uCCB415"
+    en: "\uC801\uAE30\uCCB415"
+    jp: "\uC801\uAE30\uCCB415"
+    ch: "\uC801\uAE30\uCCB415"
+  - code: Enemy_name_15
+    ko: "\uC801\uAE30\uCCB416"
+    en: "\uC801\uAE30\uCCB416"
+    jp: "\uC801\uAE30\uCCB416"
+    ch: "\uC801\uAE30\uCCB416"
+  - code: Enemy_name_16
+    ko: "\uC801\uAE30\uCCB417"
+    en: "\uC801\uAE30\uCCB417"
+    jp: "\uC801\uAE30\uCCB417"
+    ch: "\uC801\uAE30\uCCB417"
+  - code: Enemy_name_17
+    ko: "\uC801\uAE30\uCCB418"
+    en: "\uC801\uAE30\uCCB418"
+    jp: "\uC801\uAE30\uCCB418"
+    ch: "\uC801\uAE30\uCCB418"
+  - code: weapon_name_0
+    ko: "\uBB34\uAE301"
+    en: "\uBB34\uAE301"
+    jp: "\uBB34\uAE301"
+    ch: "\uBB34\uAE301"
+  - code: weapon_name_1
+    ko: "\uBB34\uAE302"
+    en: "\uBB34\uAE302"
+    jp: "\uBB34\uAE302"
+    ch: "\uBB34\uAE302"
+  - code: weapon_name_2
+    ko: "\uBB34\uAE303"
+    en: "\uBB34\uAE303"
+    jp: "\uBB34\uAE303"
+    ch: "\uBB34\uAE303"
+  - code: weapon_name_3
+    ko: "\uBB34\uAE304"
+    en: "\uBB34\uAE304"
+    jp: "\uBB34\uAE304"
+    ch: "\uBB34\uAE304"
+  - code: weapon_name_4
+    ko: "\uBB34\uAE305"
+    en: "\uBB34\uAE305"
+    jp: "\uBB34\uAE305"
+    ch: "\uBB34\uAE305"
+  - code: ItemSO_name_1
+    ko: "\uC544\uC774\uD15C1"
+    en: "\uC544\uC774\uD15C1"
+    jp: "\uC544\uC774\uD15C1"
+    ch: "\uC544\uC774\uD15C1"
+  - code: ItemSO_name_2
+    ko: "\uC544\uC774\uD15C2"
+    en: "\uC544\uC774\uD15C2"
+    jp: "\uC544\uC774\uD15C2"
+    ch: "\uC544\uC774\uD15C2"
+  - code: ItemSO_name_3
+    ko: "\uC544\uC774\uD15C3"
+    en: "\uC544\uC774\uD15C3"
+    jp: "\uC544\uC774\uD15C3"
+    ch: "\uC544\uC774\uD15C3"
+  - code: ItemSO_name_4
+    ko: "\uC544\uC774\uD15C4"
+    en: "\uC544\uC774\uD15C4"
+    jp: "\uC544\uC774\uD15C4"
+    ch: "\uC544\uC774\uD15C4"
+  - code: ItemSO_name_5
+    ko: "\uC544\uC774\uD15C5"
+    en: "\uC544\uC774\uD15C5"
+    jp: "\uC544\uC774\uD15C5"
+    ch: "\uC544\uC774\uD15C5"
+  - code: ItemSO_name_6
+    ko: "\uC544\uC774\uD15C6"
+    en: "\uC544\uC774\uD15C6"
+    jp: "\uC544\uC774\uD15C6"
+    ch: "\uC544\uC774\uD15C6"
+  - code: ItemSO_name_7
+    ko: "\uC544\uC774\uD15C7"
+    en: "\uC544\uC774\uD15C7"
+    jp: "\uC544\uC774\uD15C7"
+    ch: "\uC544\uC774\uD15C7"
+  - code: ItemSO_name_8
+    ko: "\uC544\uC774\uD15C8"
+    en: "\uC544\uC774\uD15C8"
+    jp: "\uC544\uC774\uD15C8"
+    ch: "\uC544\uC774\uD15C8"
+  - code: ItemSO_name_9
+    ko: "\uC544\uC774\uD15C9"
+    en: "\uC544\uC774\uD15C9"
+    jp: "\uC544\uC774\uD15C9"
+    ch: "\uC544\uC774\uD15C9"
+  - code: ItemSO_name_10
+    ko: "\uC544\uC774\uD15C10"
+    en: "\uC544\uC774\uD15C10"
+    jp: "\uC544\uC774\uD15C10"
+    ch: "\uC544\uC774\uD15C10"
+  - code: ItemSO_name_11
+    ko: "\uC544\uC774\uD15C11"
+    en: "\uC544\uC774\uD15C11"
+    jp: "\uC544\uC774\uD15C11"
+    ch: "\uC544\uC774\uD15C11"
+  - code: ItemSO_name_12
+    ko: "\uC544\uC774\uD15C12"
+    en: "\uC544\uC774\uD15C12"
+    jp: "\uC544\uC774\uD15C12"
+    ch: "\uC544\uC774\uD15C12"
+  - code: ItemSO_name_13
+    ko: "\uC544\uC774\uD15C13"
+    en: "\uC544\uC774\uD15C13"
+    jp: "\uC544\uC774\uD15C13"
+    ch: "\uC544\uC774\uD15C13"
+  - code: ItemSO_name_14
+    ko: "\uC544\uC774\uD15C14"
+    en: "\uC544\uC774\uD15C14"
+    jp: "\uC544\uC774\uD15C14"
+    ch: "\uC544\uC774\uD15C14"
+  - code: ItemSO_name_15
+    ko: "\uC544\uC774\uD15C15"
+    en: "\uC544\uC774\uD15C15"
+    jp: "\uC544\uC774\uD15C15"
+    ch: "\uC544\uC774\uD15C15"
+  - code: ItemSO_name_16
+    ko: "\uC544\uC774\uD15C16"
+    en: "\uC544\uC774\uD15C16"
+    jp: "\uC544\uC774\uD15C16"
+    ch: "\uC544\uC774\uD15C16"
+  - code: ItemSO_name_17
+    ko: "\uC544\uC774\uD15C17"
+    en: "\uC544\uC774\uD15C17"
+    jp: "\uC544\uC774\uD15C17"
+    ch: "\uC544\uC774\uD15C17"
+  - code: ItemSO_name_18
+    ko: "\uC544\uC774\uD15C18"
+    en: "\uC544\uC774\uD15C18"
+    jp: "\uC544\uC774\uD15C18"
+    ch: "\uC544\uC774\uD15C18"
+  - code: ItemSO_name_19
+    ko: "\uC544\uC774\uD15C19"
+    en: "\uC544\uC774\uD15C19"
+    jp: "\uC544\uC774\uD15C19"
+    ch: "\uC544\uC774\uD15C19"
+  - code: ItemSO_name_20
+    ko: "\uC544\uC774\uD15C20"
+    en: "\uC544\uC774\uD15C20"
+    jp: "\uC544\uC774\uD15C20"
+    ch: "\uC544\uC774\uD15C20"
+  - code: ItemSO_name_21
+    ko: "\uC544\uC774\uD15C21"
+    en: "\uC544\uC774\uD15C21"
+    jp: "\uC544\uC774\uD15C21"
+    ch: "\uC544\uC774\uD15C21"
+  - code: ItemSO_name_22
+    ko: "\uC544\uC774\uD15C22"
+    en: "\uC544\uC774\uD15C22"
+    jp: "\uC544\uC774\uD15C22"
+    ch: "\uC544\uC774\uD15C22"
+  - code: ItemSO_name_23
+    ko: "\uC544\uC774\uD15C23"
+    en: "\uC544\uC774\uD15C23"
+    jp: "\uC544\uC774\uD15C23"
+    ch: "\uC544\uC774\uD15C23"
+  - code: ItemSO_name_24
+    ko: "\uC544\uC774\uD15C24"
+    en: "\uC544\uC774\uD15C24"
+    jp: "\uC544\uC774\uD15C24"
+    ch: "\uC544\uC774\uD15C24"
+  - code: ItemSO_name_25
+    ko: "\uC544\uC774\uD15C25"
+    en: "\uC544\uC774\uD15C25"
+    jp: "\uC544\uC774\uD15C25"
+    ch: "\uC544\uC774\uD15C25"
+  - code: ItemSO_name_26
+    ko: "\uC544\uC774\uD15C26"
+    en: "\uC544\uC774\uD15C26"
+    jp: "\uC544\uC774\uD15C26"
+    ch: "\uC544\uC774\uD15C26"
+  - code: ItemSO_name_27
+    ko: "\uC544\uC774\uD15C27"
+    en: "\uC544\uC774\uD15C27"
+    jp: "\uC544\uC774\uD15C27"
+    ch: "\uC544\uC774\uD15C27"
+  - code: ItemSO_name_28
+    ko: "\uC544\uC774\uD15C28"
+    en: "\uC544\uC774\uD15C28"
+    jp: "\uC544\uC774\uD15C28"
+    ch: "\uC544\uC774\uD15C28"
+  - code: ItemSO_name_29
+    ko: "\uC544\uC774\uD15C29"
+    en: "\uC544\uC774\uD15C29"
+    jp: "\uC544\uC774\uD15C29"
+    ch: "\uC544\uC774\uD15C29"
+  - code: ItemSO_name_30
+    ko: "\uC544\uC774\uD15C30"
+    en: "\uC544\uC774\uD15C30"
+    jp: "\uC544\uC774\uD15C30"
+    ch: "\uC544\uC774\uD15C30"
+  - code: ItemSO_name_31
+    ko: "\uC544\uC774\uD15C31"
+    en: "\uC544\uC774\uD15C31"
+    jp: "\uC544\uC774\uD15C31"
+    ch: "\uC544\uC774\uD15C31"
+  - code: ItemSO_name_32
+    ko: "\uC544\uC774\uD15C32"
+    en: "\uC544\uC774\uD15C32"
+    jp: "\uC544\uC774\uD15C32"
+    ch: "\uC544\uC774\uD15C32"
+  - code: ItemSO_name_33
+    ko: "\uC544\uC774\uD15C33"
+    en: "\uC544\uC774\uD15C33"
+    jp: "\uC544\uC774\uD15C33"
+    ch: "\uC544\uC774\uD15C33"
+  - code: ItemSO_name_34
+    ko: "\uC544\uC774\uD15C34"
+    en: "\uC544\uC774\uD15C34"
+    jp: "\uC544\uC774\uD15C34"
+    ch: "\uC544\uC774\uD15C34"
+  - code: ItemSO_name_35
+    ko: "\uC544\uC774\uD15C35"
+    en: "\uC544\uC774\uD15C35"
+    jp: "\uC544\uC774\uD15C35"
+    ch: "\uC544\uC774\uD15C35"
+  - code: ItemSO_name_36
+    ko: "\uC544\uC774\uD15C36"
+    en: "\uC544\uC774\uD15C36"
+    jp: "\uC544\uC774\uD15C36"
+    ch: "\uC544\uC774\uD15C36"
+  - code: ItemSO_name_37
+    ko: "\uC544\uC774\uD15C37"
+    en: "\uC544\uC774\uD15C37"
+    jp: "\uC544\uC774\uD15C37"
+    ch: "\uC544\uC774\uD15C37"
+  - code: ItemSO_name_38
+    ko: "\uC544\uC774\uD15C38"
+    en: "\uC544\uC774\uD15C38"
+    jp: "\uC544\uC774\uD15C38"
+    ch: "\uC544\uC774\uD15C38"
+  - code: ItemSO_name_39
+    ko: "\uC544\uC774\uD15C39"
+    en: "\uC544\uC774\uD15C39"
+    jp: "\uC544\uC774\uD15C39"
+    ch: "\uC544\uC774\uD15C39"
+  - code: ItemSO_name_40
+    ko: "\uC544\uC774\uD15C40"
+    en: "\uC544\uC774\uD15C40"
+    jp: "\uC544\uC774\uD15C40"
+    ch: "\uC544\uC774\uD15C40"
+  - code: ItemSO_name_41
+    ko: "\uC544\uC774\uD15C41"
+    en: "\uC544\uC774\uD15C41"
+    jp: "\uC544\uC774\uD15C41"
+    ch: "\uC544\uC774\uD15C41"
+  - code: ItemSO_name_42
+    ko: "\uC544\uC774\uD15C42"
+    en: "\uC544\uC774\uD15C42"
+    jp: "\uC544\uC774\uD15C42"
+    ch: "\uC544\uC774\uD15C42"
+  - code: ItemSO_name_43
+    ko: "\uC544\uC774\uD15C43"
+    en: "\uC544\uC774\uD15C43"
+    jp: "\uC544\uC774\uD15C43"
+    ch: "\uC544\uC774\uD15C43"
+  - code: ItemSO_name_44
+    ko: "\uC544\uC774\uD15C44"
+    en: "\uC544\uC774\uD15C44"
+    jp: "\uC544\uC774\uD15C44"
+    ch: "\uC544\uC774\uD15C44"
+  - code: ItemSO_name_45
+    ko: "\uC544\uC774\uD15C45"
+    en: "\uC544\uC774\uD15C45"
+    jp: "\uC544\uC774\uD15C45"
+    ch: "\uC544\uC774\uD15C45"
+  - code: ItemSO_name_46
+    ko: "\uC544\uC774\uD15C46"
+    en: "\uC544\uC774\uD15C46"
+    jp: "\uC544\uC774\uD15C46"
+    ch: "\uC544\uC774\uD15C46"
+  - code: ItemSO_name_47
+    ko: "\uC544\uC774\uD15C47"
+    en: "\uC544\uC774\uD15C47"
+    jp: "\uC544\uC774\uD15C47"
+    ch: "\uC544\uC774\uD15C47"
+  - code: ItemSO_name_48
+    ko: "\uC544\uC774\uD15C48"
+    en: "\uC544\uC774\uD15C48"
+    jp: "\uC544\uC774\uD15C48"
+    ch: "\uC544\uC774\uD15C48"
+  - code: ItemSO_name_49
+    ko: "\uC544\uC774\uD15C49"
+    en: "\uC544\uC774\uD15C49"
+    jp: "\uC544\uC774\uD15C49"
+    ch: "\uC544\uC774\uD15C49"
+  - code: ItemSO_name_50
+    ko: "\uC544\uC774\uD15C50"
+    en: "\uC544\uC774\uD15C50"
+    jp: "\uC544\uC774\uD15C50"
+    ch: "\uC544\uC774\uD15C50"
+  - code: ItemSO_name_51
+    ko: "\uC544\uC774\uD15C51"
+    en: "\uC544\uC774\uD15C51"
+    jp: "\uC544\uC774\uD15C51"
+    ch: "\uC544\uC774\uD15C51"

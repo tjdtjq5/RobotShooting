@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ItemSelect : MonoBehaviour
+public class ItemSelect : Singleton<ItemSelect>
 {
     public List<GameObject> objs = new List<GameObject>();
     public Transform list;
@@ -15,8 +15,10 @@ public class ItemSelect : MonoBehaviour
     [LabelText("희귀 등급 아이템")] public List<ItemSO> rare_itemSO;
     [LabelText("영웅 등급 아이템")] public List<ItemSO> hero_itemSO;
 
-    [HideInInspector] public int rarePercent = 700;
-    [HideInInspector] public int heroPercent = 300;
+    [HideInInspector] public int rarePercent_default = 700;
+    [HideInInspector] public int heroPercent_default = 300;
+    [HideInInspector] public int rarePercent;
+    [HideInInspector] public int heroPercent;
 
     [HideInInspector] public int cardCount = 3;
 
@@ -33,6 +35,8 @@ public class ItemSelect : MonoBehaviour
     public void BattleStart()
     {
         q_charge = q_default;
+        rarePercent = rarePercent_default;
+        heroPercent = heroPercent_default;
     }
 
     public void Charge_Q()

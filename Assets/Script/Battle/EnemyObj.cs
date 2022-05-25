@@ -31,11 +31,11 @@ public class EnemyObj : MonoBehaviour
     private void OnEnable()
     {
         isSpawn = false;
-        spriteRenderer.color = Color.white;
     }
 
     public void Spawn(EnemySO _enemySO, Transform _target, Vector2 _startPos, float _endPosY)
     {
+        spriteRenderer.color = Color.white;
         this.enemySO = _enemySO;
         this.target = _target; 
         this.transform.position = _startPos;
@@ -50,10 +50,24 @@ public class EnemyObj : MonoBehaviour
         movespeed = movespeedVelocity / _enemySO.movespeed;
     }
 
-    public void Hit(int dmg , int cri , int cridmg)
+    public void Hit(int dmg , int cri , int cridmg, BulletSO _bulletSO)
     {
-        hp -= dmg;
+        bool isCri = Function.GameInfo.IsCritical(cri);
+        dmg = isCri ? (int)(dmg * (cridmg / 1000f)) : dmg;
 
+        dmg -= UserAbility.Instance.GetAbility(Ability.방어력);
+        if (dmg <= 0)
+        {
+            dmg = 1;
+        }
+
+        if (_bulletSO.bulletType != BulletType.위성레이저)
+        {
+            int hpr = (int)(dmg * (UserAbility.Instance.GetAbility(Ability.HP흡수_최대1000) / 1000f + 1));
+            Player.Instance.HP_Recovery(hpr);
+        }
+
+        hp -= dmg;
 
         DmgSpawn.Instance.Spawn(this.transform.position, dmg.ToString());
 
@@ -74,8 +88,6 @@ public class EnemyObj : MonoBehaviour
 
         HitSpawn.Instance.Spawn(this.transform.position);
 
-        
-
         if (hp <= 0)
         {
             Destroy();
@@ -86,14 +98,14 @@ public class EnemyObj : MonoBehaviour
     {
         a_time = 0;
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
-        BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , 10, 10, 10, 1);
+        BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , 10, 10, 10, 1, 0);
     }
 
     void Destroy()
     {
         BreakSpawn.Instance.Spawn(this.transform.position);
 
-        int dorpAbility = UserAbility.Instance.GetAbility(Ability.코어드랍확률_최대1000);
+        int dorpAbility = UserAbility.Instance.GetAbility(Ability.코어드랍률_최대1000);
         bool isDrop = Function.GameInfo.IsCritical(dorpAbility);
         if (isDrop)
         {
@@ -107,6 +119,8 @@ public class EnemyObj : MonoBehaviour
 
     private void OnDisable()
     {
+        spriteTrans.DOKill();
+        spriteRenderer.DOKill();
         BattleManager.Instance.WaveCheck();
     }
 

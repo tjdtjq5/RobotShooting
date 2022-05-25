@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00258b32565c4be40b5b285ae0c5a383, type: 3}
   m_Name: EnemySO_8
   m_EditorClassIdentifier: 
-  code: Enemy_0
-  nameCode: Enemy_name_0
+  code: Enemy_8
+  nameCode: Enemy_name_8
   sprite: {fileID: 4608048447754632782, guid: 75e7bb5ca1a0d954caefb7c52edb4c7b, type: 3}
   atk: 1
   hp: 100

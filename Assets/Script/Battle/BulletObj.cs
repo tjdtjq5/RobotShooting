@@ -31,7 +31,7 @@ public class BulletObj : MonoBehaviour
     }
 
     // 타겟, 공격력, 내구도 
-    public void Spawn(BulletSO _bulletSO, BulletType _bulletType ,Transform _target, float _angle ,BulletHost _bulletHost ,int _atk, int _cri, int _cridmg, int _duration)
+    public void Spawn(BulletSO _bulletSO, BulletType _bulletType ,Transform _target, float _angle ,BulletHost _bulletHost ,int _atk, int _cri, int _cridmg, int _duration, int bulletSize)
     {
         this.bulletSO = _bulletSO;
         this.target = _target;
@@ -55,8 +55,8 @@ public class BulletObj : MonoBehaviour
                 this.transform.localRotation = Quaternion.Euler(0, 0, _angle + Random.Range(-_angle, _angle));
                 break;
             case BulletType.다발:
-                BulletSpawn.Instance.Spawn(_bulletSO, BulletType.기본, this.transform, _target, _angle + 30, _bulletHost, _atk, _cri, _cridmg, _duration);
-                BulletSpawn.Instance.Spawn(_bulletSO, BulletType.기본, this.transform, _target, _angle - 30, _bulletHost, _atk, _cri, _cridmg, _duration);
+                BulletSpawn.Instance.Spawn(_bulletSO, BulletType.기본, this.transform, _target, _angle + 30, _bulletHost, _atk, _cri, _cridmg, _duration, bulletSize);
+                BulletSpawn.Instance.Spawn(_bulletSO, BulletType.기본, this.transform, _target, _angle - 30, _bulletHost, _atk, _cri, _cridmg, _duration, bulletSize);
                 break;
             case BulletType.관통:
                 break;
@@ -161,7 +161,7 @@ public class BulletObj : MonoBehaviour
             if (bulletHost == BulletHost.플레이어)
             {
                 EnemyObj collisionEnemy = collision.transform.GetComponent<EnemyObj>();
-                collisionEnemy.Hit(atk, cri, cridmg);
+                collisionEnemy.Hit(atk, cri, cridmg, bulletSO);
                 if (bulletType == BulletType.관통
                      || bulletType == BulletType.위성레이저
                       || bulletType == BulletType.전기_1

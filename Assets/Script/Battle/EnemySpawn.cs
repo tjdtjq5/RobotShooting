@@ -50,4 +50,16 @@ public class EnemySpawn : MonoBehaviour
             spawnObjList[i].SetActive(false);
         }
     }
+    public int EnemyCount()
+    {
+        int count = 0;
+        for (int i = 0; i < spawnObjList.Count; i++)
+        {
+            if (spawnObjList[i].activeSelf)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
 }

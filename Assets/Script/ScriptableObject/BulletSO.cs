@@ -11,7 +11,7 @@ public class BulletSO : ScriptableObject
     public GameObject obj;
     public int atk;
     public int atkPlus;
-    public int atkspeed;
+    public float atkspeed;
     public int bulletDuration;
     [MinValue(1)] public float movespeed;
     public BulletType bulletType;

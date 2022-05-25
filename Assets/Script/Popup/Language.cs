@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Language : Singleton<Language>
 {
-    public TextSO textSO;
+    public TL TL;
     [HideInInspector] public LanguageType languageType;
     const string key = "language";
 
@@ -42,7 +42,15 @@ public class Language : Singleton<Language>
     }
     public string GetScript(string _code)
     {
-        TextData textData = textSO.textDatas.Find(n => n.code == _code);
+        TLData textData = null;
+        for (int i = 0; i < TL.dataArray.Length; i++)
+        {
+            if (TL.dataArray[i].Code == _code)
+            {
+                textData = TL.dataArray[i];
+            }
+        }
+
         if (textData == null)
         {
             Debug.LogError("데이터가 없습니다 코드 : " + _code);
@@ -52,15 +60,15 @@ public class Language : Singleton<Language>
         switch (languageType)
         {
             case LanguageType.한국어:
-                return textData.ko;
+                return textData.Ko;
             case LanguageType.영어:
-                return textData.en;
+                return textData.En;
             case LanguageType.일본어:
-                return textData.jp;
+                return textData.Jp;
             case LanguageType.중국어:
-                return textData.cn;
+                return textData.Ch;
             default:
-                return textData.en;
+                return textData.En;
         }
     }
 }

@@ -47,4 +47,18 @@ public class TextMessage : Singleton<TextMessage>
                 })
                 .Play();
     }
+
+    Sequence testSequence;
+    [Button("Test")]
+    void Test()
+    {
+        if (testSequence != null)
+        {
+            testSequence.Kill();
+        }
+        testSequence = DOTween.Sequence();
+        testSequence.InsertCallback(1, () => Debug.Log(111)).SetLoops(-1, LoopType.Incremental);
+        testSequence.Play();
+    }
+
 }
