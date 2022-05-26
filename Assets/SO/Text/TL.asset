@@ -440,3 +440,258 @@ MonoBehaviour:
     en: "\uC544\uC774\uD15C51"
     jp: "\uC544\uC774\uD15C51"
     ch: "\uC544\uC774\uD15C51"
+  - code: itemScript_1
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 1"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 1"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 1"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 1"
+  - code: itemScript_2
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 2"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 2"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 2"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 2"
+  - code: itemScript_3
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 3"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 3"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 3"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 3"
+  - code: itemScript_4
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 4"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 4"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 4"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 4"
+  - code: itemScript_5
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 5"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 5"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 5"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 5"
+  - code: itemScript_6
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 6"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 6"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 6"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 6"
+  - code: itemScript_7
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 7"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 7"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 7"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 7"
+  - code: itemScript_8
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 8"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 8"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 8"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 8"
+  - code: itemScript_9
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 9"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 9"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 9"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 9"
+  - code: itemScript_10
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 10"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 10"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 10"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 10"
+  - code: itemScript_11
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 11"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 11"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 11"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 11"
+  - code: itemScript_12
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 12"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 12"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 12"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 12"
+  - code: itemScript_13
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 13"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 13"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 13"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 13"
+  - code: itemScript_14
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 14"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 14"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 14"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 14"
+  - code: itemScript_15
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 15"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 15"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 15"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 15"
+  - code: itemScript_16
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 16"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 16"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 16"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 16"
+  - code: itemScript_17
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 17"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 17"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 17"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 17"
+  - code: itemScript_18
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 18"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 18"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 18"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 18"
+  - code: itemScript_19
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 19"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 19"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 19"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 19"
+  - code: itemScript_20
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 20"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 20"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 20"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 20"
+  - code: itemScript_21
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 21"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 21"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 21"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 21"
+  - code: itemScript_22
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 22"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 22"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 22"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 22"
+  - code: itemScript_23
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 23"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 23"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 23"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 23"
+  - code: itemScript_24
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 24"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 24"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 24"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 24"
+  - code: itemScript_25
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 25"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 25"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 25"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 25"
+  - code: itemScript_26
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 26"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 26"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 26"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 26"
+  - code: itemScript_27
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 27"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 27"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 27"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 27"
+  - code: itemScript_28
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 28"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 28"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 28"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 28"
+  - code: itemScript_29
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 29"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 29"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 29"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 29"
+  - code: itemScript_30
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 30"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 30"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 30"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 30"
+  - code: itemScript_31
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 31"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 31"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 31"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 31"
+  - code: itemScript_32
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 32"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 32"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 32"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 32"
+  - code: itemScript_33
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 33"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 33"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 33"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 33"
+  - code: itemScript_34
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 34"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 34"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 34"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 34"
+  - code: itemScript_35
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 35"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 35"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 35"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 35"
+  - code: itemScript_36
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 36"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 36"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 36"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 36"
+  - code: itemScript_37
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 37"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 37"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 37"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 37"
+  - code: itemScript_38
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 38"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 38"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 38"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 38"
+  - code: itemScript_39
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 39"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 39"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 39"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 39"
+  - code: itemScript_40
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 40"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 40"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 40"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 40"
+  - code: itemScript_41
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 41"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 41"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 41"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 41"
+  - code: itemScript_42
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 42"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 42"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 42"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 42"
+  - code: itemScript_43
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 43"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 43"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 43"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 43"
+  - code: itemScript_44
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 44"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 44"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 44"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 44"
+  - code: itemScript_45
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 45"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 45"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 45"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 45"
+  - code: itemScript_46
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 46"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 46"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 46"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 46"
+  - code: itemScript_47
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 47"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 47"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 47"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 47"
+  - code: itemScript_48
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 48"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 48"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 48"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 48"
+  - code: itemScript_49
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 49"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 49"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 49"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 49"
+  - code: itemScript_50
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 50"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 50"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 50"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 50"
+  - code: itemScript_51
+    ko: "\uC544\uC774\uD15C \uC124\uBA85 51"
+    en: "\uC544\uC774\uD15C \uC124\uBA85 51"
+    jp: "\uC544\uC774\uD15C \uC124\uBA85 51"
+    ch: "\uC544\uC774\uD15C \uC124\uBA85 51"

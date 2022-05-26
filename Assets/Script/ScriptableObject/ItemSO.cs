@@ -69,14 +69,11 @@ public class ItemSO : ScriptableObject
     [LabelText("크기 축소 (최대1000)")] [ShowIf("itemType", ItemType.축소장치)] [MinValue(0)] [MaxValue(1000)] public int smallCount;
     [LabelText("+ 크기 축소 (최대1000)")] [ShowIf("itemType", ItemType.축소장치)] [MinValue(0)] [MaxValue(1000)] public int smallCount_levelup;
 
+    [LabelText("전기 발사체 기본 횟수")] [ShowIf("itemType", ItemType.전기폭발)] [MinValue(0)] public int electricExplosionCount;
     [LabelText("+ 전기 발사체 횟수 증가")] [ShowIf("itemType", ItemType.전기폭발)] [MinValue(0)] public int electricExplosionCount_levelup;
 
-    [LabelText("+ 드론 개수 증가")] [ShowIf("itemType", ItemType.드론)] [MinValue(0)] public int dronCount_levelup;
-    
-    [LabelText("+ 선택지 개수 증가")] [ShowIf("itemType", ItemType.설계도)] [MinValue(0)] public int blueprintCount_levelup;
-
-    [LabelText("방어막 생성 시간")] [ShowIf("itemType", ItemType.방어막)] [MinValue(1)] public int barrierTime;
-    [LabelText("+ 방어막 생성 시간 감소")] [ShowIf("itemType", ItemType.방어막)] [MinValue(0)] public int barrierTime_levelup;
+    [LabelText("방어막 생성 시간")] [ShowIf("itemType", ItemType.방어막)] [MinValue(1)] public float barrierTime;
+    [LabelText("- 방어막 생성 시간 감소")] [ShowIf("itemType", ItemType.방어막)] [MinValue(0)] public float barrierTime_levelup;
 
     [LabelText("가만히 있을때 공격속도 증가")] [ShowIf("itemType", ItemType.머신건)] [MinValue(0)] public int machineGun;
     [LabelText("+ 가만히 있을때 공격속도 증가")] [ShowIf("itemType", ItemType.머신건)] [MinValue(0)] public int machineGun_levelup;
@@ -92,10 +89,6 @@ public class ItemSO : ScriptableObject
 
     [LabelText("최대 HP증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] public int superRobot_maxhp;
     [LabelText("크기 증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] public int superRobot_size;
-
-    [LabelText("코어 획득시 최대HP증가")] [ShowIf("itemType", ItemType.수집가)] [MinValue(0)] public int collection_maxhp;
-
-    [LabelText("웨이브 시작시 체력% 회복")] [ShowIf("itemType", ItemType.레드불)] [MinValue(0)] [MaxValue(1000)] public int redbool_hp;
 
     [LabelText("고정 수치 : (방어력 + 방어력 * 고정 수치)")] [ShowIf("itemType", ItemType.가시갑옷)] [MinValue(0)] public int thornsArmor;
 
@@ -120,7 +113,7 @@ public class ItemSO : ScriptableObject
     [LabelText("멈춰 있을 때 점점 방어력 증가")] [ShowIf("itemType", ItemType.벙커)] [MinValue(0)] public int bunker;
     #endregion
 
-    [LabelText("아이템 설명")] [Multiline(3)] public string script;
+    [LabelText("아이템 설명")] public string scriptCode;
 
     [LabelText("최대 레벨")] [MinValue(1)] public int maxLevel;
 

@@ -8,7 +8,7 @@ public class BulletObj : MonoBehaviour
 {
     BulletSO bulletSO;
     Transform target;
-    int atk, cri, cridmg, duration;
+    int atk, cri, cridmg, duration, tickDmg;
     float movespeed = 0;
     BulletType bulletType;
     BulletHost bulletHost;
@@ -31,7 +31,7 @@ public class BulletObj : MonoBehaviour
     }
 
     // 타겟, 공격력, 내구도 
-    public void Spawn(BulletSO _bulletSO, BulletType _bulletType ,Transform _target, float _angle ,BulletHost _bulletHost ,int _atk, int _cri, int _cridmg, int _duration, int bulletSize)
+    public void Spawn(BulletSO _bulletSO, BulletType _bulletType ,Transform _target, float _angle ,BulletHost _bulletHost ,int _atk, int _cri, int _cridmg, int _tickDmg ,int _duration, int bulletSize)
     {
         this.bulletSO = _bulletSO;
         this.target = _target;
@@ -39,6 +39,7 @@ public class BulletObj : MonoBehaviour
         this.bulletHost = _bulletHost;
         this.atk = _atk + _bulletSO.atk + _bulletSO.atkPlus;
         this.cri = _cri;
+        this.tickDmg = _tickDmg;
         this.cridmg = _cridmg;
         this.duration = _duration + _bulletSO.bulletDuration;
         this.movespeed = _bulletSO.movespeed;
@@ -55,8 +56,8 @@ public class BulletObj : MonoBehaviour
                 this.transform.localRotation = Quaternion.Euler(0, 0, _angle + Random.Range(-_angle, _angle));
                 break;
             case BulletType.다발:
-                BulletSpawn.Instance.Spawn(_bulletSO, BulletType.기본, this.transform, _target, _angle + 30, _bulletHost, _atk, _cri, _cridmg, _duration, bulletSize);
-                BulletSpawn.Instance.Spawn(_bulletSO, BulletType.기본, this.transform, _target, _angle - 30, _bulletHost, _atk, _cri, _cridmg, _duration, bulletSize);
+                BulletSpawn.Instance.Spawn(_bulletSO, BulletType.기본, this.transform, _target, _angle + 30, _bulletHost, _atk, _cri, _cridmg, _tickDmg, _duration, bulletSize);
+                BulletSpawn.Instance.Spawn(_bulletSO, BulletType.기본, this.transform, _target, _angle - 30, _bulletHost, _atk, _cri, _cridmg, _tickDmg, _duration, bulletSize);
                 break;
             case BulletType.관통:
                 break;
@@ -129,14 +130,11 @@ public class BulletObj : MonoBehaviour
                         Destroy();
                     target = tempTarget;
                 }
-           
                 break; 
             case BulletType.다발:
                 this.transform.Translate(Vector2.up * movespeed * Time.fixedDeltaTime);
                 break;
             case BulletType.관통:
-               
-
                 this.transform.Translate(Vector2.up * movespeed * Time.fixedDeltaTime);
                 break;
             case BulletType.위성레이저:
@@ -161,7 +159,7 @@ public class BulletObj : MonoBehaviour
             if (bulletHost == BulletHost.플레이어)
             {
                 EnemyObj collisionEnemy = collision.transform.GetComponent<EnemyObj>();
-                collisionEnemy.Hit(atk, cri, cridmg, bulletSO);
+                collisionEnemy.Hit(atk, cri, cridmg, bulletSO, tickDmg);
                 if (bulletType == BulletType.관통
                      || bulletType == BulletType.위성레이저
                       || bulletType == BulletType.전기_1

@@ -16,7 +16,7 @@ public class ItemSelectObj : MonoBehaviour
     {
         itemImg.sprite = itemSO.sprite;
         nameText.text = Language.Instance.GetScript(itemSO.nameCode) + " LV. " + UserItem.Instance.GetLevel(itemSO);
-        infoText.text = itemSO.script;
+        infoText.text = Language.Instance.GetScript(itemSO.scriptCode);
 
         switch (itemSO.itemGrade)
         {
@@ -40,6 +40,11 @@ public class ItemSelectObj : MonoBehaviour
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(() => {
             UserItem.Instance.PushItem(itemSO);
+            bool isDouble = Function.GameInfo.IsCritical(ItemSelect.Instance.doubleCount);
+            if (isDouble)
+            {
+                UserItem.Instance.PushItem(itemSO);
+            }
             _callback();
         });
     }

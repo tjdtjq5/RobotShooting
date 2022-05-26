@@ -4822,6 +4822,8 @@ MonoBehaviour:
   userMove: {fileID: 994458271}
   enemySpawn: {fileID: 2139697112}
   isBattle: 0
+  isElectric: 0
+  electricCount: 1
 --- !u!50 &994458273
 Rigidbody2D:
   serializedVersion: 4
@@ -4884,6 +4886,51 @@ MonoBehaviour:
   cardPrepab: {fileID: 6684064209114565364, guid: 3f2f481ed4e5c8a4490f409d20ccc891,
     type: 3}
   list: {fileID: 1994825934}
+--- !u!1 &1005538843
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1005538844}
+  - component: {fileID: 1005538845}
+  m_Layer: 0
+  m_Name: Electric
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1005538844
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005538843}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1337028729}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1005538845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1005538843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37f875455d2e3154b9a0d1d87c87366d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  electricBulletSO_1: {fileID: 11400000, guid: 63dca178c61b06a44b1aa3a33fe308cf, type: 2}
+  electricBulletSO_2: {fileID: 11400000, guid: 1be53521be07f06458a9d2605fc9a7e1, type: 2}
 --- !u!1 &1014207172
 GameObject:
   m_ObjectHideFlags: 0
@@ -6898,6 +6945,8 @@ Transform:
   - {fileID: 1261090741}
   - {fileID: 179919318}
   - {fileID: 576622024}
+  - {fileID: 1005538844}
+  - {fileID: 1978388030}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8861,6 +8910,50 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &1978388029
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1978388030}
+  - component: {fileID: 1978388031}
+  m_Layer: 0
+  m_Name: Dron
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1978388030
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978388029}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1337028729}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1978388031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978388029}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5af613a670eb37488577e35c517f7d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dronObj: {fileID: 7386621873715897197, guid: 4fb1eff567f9d914487d330e64eb3943, type: 3}
 --- !u!1 &1994825933
 GameObject:
   m_ObjectHideFlags: 0

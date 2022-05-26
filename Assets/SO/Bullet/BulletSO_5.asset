@@ -12,11 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33147d9ae8c7e44c964e468f6bc280a, type: 3}
   m_Name: BulletSO_5
   m_EditorClassIdentifier: 
-  code: bullet_0
-  nameCode: bullet_name_0
+  code: bullet_5
+  nameCode: bullet_name_5
   obj: {fileID: 6172749161835507111, guid: 721a4bc5f44713743bd53c9f935c0a9f, type: 3}
-  atk: 10
-  atkPlus: 10
+  atk: 0
+  atkPlus: 0
   atkspeed: 1
   bulletDuration: 1
   movespeed: 10

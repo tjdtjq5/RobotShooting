@@ -25,10 +25,16 @@ public class Player : Singleton<Player>
 
     public bool isBattle = false;
     float a_time = 0;
-    int hp = 0;
+    [HideInInspector] public int hp = 0;
 
+    // 특수능력 bool 
+    [HideInInspector] public bool isElectric;
+    [HideInInspector] public int electricCount = 1;
+    [HideInInspector] public bool isCollection;
     // 무적
     bool isInvince;
+    bool isBarrior;
+
 
     private void Start()
     {
@@ -39,6 +45,8 @@ public class Player : Singleton<Player>
     public void BattleSetting()
     {
         isBattle = true;
+        isElectric = false;
+        isCollection = false;
         userAbility.BattleSetting();
 
         hp = userAbility.GetAbility(Ability.체력);
@@ -53,9 +61,23 @@ public class Player : Singleton<Player>
         if (!isBattle)
             return;
 
+        bool isMiss = Function.GameInfo.IsCritical(userAbility.GetAbility(Ability.회피_최대1000));
+        if (isMiss)
+        {
+            // 회피
+            return;
+        }
+
         if (isInvince)
         {
             // 무적
+            return;
+        }
+
+        if (isBarrior)
+        {
+            // 방어막
+            isBarrior = false;
             return;
         }
 
@@ -92,6 +114,11 @@ public class Player : Singleton<Player>
 
         hp += _hp;
 
+        if (hp >= userAbility.GetAbility(Ability.체력))
+        {
+            hp = userAbility.GetAbility(Ability.체력);
+        }
+
         HP_Setting();
     }
 
@@ -106,6 +133,7 @@ public class Player : Singleton<Player>
         joyStick.DragEnd();
         HPRecovery_1Stop();
         SizeSetting(1);
+        Barrior_Stop();
 
         if ((this.transform.position.x > 0))
         {
@@ -143,6 +171,7 @@ public class Player : Singleton<Player>
             (int)atk,
             userAbility.GetAbility(Ability.치명데미지_최대1000)
             , userAbility.GetAbility(Ability.치명데미지_최대1000)
+            , userAbility.GetAbility(Ability.손상피해)
             , userAbility.GetAbility(Ability.발사체내구도)
             , userAbility.GetAbility(Ability.발사체크기));
     }
@@ -161,7 +190,9 @@ public class Player : Singleton<Player>
             weaponTransform.DOLocalRotate(new Vector3(0, 0, angle), 0.6f);
 
             BulletSO bulletSO = userWeapon.GetEqipWeapon().bulletSO;
-            if (a_time >= bulletSO.atkspeed / (userAbility.GetAbility(Ability.공격속도) / 1000f + 1))
+            float atkspeed = bulletSO.atkspeed / (userAbility.GetAbility(Ability.공격속도) / 1000f + 1);
+            float atkspeedPercent = (int)userMove.idleTime * userAbility.GetAbility(Ability.멈춰있을때공격속도증가_최대1000);
+            if (a_time >= atkspeed - (atkspeed * atkspeedPercent / 1000))
             {
                 Attack(bulletSO, enemy);
             }
@@ -198,9 +229,9 @@ public class Player : Singleton<Player>
         hprecoverySequence_1.InsertCallback(1, () => {
 
             int enemyCount = enemySpawn.EnemyCount();
-            float hpr = (userAbility.GetAbility(Ability.적수에따라HP회복_최대1000) / 1000f + 1) * enemyCount;
+            float hpr = (userAbility.GetAbility(Ability.적수에따라HP회복_최대1000)) * enemyCount;
 
-            HP_Recovery((int)(userAbility.GetAbility(Ability.체력) * hpr));
+            HP_Recovery((int)hpr);
         }).SetLoops(-1, LoopType.Incremental);
         hprecoverySequence_1.Play();
     }
@@ -216,5 +247,36 @@ public class Player : Singleton<Player>
     public void SizeSetting(float size)
     {
         this.transform.localScale = new Vector3(size, size, size);
+    }
+
+    public void DoubleSize()
+    {
+        this.transform.localScale *= 2;
+    }
+
+    // 방어막
+    Sequence barriorSequence;
+    public void Barrior_Start(float time)
+    {
+        if (barriorSequence != null)
+        {
+            barriorSequence.Kill();
+        }
+
+        barriorSequence = DOTween.Sequence();
+
+        barriorSequence.InsertCallback(1, () => {
+
+            isBarrior = true;
+            
+        }).SetLoops(-1, LoopType.Incremental);
+        barriorSequence.Play();
+    }
+    void Barrior_Stop()
+    {
+        if (barriorSequence != null)
+        {
+            barriorSequence.Kill();
+        }
     }
 }

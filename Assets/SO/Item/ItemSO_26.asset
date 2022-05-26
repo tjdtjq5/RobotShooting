@@ -53,6 +53,7 @@ MonoBehaviour:
   precisionCount_levelup: 0
   smallCount: 0
   smallCount_levelup: 0
+  electricExplosionCount: 0
   electricExplosionCount_levelup: 0
   dronCount_levelup: 0
   blueprintCount_levelup: 0
@@ -80,7 +81,7 @@ MonoBehaviour:
   autoCAD: 0
   reflector: 0
   bunker: 0
-  script: "~~~ \uC544\uC774\uD15C \uC124\uBA85 ~~~"
+  scriptCode: itemScript_26
   maxLevel: 3
   plusItemLevel: 3
   plusItem: {fileID: 0}

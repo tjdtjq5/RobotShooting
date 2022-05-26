@@ -50,26 +50,26 @@ public class EnemyObj : MonoBehaviour
         movespeed = movespeedVelocity / _enemySO.movespeed;
     }
 
-    public void Hit(int dmg , int cri , int cridmg, BulletSO _bulletSO)
+    public void Hit(int dmg , int cri , int cridmg, BulletSO _bulletSO , int ticDmg)
     {
         bool isCri = Function.GameInfo.IsCritical(cri);
-        dmg = isCri ? (int)(dmg * (cridmg / 1000f)) : dmg;
+        int t_dmg = isCri ? (int)(dmg * (cridmg / 1000f)) : dmg;
 
-        dmg -= UserAbility.Instance.GetAbility(Ability.방어력);
-        if (dmg <= 0)
+        t_dmg -= UserAbility.Instance.GetAbility(Ability.방어력);
+        if (t_dmg <= 0)
         {
-            dmg = 1;
+            t_dmg = 1;
         }
 
         if (_bulletSO.bulletType != BulletType.위성레이저)
         {
-            int hpr = (int)(dmg * (UserAbility.Instance.GetAbility(Ability.HP흡수_최대1000) / 1000f + 1));
+            int hpr = (int)(t_dmg * (UserAbility.Instance.GetAbility(Ability.HP흡수_최대1000) / 1000f));
             Player.Instance.HP_Recovery(hpr);
         }
 
-        hp -= dmg;
+        hp -= t_dmg;
 
-        DmgSpawn.Instance.Spawn(this.transform.position, dmg.ToString());
+        DmgSpawn.Instance.Spawn(this.transform.position, t_dmg.ToString());
 
         spriteTrans.DOKill();
         spriteTrans.localScale = Vector3.one;
@@ -88,9 +88,23 @@ public class EnemyObj : MonoBehaviour
 
         HitSpawn.Instance.Spawn(this.transform.position);
 
+        TickStart(ticDmg);
+
         if (hp <= 0)
         {
             Destroy();
+
+            if (Player.Instance.isElectric)
+            {
+                Electric.Instance.ElectricSpawn_1(this.transform, 8, (int)(dmg * 0.7f), 0, 0);
+                return;
+            }
+
+            if (_bulletSO.bulletType == BulletType.전기_1)
+            {
+                Electric.Instance.ElectricSpawn_2(this.transform, 2, (int)(dmg * 0.3f), 0, 0);
+                return;
+            }
         }
     }
 
@@ -98,7 +112,7 @@ public class EnemyObj : MonoBehaviour
     {
         a_time = 0;
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
-        BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , 10, 10, 10, 1, 0);
+        BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , 10, 10, 10, 0,1, 1);
     }
 
     void Destroy()
@@ -106,6 +120,12 @@ public class EnemyObj : MonoBehaviour
         BreakSpawn.Instance.Spawn(this.transform.position);
 
         int dorpAbility = UserAbility.Instance.GetAbility(Ability.코어드랍률_최대1000);
+        if (Player.Instance.isCollection)
+        {
+            dorpAbility *= 2;
+            UserAbility.Instance.BuffAbility(new AbilityData(Ability.체력, 1));
+            Player.Instance.HP_Setting();
+        }
         bool isDrop = Function.GameInfo.IsCritical(dorpAbility);
         if (isDrop)
         {
@@ -119,6 +139,7 @@ public class EnemyObj : MonoBehaviour
 
     private void OnDisable()
     {
+        TickStop();
         spriteTrans.DOKill();
         spriteRenderer.DOKill();
         BattleManager.Instance.WaveCheck();
@@ -150,6 +171,40 @@ public class EnemyObj : MonoBehaviour
         if (a_time >= enemySO.atkspeed)
         {
             Attack(enemySO.bulletSO, target);
+        }
+    }
+
+    // 손상데미지 
+    Sequence tickSequence;
+    void TickStart(int _tick)
+    {
+        if (_tick <= 0)
+        {
+            return;
+        }
+        if (tickSequence != null)
+        {
+            tickSequence.Kill();
+        }
+
+        tickSequence = DOTween.Sequence();
+        tickSequence.InsertCallback(1, () =>
+        {
+            hp -= _tick;
+            DmgSpawn.Instance.Spawn(this.transform.position, _tick.ToString());
+
+            if (hp <= 0)
+            {
+                Destroy();
+            }
+
+        }).SetLoops(-1, LoopType.Incremental).Play();
+    }
+    void TickStop()
+    {
+        if (tickSequence != null)
+        {
+            tickSequence.Kill();
         }
     }
 }

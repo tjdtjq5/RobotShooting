@@ -73,7 +73,7 @@ public enum Ability
     회피_최대1000,
     웨이브마다최대체력상승,
     발사체크기,
-    피해를입은후무적
+    피해를입은후무적,
 }
 [System.Serializable]
 public class AbilityData

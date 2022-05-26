@@ -21,6 +21,8 @@ public class UserMove : MonoBehaviour
     [HideInInspector] public string walkL = "WalkL";
     [HideInInspector] public string walkR = "WalkR";
 
+    [HideInInspector] public float idleTime = 0;
+
 
     private void Start()
     {
@@ -51,10 +53,12 @@ public class UserMove : MonoBehaviour
             {
                 aniManager.PlayAnimation(walkL, false);
             }
+            idleTime = 0;
         }
         else
         {
             aniManager.PlayAnimation(waitAniKey, false);
+            idleTime += Time.fixedDeltaTime;
         }
     }
 }

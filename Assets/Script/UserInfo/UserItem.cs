@@ -76,6 +76,7 @@ public class UserItem : Singleton<UserItem>
         }
     }
 
+
     // 능력치 적용
     void Ability_Setting(ItemSO _itemSO)
     {
@@ -141,32 +142,51 @@ public class UserItem : Singleton<UserItem>
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.치명데미지_최대1000, _itemSO.precisionCount));
                 break;
             case ItemType.축소장치:
+                float size = 1 - (_itemSO.smallCount / 1000f);
+                Player.Instance.SizeSetting(size);
                 break;
             case ItemType.전기폭발:
+                Player.Instance.isElectric = true;
+                Player.Instance.electricCount = _itemSO.electricExplosionCount;
                 break;
             case ItemType.드론:
+                DronSpawn.Instance.Spawn();
                 break;
             case ItemType.설계도:
+                ItemSelect.Instance.cardCount++;
                 break;
             case ItemType.방어막:
+                Player.Instance.Barrior_Start(_itemSO.barrierTime);
                 break;
             case ItemType.머신건:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.멈춰있을때공격속도증가_최대1000, _itemSO.machineGun));
                 break;
             case ItemType.복사기:
+                ItemSelect.Instance.doubleCount += _itemSO.copy;
                 break;
             case ItemType.혼합기름:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.손상피해, _itemSO.mixedOil));
                 break;
             case ItemType.니트로:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.회피_최대1000, _itemSO.nitro));
                 break;
             case ItemType.매그넘44:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.발사체공격력, _itemSO.magnum));
                 break;
             case ItemType.수퍼로봇:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.체력, _itemSO.superRobot_maxhp));
+                Player.Instance.HP_Setting();
+                Player.Instance.DoubleSize();
                 break;
             case ItemType.수집가:
+                Player.Instance.isCollection = true;
                 break;
             case ItemType.레드불:
+                Player.Instance.hp = UserAbility.Instance.GetAbility(Ability.체력);
+                Player.Instance.HP_Setting();
                 break;
             case ItemType.가시갑옷:
+
                 break;
             case ItemType.레이저:
                 break;
@@ -275,21 +295,29 @@ public class UserItem : Singleton<UserItem>
                 float size = 1 - ((_itemSO.smallCount + _itemSO.smallCount_levelup * (GetLevel(_itemSO) - 1)) / 1000f);
                 Player.Instance.SizeSetting(size);
                 break;
-            case ItemType.전기폭발: 
+            case ItemType.전기폭발:
+                Player.Instance.electricCount += _itemSO.electricExplosionCount_levelup;
                 break;
             case ItemType.드론:
+                DronSpawn.Instance.Spawn();
                 break;
             case ItemType.설계도:
+                ItemSelect.Instance.cardCount++;
                 break;
             case ItemType.방어막:
+                Player.Instance.Barrior_Start(_itemSO.barrierTime - (_itemSO.barrierTime_levelup * (GetLevel(_itemSO) - 1)));
                 break;
             case ItemType.머신건:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.멈춰있을때공격속도증가_최대1000, _itemSO.machineGun_levelup));
                 break;
             case ItemType.복사기:
+                ItemSelect.Instance.doubleCount += _itemSO.copy;
                 break;
             case ItemType.혼합기름:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.손상피해, _itemSO.mixedOil_levelup));
                 break;
             case ItemType.니트로:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.회피_최대1000, _itemSO.nitro));
                 break;
             case ItemType.매그넘44:
                 break;

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserWeapon : MonoBehaviour
+public class UserWeapon : Singleton<UserWeapon>
 {
     [AssetList(Path = "/SO/Weapon/")] public List<WeaponSO> weaponSOList = new List<WeaponSO>();
     const string eqipKey = "weaponEqip";

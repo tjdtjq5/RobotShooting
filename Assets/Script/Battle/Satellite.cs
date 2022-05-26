@@ -37,7 +37,7 @@ public class Satellite : Singleton<Satellite>
                     float angle = Function.Tool.GetAngle(this.transform.position, enemySpawn.spawnObjList[i].transform.position) - 90;
                     BulletSpawn.Instance.Spawn(bulletSO, bulletSO.bulletType, this.transform,
                        enemySpawn.spawnObjList[i].transform, angle, BulletHost.플레이어,
-                       atk, 0, 0, bulletSO.bulletDuration, 1);
+                       atk, 0, 0,0, bulletSO.bulletDuration, 1);
                 }
             }
 
@@ -70,7 +70,7 @@ public class Satellite : Singleton<Satellite>
                     float angle = Function.Tool.GetAngle(this.transform.position, enemySpawn.spawnObjList[i].transform.position) - 90;
                     BulletSpawn.Instance.Spawn(bulletSO, bulletSO.bulletType, this.transform,
                        enemySpawn.spawnObjList[i].transform, angle, BulletHost.플레이어,
-                       atk, 0, 0, bulletSO.bulletDuration, 1);
+                       atk, 0, 0,0 ,bulletSO.bulletDuration, 1);
                 }
             }
 

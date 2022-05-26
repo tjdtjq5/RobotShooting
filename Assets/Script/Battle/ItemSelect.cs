@@ -20,7 +20,10 @@ public class ItemSelect : Singleton<ItemSelect>
     [HideInInspector] public int rarePercent;
     [HideInInspector] public int heroPercent;
 
-    [HideInInspector] public int cardCount = 3;
+    int cardCount_default = 3;
+    [HideInInspector] public int cardCount;
+
+    [HideInInspector] public int doubleCount = 0;
 
     [Title("탐색")]
     int q_default = 1;
@@ -34,9 +37,11 @@ public class ItemSelect : Singleton<ItemSelect>
 
     public void BattleStart()
     {
+        cardCount = cardCount_default;
         q_charge = q_default;
         rarePercent = rarePercent_default;
         heroPercent = heroPercent_default;
+        doubleCount = 0;
     }
 
     public void Charge_Q()
