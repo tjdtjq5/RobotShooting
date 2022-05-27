@@ -31,6 +31,22 @@ public class Player : Singleton<Player>
     [HideInInspector] public bool isElectric;
     [HideInInspector] public int electricCount = 1;
     [HideInInspector] public bool isCollection;
+    [HideInInspector] public bool isReflect;
+    [HideInInspector] public bool isLaser; float r_time = 0; public BulletSO laserSO;
+    [HideInInspector] public bool isGyroscope;
+    [HideInInspector] public bool isPackman;
+    [HideInInspector] public bool isWiper; bool isRW;
+    [HideInInspector] public bool isComposure;
+    [HideInInspector] public bool isElecitricField;
+    [HideInInspector] public bool isResurrection;
+    [HideInInspector] public bool isStarlink;
+    [HideInInspector] public bool isHighnon;
+    [HideInInspector] public bool isElectro;
+    [HideInInspector] public bool isMultiGubter;
+    [HideInInspector] public bool isReflecterBarrior;
+    [HideInInspector] public bool isAutoCreate;
+    [HideInInspector] public bool isSpo;
+
     // 무적
     bool isInvince;
     bool isBarrior;
@@ -47,6 +63,21 @@ public class Player : Singleton<Player>
         isBattle = true;
         isElectric = false;
         isCollection = false;
+        isReflect = false;
+        isLaser = false;
+        isGyroscope = false;
+        isWiper = false;
+        isComposure = false;
+        isElecitricField = false;
+        isResurrection = false;
+        isStarlink = false;
+        isHighnon = false;
+        isElectro = false;
+        isMultiGubter = false;
+        isReflecterBarrior = false;
+        isAutoCreate = false;
+        isSpo = false;
+
         userAbility.BattleSetting();
 
         hp = userAbility.GetAbility(Ability.체력);
@@ -56,7 +87,7 @@ public class Player : Singleton<Player>
         HPRecovery_1Start();
     }
 
-    public void Hit(int dmg, int cri, int cridmg)
+    public void Hit(int dmg, int cri, int cridmg, EnemyObj _enemyObj)
     {
         if (!isBattle)
             return;
@@ -70,6 +101,11 @@ public class Player : Singleton<Player>
 
         if (isInvince)
         {
+            if (isComposure)
+            {
+                HP_Recovery(1);
+            }
+
             // 무적
             return;
         }
@@ -78,7 +114,22 @@ public class Player : Singleton<Player>
         {
             // 방어막
             isBarrior = false;
+
+            if (isReflecterBarrior)
+            {
+                Electric.Instance.ElectricSpawn_1(this.transform, 16, 60, 0, 0);
+            }
+
             return;
+        }
+
+        int shild = userAbility.GetAbility(Ability.방어력);
+        shild = (int)(shild * (userAbility.GetAbility(Ability.멈춰있을때방어력증가) / 1000f * (int)userMove.idleTime) + shild);
+
+        if (isReflect && _enemyObj!= null && _enemyObj.gameObject.activeSelf)
+        {
+            int reflact = shild + (shild * (shild + 10 / 100));
+            _enemyObj.Hit(reflact,0,0, null, 0);
         }
 
         Invince(userAbility.GetAbility(Ability.피해를입은후무적) / 1000f);
@@ -89,6 +140,13 @@ public class Player : Singleton<Player>
 
         bool isCri = Function.GameInfo.IsCritical(cri);
         dmg = isCri ? (int)(dmg * (cridmg / 1000f)) : dmg;
+
+        dmg -= shild;
+        if (dmg < 1)
+        {
+            dmg = 1;
+        }
+
         hp -= dmg;
         HP_Setting();
 
@@ -124,6 +182,21 @@ public class Player : Singleton<Player>
 
     void Death()
     {
+        if (isResurrection)
+        {
+            isResurrection = false;
+            hp = userAbility.GetAbility(Ability.체력);
+            HP_Setting();
+            for (int i = 0; i < enemySpawn.spawnObjList.Count; i++)
+            {
+                if (enemySpawn.spawnObjList[i].activeSelf)
+                {
+                    enemySpawn.spawnObjList[i].GetComponent<EnemyObj>().Destroy();
+                }
+            }
+            return;
+        }
+
         battleManager.BattleFailure();
     }
 
@@ -167,7 +240,7 @@ public class Player : Singleton<Player>
         }
 
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
-        BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
+        BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
             (int)atk,
             userAbility.GetAbility(Ability.치명데미지_최대1000)
             , userAbility.GetAbility(Ability.치명데미지_최대1000)
@@ -176,25 +249,55 @@ public class Player : Singleton<Player>
             , userAbility.GetAbility(Ability.발사체크기));
     }
 
+    void LaserAttack(Transform _enemy)
+    {
+        r_time = 0;
+        float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
+        BulletSpawn.Instance.Spawn(this.transform, laserSO, laserSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어, 0, 0, 0, 0, 0, 1);
+    }
+
     private void FixedUpdate()
     {
         if (!isBattle)
             return;
 
         a_time += Time.fixedDeltaTime;
+        r_time += Time.fixedDeltaTime;
 
         Transform enemy = Function.Tool.SearchCharacter(searchRadius, this.transform.position, "Enemy");
+        if (isWiper)
+        {
+            if (isRW)
+            {
+                weaponTransform.DOLocalRotate(new Vector3(0, 0, 45), 1.2f);
+            }
+            else
+            {
+                weaponTransform.DOLocalRotate(new Vector3(0, 0,-45), 1.2f);
+            }
+        }
+        else
+        {
+            if (enemy != null)
+            {
+                float angle = Function.Tool.GetAngle(bulletPos.position, enemy.position) - 90;
+                weaponTransform.DOLocalRotate(new Vector3(0, 0, angle), 0.6f);
+            }
+        }
+
         if (enemy != null)
         {
-            float angle = Function.Tool.GetAngle(bulletPos.position, enemy.position) - 90;
-            weaponTransform.DOLocalRotate(new Vector3(0, 0, angle), 0.6f);
-
             BulletSO bulletSO = userWeapon.GetEqipWeapon().bulletSO;
             float atkspeed = bulletSO.atkspeed / (userAbility.GetAbility(Ability.공격속도) / 1000f + 1);
             float atkspeedPercent = (int)userMove.idleTime * userAbility.GetAbility(Ability.멈춰있을때공격속도증가_최대1000);
             if (a_time >= atkspeed - (atkspeed * atkspeedPercent / 1000))
             {
                 Attack(bulletSO, enemy);
+            }
+
+            if (isLaser && r_time >= laserSO.atkspeed)
+            {
+                LaserAttack(enemy);
             }
         }
     }

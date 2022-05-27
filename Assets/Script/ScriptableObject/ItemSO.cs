@@ -90,25 +90,13 @@ public class ItemSO : ScriptableObject
     [LabelText("최대 HP증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] public int superRobot_maxhp;
     [LabelText("크기 증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] public int superRobot_size;
 
-    [LabelText("고정 수치 : (방어력 + 방어력 * 고정 수치)")] [ShowIf("itemType", ItemType.가시갑옷)] [MinValue(0)] public int thornsArmor;
-
-    [LabelText("발사체 통과시 공격배율% 증가")] [ShowIf("itemType", ItemType.팩맨)] [MinValue(0)] [MaxValue(1000)] public int packman;
-
-    [LabelText("무적상태에서 피격시 HP회복")] [ShowIf("itemType", ItemType.침착)] [MinValue(0)] public int composure;
-
-    [LabelText("1초마다 모든 적의 HP%가 줄어듭니다")] [ShowIf("itemType", ItemType.전기장)] [MinValue(0)] [MaxValue(1000)] public int electricField;
-
     [LabelText("HP흡수")] [ShowIf("itemType", ItemType.스펀지)] [MinValue(0)] [MaxValue(1000)] public int sponge;
 
     [LabelText("영웅 아이템 출현확률")] [ShowIf("itemType", ItemType.복주머니)] [MinValue(0)] [MaxValue(1000)] public int luckyBag;
 
-    [LabelText("부활후 남은 HP%")] [ShowIf("itemType", ItemType.재가동)] [MinValue(0)] [MaxValue(1000)] public int restart;
-
     [LabelText("회피율 증가")] [ShowIf("itemType", ItemType.포켓봇)] [MinValue(0)] [MaxValue(1000)] public int pokebot;
 
     [LabelText("탐색 포인트 증가")] [ShowIf("itemType", ItemType.오토캐드)] [MinValue(0)] public int autoCAD;
-
-    [LabelText("전기 발사체 고정 공격력")] [ShowIf("itemType", ItemType.반사장치)] [MinValue(0)] public int reflector;
 
     [LabelText("멈춰 있을 때 점점 방어력 증가")] [ShowIf("itemType", ItemType.벙커)] [MinValue(0)] public int bunker;
     #endregion

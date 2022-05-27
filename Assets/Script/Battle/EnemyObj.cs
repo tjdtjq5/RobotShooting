@@ -21,6 +21,7 @@ public class EnemyObj : MonoBehaviour
     int hp = 0;
 
     float a_time = 0;
+    float e_time = 0;
 
     private void Start()
     {
@@ -52,8 +53,15 @@ public class EnemyObj : MonoBehaviour
 
     public void Hit(int dmg , int cri , int cridmg, BulletSO _bulletSO , int ticDmg)
     {
-        bool isCri = Function.GameInfo.IsCritical(cri);
-        int t_dmg = isCri ? (int)(dmg * (cridmg / 1000f)) : dmg;
+        bool isCri = (Player.Instance.isGyroscope && hp == enemySO.hp) ? true : Function.GameInfo.IsCritical(cri);
+
+        int t_dmg = isCri ? (int)(dmg * (cridmg / 1000f)) + dmg : dmg;
+
+        if (Player.Instance.isHighnon)
+        {
+            isCri = Function.GameInfo.IsCritical(cri);
+            t_dmg = isCri ? (int)(t_dmg * (cridmg / 1000f)) + t_dmg : t_dmg;
+        }
 
         t_dmg -= UserAbility.Instance.GetAbility(Ability.방어력);
         if (t_dmg <= 0)
@@ -61,30 +69,20 @@ public class EnemyObj : MonoBehaviour
             t_dmg = 1;
         }
 
-        if (_bulletSO.bulletType != BulletType.위성레이저)
+        if (_bulletSO != null)
         {
-            int hpr = (int)(t_dmg * (UserAbility.Instance.GetAbility(Ability.HP흡수_최대1000) / 1000f));
-            Player.Instance.HP_Recovery(hpr);
+            if (_bulletSO.bulletType != BulletType.위성레이저)
+            {
+                int hpr = (int)(t_dmg * (UserAbility.Instance.GetAbility(Ability.HP흡수_최대1000) / 1000f));
+                Player.Instance.HP_Recovery(hpr);
+            }
         }
 
         hp -= t_dmg;
 
         DmgSpawn.Instance.Spawn(this.transform.position, t_dmg.ToString());
 
-        spriteTrans.DOKill();
-        spriteTrans.localScale = Vector3.one;
-        spriteTrans.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f)
-                   .OnComplete(() => {
-                       spriteTrans.DOScale(Vector3.one, 0.1f);
-                   });
-
-        spriteRenderer.DOKill();
-        Color spriteColor = ((float)hp / enemySO.hp > 0.1f) ? Color.white : Color.gray;
-        spriteRenderer.color = spriteColor;
-        spriteRenderer.DOColor(new Color(1, 194f / 255f, 194f / 255f, 1), 0.1f)
-                      .OnComplete(() => {
-                          spriteRenderer.DOColor(spriteColor, 0.1f);
-                      });
+        HitEffect();
 
         HitSpawn.Instance.Spawn(this.transform.position);
 
@@ -100,22 +98,41 @@ public class EnemyObj : MonoBehaviour
                 return;
             }
 
-            if (_bulletSO.bulletType == BulletType.전기_1)
+            if (_bulletSO != null && _bulletSO.bulletType == BulletType.전기_1)
             {
-                Electric.Instance.ElectricSpawn_2(this.transform, 2, (int)(dmg * 0.3f), 0, 0);
+                float p = Player.Instance.isElectro ? 0.7f : 0.3f;
+                Electric.Instance.ElectricSpawn_2(this.transform, 2, (int)(dmg * p), 0, 0);
                 return;
             }
         }
+    }
+
+    void HitEffect()
+    {
+        spriteTrans.DOKill();
+        spriteTrans.localScale = Vector3.one;
+        spriteTrans.DOScale(new Vector3(1.1f, 1.1f, 1.1f), 0.1f)
+                   .OnComplete(() => {
+                       spriteTrans.DOScale(Vector3.one, 0.1f);
+                   });
+
+        spriteRenderer.DOKill();
+        Color spriteColor = ((float)hp / enemySO.hp > 0.1f) ? Color.white : Color.gray;
+        spriteRenderer.color = spriteColor;
+        spriteRenderer.DOColor(new Color(1, 194f / 255f, 194f / 255f, 1), 0.1f)
+                      .OnComplete(() => {
+                          spriteRenderer.DOColor(spriteColor, 0.1f);
+                      });
     }
 
     public void Attack(BulletSO _bulletSO, Transform _enemy)
     {
         a_time = 0;
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
-        BulletSpawn.Instance.Spawn(_bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , 10, 10, 10, 0,1, 1);
+        BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , 10, 10, 10, 0,1, 1);
     }
 
-    void Destroy()
+    public void Destroy()
     {
         BreakSpawn.Instance.Spawn(this.transform.position);
 
@@ -139,6 +156,7 @@ public class EnemyObj : MonoBehaviour
 
     private void OnDisable()
     {
+        isSpawn = false;
         TickStop();
         spriteTrans.DOKill();
         spriteRenderer.DOKill();
@@ -153,6 +171,7 @@ public class EnemyObj : MonoBehaviour
         }
 
         a_time += Time.fixedDeltaTime;
+
 
         switch (enemySO.enemyMovePattern)
         {
@@ -172,6 +191,26 @@ public class EnemyObj : MonoBehaviour
         {
             Attack(enemySO.bulletSO, target);
         }
+
+        if (Player.Instance.isElecitricField)
+        {
+            e_time += Time.fixedDeltaTime;
+            if (e_time > 1)
+            {
+                e_time = 0;
+
+                hp -= (int)(enemySO.hp / 100f);
+
+                if (hp <= 0)
+                {
+                    Destroy();
+                }
+                else
+                {
+                    HitEffect();
+                }
+            }
+        }
     }
 
     // 손상데미지 
@@ -187,8 +226,10 @@ public class EnemyObj : MonoBehaviour
             tickSequence.Kill();
         }
 
+        float time = Player.Instance.isSpo ? 0.5f : 1;
+
         tickSequence = DOTween.Sequence();
-        tickSequence.InsertCallback(1, () =>
+        tickSequence.InsertCallback(time, () =>
         {
             hp -= _tick;
             DmgSpawn.Instance.Spawn(this.transform.position, _tick.ToString());

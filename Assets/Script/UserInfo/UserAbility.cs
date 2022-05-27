@@ -74,6 +74,7 @@ public enum Ability
     웨이브마다최대체력상승,
     발사체크기,
     피해를입은후무적,
+    멈춰있을때방어력증가
 }
 [System.Serializable]
 public class AbilityData

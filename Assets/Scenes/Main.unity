@@ -4797,6 +4797,7 @@ MonoBehaviour:
   waitAniKey: Wait
   walkL: WalkL
   walkR: WalkR
+  idleTime: 0
 --- !u!114 &994458272
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4822,8 +4823,19 @@ MonoBehaviour:
   userMove: {fileID: 994458271}
   enemySpawn: {fileID: 2139697112}
   isBattle: 0
+  hp: 0
   isElectric: 0
   electricCount: 1
+  isCollection: 0
+  isReflect: 0
+  isLaser: 0
+  laserSO: {fileID: 11400000, guid: 96ecaffa69c7f1747bdf6cadd5b34786, type: 2}
+  isGyroscope: 0
+  isPackman: 0
+  isWiper: 0
+  isComposure: 0
+  isElecitricField: 0
+  isResurrection: 0
 --- !u!50 &994458273
 Rigidbody2D:
   serializedVersion: 4
@@ -6763,6 +6775,7 @@ MonoBehaviour:
   rarePercent: 700
   heroPercent: 300
   cardCount: 3
+  doubleCount: 0
   q_charge: 0
   q_count: 0
   q_card: {fileID: 603672667}

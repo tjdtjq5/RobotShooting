@@ -15,12 +15,6 @@ public class BulletSO : ScriptableObject
     public int bulletDuration;
     [MinValue(1)] public float movespeed;
     public BulletType bulletType;
-
-    private void Awake()
-    {
-        code = "bullet_0";
-        nameCode = "bullet_name_0";
-    }
 }
 public enum BulletType
 { 
@@ -30,5 +24,6 @@ public enum BulletType
     관통,
     위성레이저,
     전기_1,
-    전기_2
+    전기_2,
+    레이저
 }

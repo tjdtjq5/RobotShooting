@@ -120,6 +120,11 @@ public class BattleManager : Singleton<BattleManager>
         int waveHPAbility = UserAbility.Instance.GetAbility(Ability.웨이브마다최대체력상승);
         UserAbility.Instance.BuffAbility(new AbilityData(Ability.체력, waveHPAbility));
         Player.Instance.HP_Setting();
+
+        if (player.isAutoCreate)
+        {
+            ItemSelect.Instance.PushNomal();
+        }
     }
     public void BattleClear()
     {

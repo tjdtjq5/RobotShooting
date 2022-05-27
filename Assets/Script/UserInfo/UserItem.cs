@@ -186,45 +186,64 @@ public class UserItem : Singleton<UserItem>
                 Player.Instance.HP_Setting();
                 break;
             case ItemType.가시갑옷:
-
+                Player.Instance.isReflect = true;
                 break;
             case ItemType.레이저:
+                Player.Instance.isLaser = true;
                 break;
             case ItemType.자이로스코프:
+                Player.Instance.isGyroscope = true;
                 break;
             case ItemType.팩맨:
+                Player.Instance.isPackman = true;
                 break;
             case ItemType.와이퍼:
+                Player.Instance.isWiper = true;
                 break;
             case ItemType.침착:
+                Player.Instance.isComposure = true;
                 break;
             case ItemType.전기장:
+                Player.Instance.isElecitricField = true;
                 break;
             case ItemType.스펀지:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.HP흡수_최대1000, _itemSO.sponge));
                 break;
             case ItemType.복주머니:
+                ItemSelect.Instance.heroPercent += _itemSO.luckyBag;
                 break;
             case ItemType.재가동:
+                Player.Instance.isResurrection = true;
                 break;
             case ItemType.스타링크:
+                Player.Instance.isStarlink = true;
                 break;
             case ItemType.하이눈:
+                Player.Instance.isHighnon = true;
                 break;
             case ItemType.포켓봇:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.회피_최대1000, _itemSO.pokebot));
                 break;
             case ItemType.일렉트로:
+                Player.Instance.isElectro = true;
                 break;
             case ItemType.멀티곱터:
+                Player.Instance.isMultiGubter = true;
                 break;
             case ItemType.오토캐드:
+                ItemSelect.Instance.q_charge += _itemSO.autoCAD;
                 break;
             case ItemType.반사장치:
+                Player.Instance.isReflecterBarrior = true;
                 break;
             case ItemType.벙커:
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.멈춰있을때방어력증가, _itemSO.bunker));
                 break;
             case ItemType.자동생성:
+                Player.Instance.isAutoCreate = true;
                 break;
             case ItemType.스포일러:
+                Player.Instance.isSpo = true;
                 break;
         }
     }

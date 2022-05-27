@@ -27,10 +27,14 @@ public class DronAttack : MonoBehaviour
             bulletSO = BulletSpawn.Instance.bulletSOList[0];
         }
         float atkspeed = bulletSO.atkspeed / (UserAbility.Instance.GetAbility(Ability.공격속도) / 1000f + 1) * 2;
+        if (Player.Instance.isMultiGubter)
+        {
+            atkspeed /= 2f;
+        }
         atkSequence.InsertCallback(atkspeed, () => {
             Transform enemy = Function.Tool.SearchCharacter(searchRadius, this.transform.position, "Enemy");
             float angle = Function.Tool.GetAngle(this.transform.position, enemy.position) - 90;
-            BulletSpawn.Instance.Spawn(bulletSO, bulletSO.bulletType, this.transform, enemy, angle, BulletHost.플레이어,
+            BulletSpawn.Instance.Spawn(Player.Instance.transform, bulletSO, bulletSO.bulletType, this.transform, enemy, angle, BulletHost.플레이어,
                   UserAbility.Instance.GetAbility(Ability.발사체공격력) / 2,
                  UserAbility.Instance.GetAbility(Ability.치명데미지_최대1000)
                  , UserAbility.Instance.GetAbility(Ability.치명데미지_최대1000),

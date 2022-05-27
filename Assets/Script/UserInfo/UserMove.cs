@@ -23,7 +23,6 @@ public class UserMove : MonoBehaviour
 
     [HideInInspector] public float idleTime = 0;
 
-
     private void Start()
     {
         minBound = bound.bounds.min;

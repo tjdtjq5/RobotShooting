@@ -135,4 +135,10 @@ public class ItemSelect : Singleton<ItemSelect>
 
         return nomal_itemSO[Random.Range(0, nomal_itemSO.Count)];
     }
+
+    public void PushNomal()
+    {
+        ItemSO itemSO = nomal_itemSO[Random.Range(0, nomal_itemSO.Count)];
+        UserItem.Instance.PushItem(itemSO);
+    }
 }
