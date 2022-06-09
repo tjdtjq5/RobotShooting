@@ -19,8 +19,9 @@ public class EnemyObj : MonoBehaviour
     float movespeed = 0;
 
     int hp = 0;
+    int tick = 0;
 
-    float a_time = 0;
+    float a_time = 10;
     float e_time = 0;
 
     private void Start()
@@ -31,6 +32,9 @@ public class EnemyObj : MonoBehaviour
 
     private void OnEnable()
     {
+        a_time = 10;
+        e_time = 0;
+        tick = 0;
         isSpawn = false;
     }
 
@@ -53,6 +57,11 @@ public class EnemyObj : MonoBehaviour
 
     public void Hit(int dmg , int cri , int cridmg, BulletSO _bulletSO , int ticDmg)
     {
+        if (!isSpawn)
+        {
+            return;
+        }
+
         bool isCri = (Player.Instance.isGyroscope && hp == enemySO.hp) ? true : Function.GameInfo.IsCritical(cri);
 
         int t_dmg = isCri ? (int)(dmg * (cridmg / 1000f)) + dmg : dmg;
@@ -221,6 +230,9 @@ public class EnemyObj : MonoBehaviour
         {
             return;
         }
+
+        tick += _tick;
+
         if (tickSequence != null)
         {
             tickSequence.Kill();
@@ -231,8 +243,8 @@ public class EnemyObj : MonoBehaviour
         tickSequence = DOTween.Sequence();
         tickSequence.InsertCallback(time, () =>
         {
-            hp -= _tick;
-            DmgSpawn.Instance.Spawn(this.transform.position, _tick.ToString());
+            hp -= tick;
+            DmgSpawn.Instance.Spawn(this.transform, tick.ToString());
 
             if (hp <= 0)
             {

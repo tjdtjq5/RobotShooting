@@ -283,6 +283,10 @@ public class Player : Singleton<Player>
                 float angle = Function.Tool.GetAngle(bulletPos.position, enemy.position) - 90;
                 weaponTransform.DOLocalRotate(new Vector3(0, 0, angle), 0.6f);
             }
+            else
+            {
+                weaponTransform.DOLocalRotate(new Vector3(0, 0, 0), 0.6f);
+            }
         }
 
         if (enemy != null)
@@ -290,7 +294,12 @@ public class Player : Singleton<Player>
             BulletSO bulletSO = userWeapon.GetEqipWeapon().bulletSO;
             float atkspeed = bulletSO.atkspeed / (userAbility.GetAbility(Ability.공격속도) / 1000f + 1);
             float atkspeedPercent = (int)userMove.idleTime * userAbility.GetAbility(Ability.멈춰있을때공격속도증가_최대1000);
-            if (a_time >= atkspeed - (atkspeed * atkspeedPercent / 1000))
+            atkspeed = atkspeed - (atkspeed * atkspeedPercent / 1000);
+            if (atkspeed < 0.1f)
+            {
+                atkspeed = 0.1f;
+            }
+            if (a_time >= atkspeed)
             {
                 Attack(bulletSO, enemy);
             }

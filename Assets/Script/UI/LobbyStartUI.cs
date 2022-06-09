@@ -18,13 +18,11 @@ public class LobbyStartUI : MonoBehaviour
     public void Setting(int _index)
     {
         index = _index;
-
         difiText.text = Language.Instance.GetScript(battleManager.battleSOs[_index].nameCode);
     }
 
     public void OnClickStart()
     {
-
         battleManager.BattleStart(battleManager.battleSOs[index]);
     }
 

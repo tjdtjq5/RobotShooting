@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpawn : MonoBehaviour
+public class EnemySpawn : Singleton<EnemySpawn>
 {
     public GameObject enemyObj;
     public Transform startTrans;

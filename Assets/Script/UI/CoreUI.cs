@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class CoreUI : Singleton<CoreUI>
 {
     public Text coreCountText;
+    public Text coreCountText_2;
 
     private void Start()
     {
@@ -14,5 +15,6 @@ public class CoreUI : Singleton<CoreUI>
     public void Setting()
     {
         coreCountText.text = UserInfo.Instance.Core.ToString();
+        coreCountText_2.text = UserInfo.Instance.Core.ToString();
     }
 }

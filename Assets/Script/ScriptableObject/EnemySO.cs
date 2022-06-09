@@ -18,8 +18,8 @@ public class EnemySO : ScriptableObject
 
     private void Awake()
     {
-        code = "Enemy_0";
-        nameCode = "Enemy_name_0";
+        code = "";
+        nameCode = "";
     }
 }
 public enum EnemyMovePattern

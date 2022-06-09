@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UserMove : MonoBehaviour
+public class UserMove : Singleton<UserMove>
 {
     public JoyStick joyStick;
     public UserAbility userAbility;

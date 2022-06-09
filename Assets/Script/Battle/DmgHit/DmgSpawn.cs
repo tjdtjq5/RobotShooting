@@ -28,4 +28,25 @@ public class DmgSpawn : Singleton<DmgSpawn>
 
         temp.GetComponent<DmgObj>().Spawn(_pos, _dmgScript);
     }
+
+    public void Spawn(Transform _pos, string _dmgScript)
+    {
+        GameObject temp = null;
+        for (int i = 0; i < objList.Count; i++)
+        {
+            if (!objList[i].activeSelf)
+            {
+                objList[i].SetActive(true);
+                temp = objList[i];
+                break;
+            }
+        }
+        if (temp == null)
+        {
+            temp = Instantiate(obj, this.transform);
+            objList.Add(temp);
+        }
+
+        temp.GetComponent<DmgObj>().Spawn(_pos.position, _dmgScript);
+    }
 }

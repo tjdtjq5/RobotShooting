@@ -170,7 +170,6 @@ public class BulletObj : MonoBehaviour
                 EnemyObj collisionEnemy = collision.transform.GetComponent<EnemyObj>();
                 collisionEnemy.Hit(atk, cri, cridmg, bulletSO, tickDmg);
                 if (bulletType == BulletType.관통
-                     || bulletType == BulletType.위성레이저
                       || bulletType == BulletType.전기_1
                        || bulletType == BulletType.전기_2
                         || bulletType == BulletType.레이저)
@@ -197,7 +196,6 @@ public class BulletObj : MonoBehaviour
 
                 collisionPlayer.Hit(atk, cri, cridmg, enemyObj);
                 if (bulletType == BulletType.관통
-                     || bulletType == BulletType.위성레이저
                       || bulletType == BulletType.전기_1
                        || bulletType == BulletType.전기_2
                         || bulletType == BulletType.레이저)

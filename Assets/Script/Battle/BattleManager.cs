@@ -7,7 +7,6 @@ using UnityEngine.UI;
 
 public class BattleManager : Singleton<BattleManager>
 {
-    [AssetList(Path = "SO/Battle")]
     public List<BattleSO> battleSOs = new List<BattleSO>();
 
     public string battleKey = "Battle";
@@ -116,15 +115,17 @@ public class BattleManager : Singleton<BattleManager>
         waveIndex++;
         WaveSetting();
 
-        // 유저 최대체력 상승
+        // 유저 체력 상승
         int waveHPAbility = UserAbility.Instance.GetAbility(Ability.웨이브마다최대체력상승);
-        UserAbility.Instance.BuffAbility(new AbilityData(Ability.체력, waveHPAbility));
-        Player.Instance.HP_Setting();
+        Player.Instance.HP_Recovery(waveHPAbility);
 
         if (player.isAutoCreate)
         {
             ItemSelect.Instance.PushNomal();
         }
+
+        BulletSpawn.Instance.AllDestroy();
+        UserMove.Instance.idleTime = 0;
     }
     public void BattleClear()
     {
@@ -158,6 +159,8 @@ public class BattleManager : Singleton<BattleManager>
         enemySpawn.AllDestroy();
         bulletSpawn.AllDestroy();
         satellite.StatelliteStop();
+        itemSelect.Close();
+        DronSpawn.Instance.AllDestroy();
 
         if (waveSequence != null)
         {

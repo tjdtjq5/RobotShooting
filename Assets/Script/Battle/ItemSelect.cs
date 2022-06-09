@@ -62,6 +62,7 @@ public class ItemSelect : Singleton<ItemSelect>
             list.GetChild(i).gameObject.SetActive(false);
         }
 
+        List<ItemSO> selectItemSOListTemp = new List<ItemSO>();
         for (int i = 0; i < cardCount; i++)
         {
             ItemSelectObj itemSelectObj = null;
@@ -75,27 +76,32 @@ public class ItemSelect : Singleton<ItemSelect>
                 itemSelectObj = Instantiate(card, list).GetComponent<ItemSelectObj>();
             }
 
-            itemSelectObj.Setting(GetItemSO(battleManager.waveIndex), () => {
+            ItemSO temp = GetItemSO(battleManager.waveIndex);
+            while (selectItemSOListTemp.Contains(temp))
+            {
+                temp = GetItemSO(battleManager.waveIndex);
+            }
+            selectItemSOListTemp.Add(temp);
+            itemSelectObj.Setting(temp, () => {
                 Close();
                 battleManager.NextWave();
             });
         }
         q_card.SetSiblingIndex(list.childCount - 1);
-    }
 
-    void Close()
+        BulletSpawn.Instance.AllDestroy();
+    }
+    public void Close()
     {
         for (int i = 0; i < objs.Count; i++)
         {
             objs[i].SetActive(false);
         }
     }
-
     void Q_Setting()
     {
         q_text.text = "탐색 포인트 + " + q_count;
     }
-
     public void OnClickReQ()
     {
         if (q_count <= 0)
@@ -107,7 +113,6 @@ public class ItemSelect : Singleton<ItemSelect>
 
         Show();
     }
-
     ItemSO GetItemSO(int wave)
     {
         wave++;
@@ -135,7 +140,6 @@ public class ItemSelect : Singleton<ItemSelect>
 
         return nomal_itemSO[Random.Range(0, nomal_itemSO.Count)];
     }
-
     public void PushNomal()
     {
         ItemSO itemSO = nomal_itemSO[Random.Range(0, nomal_itemSO.Count)];

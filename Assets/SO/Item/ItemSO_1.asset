@@ -55,8 +55,6 @@ MonoBehaviour:
   smallCount_levelup: 0
   electricExplosionCount: 0
   electricExplosionCount_levelup: 0
-  dronCount_levelup: 0
-  blueprintCount_levelup: 0
   barrierTime: 0
   barrierTime_levelup: 0
   machineGun: 0
@@ -68,18 +66,10 @@ MonoBehaviour:
   magnum: 0
   superRobot_maxhp: 0
   superRobot_size: 0
-  collection_maxhp: 0
-  redbool_hp: 0
-  thornsArmor: 0
-  packman: 0
-  composure: 0
-  electricField: 0
   sponge: 0
   luckyBag: 0
-  restart: 0
   pokebot: 0
   autoCAD: 0
-  reflector: 0
   bunker: 0
   scriptCode: itemScript_1
   maxLevel: 3

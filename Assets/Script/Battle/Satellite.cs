@@ -10,7 +10,10 @@ public class Satellite : Singleton<Satellite>
     public BulletSO bulletSO;
 
     Sequence satelliteSequence_1;
-    Sequence satelliteSequence_2;
+
+    public List<Transform> posList = new List<Transform>();
+
+    int satelliteCount;
 
     [Button("StatelliteStart")]
     public void StatelliteStart_1(int _atk, int _atkspeed, int _satelliteCount)
@@ -21,73 +24,45 @@ public class Satellite : Singleton<Satellite>
         }
         satelliteSequence_1 = DOTween.Sequence();
 
+        if (satelliteCount < _satelliteCount)
+        {
+            satelliteCount = _satelliteCount;
+        }
+
         int atk = _atk;
         float atkspeed = bulletSO.atkspeed + bulletSO.atkspeed * (_atkspeed / 1000f);
-        int satelliteCount = _satelliteCount;
-        Debug.Log(atkspeed);
 
         satelliteSequence_1.InsertCallback(atkspeed, () => {
 
+            bool flag = false;
             for (int i = 0; i < enemySpawn.spawnObjList.Count; i++)
             {
-                if (enemySpawn.spawnObjList[i].activeSelf && satelliteCount >0)
+                if (enemySpawn.spawnObjList[i].activeSelf)
                 {
-                    satelliteCount--;
-
-                    float angle = Function.Tool.GetAngle(this.transform.position, enemySpawn.spawnObjList[i].transform.position) - 90;
-                    BulletSpawn.Instance.Spawn(Player.Instance.transform, bulletSO, bulletSO.bulletType, this.transform,
-                       enemySpawn.spawnObjList[i].transform, angle, BulletHost.플레이어,
-                       atk, 0, 0,0, bulletSO.bulletDuration, 1);
+                    flag = true;
                 }
             }
 
-            satelliteCount = _satelliteCount;
+            if (flag)
+            {
+                for (int i = 0; i < satelliteCount; i++)
+                {
+                    BulletSpawn.Instance.Spawn(Player.Instance.transform, bulletSO, bulletSO.bulletType, this.transform,
+                       posList[Random.Range(0, posList.Count - 1)], 0, BulletHost.플레이어,
+                       atk, 0, 0, UserAbility.Instance.GetAbility(Ability.손상피해), bulletSO.bulletDuration, 1);
+                }
+            }
 
         }).SetLoops(-1, LoopType.Incremental);
         satelliteSequence_1.Play();
     }
-    public void StatelliteStart_2(int _atk, int _atkspeed, int _satelliteCount)
-    {
-        if (satelliteSequence_2 != null)
-        {
-            satelliteSequence_2.Kill();
-        }
-        satelliteSequence_2 = DOTween.Sequence();
-
-        int atk = _atk;
-        float atkspeed = bulletSO.atkspeed + bulletSO.atkspeed * (_atkspeed / 1000f);
-        int satelliteCount = _satelliteCount;
-        Debug.Log(atkspeed);
-
-        satelliteSequence_2.InsertCallback(atkspeed, () => {
-
-            for (int i = 0; i < enemySpawn.spawnObjList.Count; i++)
-            {
-                if (enemySpawn.spawnObjList[i].activeSelf && satelliteCount > 0)
-                {
-                    satelliteCount--;
-
-                    float angle = Function.Tool.GetAngle(this.transform.position, enemySpawn.spawnObjList[i].transform.position) - 90;
-                    BulletSpawn.Instance.Spawn(Player.Instance.transform, bulletSO, bulletSO.bulletType, this.transform,
-                       enemySpawn.spawnObjList[i].transform, angle, BulletHost.플레이어,
-                       atk, 0, 0,0 ,bulletSO.bulletDuration, 1);
-                }
-            }
-
-            satelliteCount = _satelliteCount;
-
-        }).SetLoops(-1, LoopType.Incremental);
-        satelliteSequence_2.Play();
-    }
+ 
     public void StatelliteStop()
     {
         if (satelliteSequence_1 != null)
         {
             satelliteSequence_1.Kill();
         }
-        if (satelliteSequence_2 != null)
-        {
-            satelliteSequence_2.Kill();
-        }
+        satelliteCount = 0;
     }
 }

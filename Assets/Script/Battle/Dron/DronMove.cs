@@ -6,7 +6,7 @@ public class DronMove : MonoBehaviour
 {
 
     [Header("Clamp")]
-    public BoxCollider2D bound;
+    BoxCollider2D bound;
     [HideInInspector] public Vector2 minBound;
     [HideInInspector] public Vector2 maxBound;
     float clampedX = 0;
@@ -16,6 +16,7 @@ public class DronMove : MonoBehaviour
 
     private void Start()
     {
+        bound = EnemySpawn.Instance.bounds[EnemySpawn.Instance.bounds.Count - 1];
         minBound = bound.bounds.min;
         maxBound = bound.bounds.max;
         TargetPosSetting();

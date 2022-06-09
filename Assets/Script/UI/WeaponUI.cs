@@ -15,9 +15,16 @@ public class WeaponUI : MonoBehaviour
 
     int index = 0;
 
+    string weaponUIIndexKey = "weaponUIIndexKey";
+
 
     private void Start()
     {
+        if (PlayerPrefs.HasKey(weaponUIIndexKey))
+        {
+            index = PlayerPrefs.GetInt(weaponUIIndexKey);
+        }
+
         for (int i = 0; i < userWeapon.weaponSOList.Count; i++)
         {
             Instantiate(card, list);
@@ -36,6 +43,8 @@ public class WeaponUI : MonoBehaviour
 
     public void Setting()
     {
+        PlayerPrefs.SetInt(weaponUIIndexKey, index);
+
         List<WeaponSO> weaponList = userWeapon.weaponSOList;
 
         for (int i = 0; i < weaponList.Count; i++)
@@ -87,6 +96,7 @@ public class WeaponUI : MonoBehaviour
         if (userWeapon.weaponSOList.Count <= index)
             index = 0;
 
+
         Setting();
     }
 
@@ -95,6 +105,7 @@ public class WeaponUI : MonoBehaviour
         index--;
         if (index < 0)
             index = userWeapon.weaponSOList.Count - 1;
+
 
         Setting();
     }

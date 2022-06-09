@@ -131,11 +131,11 @@ public class UserItem : Singleton<UserItem>
             case ItemType.인공위성:
                 if (_itemSO.itemGrade == ItemGrade.영웅)
                 {
-                    Satellite.Instance.StatelliteStart_2(0, 0, 6);
+                    Satellite.Instance.StatelliteStart_1(0, 0, 6);
                 }
                 else
                 {
-                    Satellite.Instance.StatelliteStart_1(0, 0, 6);
+                    Satellite.Instance.StatelliteStart_1(0, 0, 3);
                 }
                 break;
             case ItemType.정밀사격:
@@ -300,7 +300,7 @@ public class UserItem : Singleton<UserItem>
             case ItemType.인공위성:
                 if (_itemSO.itemGrade == ItemGrade.영웅)
                 {
-                    Satellite.Instance.StatelliteStart_2(_itemSO.satelliteAtkCount_levelup * (GetLevel(_itemSO) - 1), _itemSO.satelliteAtkspeedCount_levelup * (GetLevel(_itemSO) - 1), 6);
+                    Satellite.Instance.StatelliteStart_1(_itemSO.satelliteAtkCount_levelup * (GetLevel(_itemSO) - 1), _itemSO.satelliteAtkspeedCount_levelup * (GetLevel(_itemSO) - 1), 6);
                 }
                 else
                 {

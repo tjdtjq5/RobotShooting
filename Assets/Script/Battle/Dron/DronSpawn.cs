@@ -10,4 +10,12 @@ public class DronSpawn : Singleton<DronSpawn>
     {
         Instantiate(dronObj, this.transform);
     }
+
+    public void AllDestroy()
+    {
+        for (int i = 0; i < this.transform.childCount; i++)
+        {
+            Destroy(this.transform.GetChild(i).gameObject);
+        }
+    }
 }

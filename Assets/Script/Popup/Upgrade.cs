@@ -81,6 +81,17 @@ public class Upgrade : MonoBehaviour
             return;
         }
 
+        int temp = 0;
+        for (int i = 0; i < upgradeSO.upgradeDatas.Count; i++)
+        {
+            UpgradeData upgradeData = upgradeSO.upgradeDatas[i];
+            temp += GetUpgradeCount(upgradeData.code);
+        }
+        if (temp <= 0)
+        {
+            return;
+        }
+
         UserInfo.Instance.Core -= reStartCore;
 
         for (int i = 0; i < upgradeSO.upgradeDatas.Count; i++)
@@ -88,7 +99,7 @@ public class Upgrade : MonoBehaviour
             UpgradeData upgradeData = upgradeSO.upgradeDatas[i];
             int upgradeCount = GetUpgradeCount(upgradeData.code);
 
-            UserInfo.Instance.Core += upgradeCore;
+            UserInfo.Instance.Core += upgradeCore * upgradeCount;
 
             PlayerPrefs.SetInt(upgradeKey + upgradeData.code, 0);
         }
