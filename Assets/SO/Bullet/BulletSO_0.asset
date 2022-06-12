@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   code: bullet_0
   nameCode: bullet_name_0
-  obj: {fileID: 7441247634341068922, guid: 53cbc10e7f611634e9eb15a8733d4651, type: 3}
+  obj: {fileID: 3237813241132556621, guid: 201874a7730b1fe42b59d66489a1f1d7, type: 3}
   atk: 10
   atkPlus: 1
   atkspeed: 1

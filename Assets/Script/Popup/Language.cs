@@ -8,6 +8,8 @@ public class Language : Singleton<Language>
     [HideInInspector] public LanguageType languageType;
     const string key = "language";
 
+    public Font koFont, enFont, jpFont, chFont;
+
     private void Awake()
     {
         if (PlayerPrefs.HasKey(key))
@@ -38,6 +40,7 @@ public class Language : Singleton<Language>
     }
     public void ChangeLanguage(LanguageType _languageType)
     {
+        languageType = _languageType;
         PlayerPrefs.SetInt(key, (int)_languageType);
     }
     public string GetScript(string _code)
@@ -60,15 +63,31 @@ public class Language : Singleton<Language>
         switch (languageType)
         {
             case LanguageType.한국어:
-                return textData.Ko;
+                return textData.Ko.Replace('/', '\n');
             case LanguageType.영어:
-                return textData.En;
+                return textData.En.Replace('/', '\n');
             case LanguageType.일본어:
-                return textData.Jp;
+                return textData.Jp.Replace('/', '\n');
             case LanguageType.중국어:
-                return textData.Ch;
+                return textData.Ch.Replace('/', '\n');
             default:
-                return textData.En;
+                return textData.En.Replace('/', '\n');
+        }
+    }
+    public Font GetFont()
+    {
+        switch (languageType)
+        {
+            case LanguageType.한국어:
+                return koFont;
+            case LanguageType.영어:
+                return enFont;
+            case LanguageType.일본어:
+                return jpFont;
+            case LanguageType.중국어:
+                return chFont;
+            default:
+                return koFont;
         }
     }
 }

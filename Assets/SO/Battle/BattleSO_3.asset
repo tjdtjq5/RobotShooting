@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BattleSO_3
   m_EditorClassIdentifier: 
   code: BattleSO_3
-  nameCode: BattleSO_name_0
+  nameCode: BattleSO_name_3
   waveSOs:
   - {fileID: 11400000, guid: e3a47e76808e5d14e942e4499dd712ee, type: 2}
   - {fileID: 11400000, guid: e3a47e76808e5d14e942e4499dd712ee, type: 2}

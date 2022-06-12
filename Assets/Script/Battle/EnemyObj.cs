@@ -63,13 +63,14 @@ public class EnemyObj : MonoBehaviour
         }
 
         bool isCri = (Player.Instance.isGyroscope && hp == enemySO.hp) ? true : Function.GameInfo.IsCritical(cri);
+        bool supperCri = false;
 
         int t_dmg = isCri ? (int)(dmg * (cridmg / 1000f)) + dmg : dmg;
 
         if (Player.Instance.isHighnon)
         {
-            isCri = Function.GameInfo.IsCritical(cri);
-            t_dmg = isCri ? (int)(t_dmg * (cridmg / 1000f)) + t_dmg : t_dmg;
+            supperCri = Function.GameInfo.IsCritical(cri);
+            t_dmg = supperCri ? (int)(t_dmg * (cridmg / 1000f)) + t_dmg : t_dmg;
         }
 
         t_dmg -= UserAbility.Instance.GetAbility(Ability.방어력);
@@ -89,7 +90,7 @@ public class EnemyObj : MonoBehaviour
 
         hp -= t_dmg;
 
-        DmgSpawn.Instance.Spawn(this.transform.position, t_dmg.ToString());
+        DmgSpawn.Instance.Spawn(this.transform.position, t_dmg.ToString(), isCri , supperCri);
 
         HitEffect();
 
@@ -138,7 +139,8 @@ public class EnemyObj : MonoBehaviour
     {
         a_time = 0;
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
-        BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , 10, 10, 10, 0,1, 1);
+        int atk = enemySO.atk + _bulletSO.atk;
+        BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , atk, 10, 10, 0,1, 1);
     }
 
     public void Destroy()
@@ -244,7 +246,7 @@ public class EnemyObj : MonoBehaviour
         tickSequence.InsertCallback(time, () =>
         {
             hp -= tick;
-            DmgSpawn.Instance.Spawn(this.transform, tick.ToString());
+            DmgSpawn.Instance.Spawn(this.transform, tick.ToString(), false, false);
 
             if (hp <= 0)
             {

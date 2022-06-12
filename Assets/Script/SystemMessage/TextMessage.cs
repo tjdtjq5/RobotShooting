@@ -21,6 +21,7 @@ public class TextMessage : Singleton<TextMessage>
     public void Show(string _script , System.Action _callback = null)
     {
         text.text = _script;
+        text.font = Language.Instance.GetFont();
 
         for (int i = 0; i < objs.Count; i++)
             objs[i].SetActive(true);

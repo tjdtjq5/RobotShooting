@@ -73,7 +73,6 @@ public class ItemSO : ScriptableObject
     [LabelText("+ 전기 발사체 횟수 증가")] [ShowIf("itemType", ItemType.전기폭발)] [MinValue(0)] public int electricExplosionCount_levelup;
 
     [LabelText("방어막 생성 시간")] [ShowIf("itemType", ItemType.방어막)] [MinValue(1)] public float barrierTime;
-    [LabelText("- 방어막 생성 시간 감소")] [ShowIf("itemType", ItemType.방어막)] [MinValue(0)] public float barrierTime_levelup;
 
     [LabelText("가만히 있을때 공격속도 증가")] [ShowIf("itemType", ItemType.머신건)] [MinValue(0)] public int machineGun;
     [LabelText("+ 가만히 있을때 공격속도 증가")] [ShowIf("itemType", ItemType.머신건)] [MinValue(0)] public int machineGun_levelup;

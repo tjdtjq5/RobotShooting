@@ -16,7 +16,9 @@ public class ItemSelectObj : MonoBehaviour
     {
         itemImg.sprite = itemSO.sprite;
         nameText.text = Language.Instance.GetScript(itemSO.nameCode) + " LV. " + UserItem.Instance.GetLevel(itemSO);
+        nameText.font = Language.Instance.GetFont();
         infoText.text = Language.Instance.GetScript(itemSO.scriptCode);
+        infoText.font = Language.Instance.GetFont();
 
         switch (itemSO.itemGrade)
         {
@@ -39,13 +41,22 @@ public class ItemSelectObj : MonoBehaviour
 
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(() => {
-            UserItem.Instance.PushItem(itemSO);
+            bool isOpenItemFlag = UserItem.Instance.PushItem(itemSO);
+            bool isOpenItemDoubleFlag = false;
             bool isDouble = Function.GameInfo.IsCritical(ItemSelect.Instance.doubleCount);
             if (isDouble)
             {
-                UserItem.Instance.PushItem(itemSO);
+                isOpenItemDoubleFlag = UserItem.Instance.PushItem(itemSO);
             }
-            _callback();
+
+            if (isOpenItemFlag || isOpenItemDoubleFlag)
+            {
+                ItemOpenShow.Instance.Show(itemSO.plusItem.plusItem,()=> { _callback(); });
+            }
+            else
+            {
+                _callback();
+            }
         });
     }
 }

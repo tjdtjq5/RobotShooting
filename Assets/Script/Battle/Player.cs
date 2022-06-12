@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using Sirenix.OdinInspector;
 
 [RequireComponent(typeof(BoxCollider2D))]
 [RequireComponent(typeof(Rigidbody2D))]
 public class Player : Singleton<Player>
 {
+    public SpriteRenderer characterSprite, weaponSprite;
     public Transform weaponTransform;
     public Transform bulletPos;
     public float searchRadius;
@@ -26,6 +28,9 @@ public class Player : Singleton<Player>
     public bool isBattle = false;
     float a_time = 0;
     [HideInInspector] public int hp = 0;
+
+    [Title("오브젝트")]
+    public ParticleSystem restartEffect;
 
     // 특수능력 bool 
     [HideInInspector] public bool isElectric;
@@ -69,7 +74,7 @@ public class Player : Singleton<Player>
         isWiper = false;
         isComposure = false;
         isElecitricField = false;
-        isResurrection = false;
+        isResurrection = true;
         isStarlink = false;
         isHighnon = false;
         isElectro = false;
@@ -96,6 +101,7 @@ public class Player : Singleton<Player>
         if (isMiss)
         {
             // 회피
+            DmgSpawn.Instance.MissSpawn(this.transform.position);
             return;
         }
 
@@ -134,10 +140,6 @@ public class Player : Singleton<Player>
 
         Invince(userAbility.GetAbility(Ability.피해를입은후무적) / 1000f);
 
-        Vector2 pos = this.transform.position;
-        pos = new Vector2(pos.x, pos.y + 1.5f);
-        DmgSpawn.Instance.Spawn(pos, dmg.ToString());
-
         bool isCri = Function.GameInfo.IsCritical(cri);
         dmg = isCri ? (int)(dmg * (cridmg / 1000f)) : dmg;
 
@@ -146,6 +148,10 @@ public class Player : Singleton<Player>
         {
             dmg = 1;
         }
+
+        Vector2 pos = this.transform.position;
+        pos = new Vector2(pos.x, pos.y + 1.5f);
+        DmgSpawn.Instance.Spawn(pos, dmg.ToString(), isCri , false);
 
         hp -= dmg;
         HP_Setting();
@@ -194,6 +200,9 @@ public class Player : Singleton<Player>
                     enemySpawn.spawnObjList[i].GetComponent<EnemyObj>().Destroy();
                 }
             }
+
+            restartEffect.Play();
+
             return;
         }
 
@@ -207,6 +216,9 @@ public class Player : Singleton<Player>
         HPRecovery_1Stop();
         SizeSetting(1);
         Barrior_Stop();
+        Wipper_Stop();
+
+        weaponTransform.DOLocalRotate(new Vector3(0, 0, 0), 0.6f);
 
         if ((this.transform.position.x > 0))
         {
@@ -239,7 +251,7 @@ public class Player : Singleton<Player>
             atk *= 1 + (percent * (userAbility.GetAbility(Ability.HP50이하일때공격력증가_최대1000) / 1000f));
         }
 
-        float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
+        float angle = weaponTransform.localEulerAngles.z;
         BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
             (int)atk,
             userAbility.GetAbility(Ability.치명데미지_최대1000)
@@ -265,18 +277,7 @@ public class Player : Singleton<Player>
         r_time += Time.fixedDeltaTime;
 
         Transform enemy = Function.Tool.SearchCharacter(searchRadius, this.transform.position, "Enemy");
-        if (isWiper)
-        {
-            if (isRW)
-            {
-                weaponTransform.DOLocalRotate(new Vector3(0, 0, 45), 1.2f);
-            }
-            else
-            {
-                weaponTransform.DOLocalRotate(new Vector3(0, 0,-45), 1.2f);
-            }
-        }
-        else
+        if (!isWiper)
         {
             if (enemy != null)
             {
@@ -293,7 +294,7 @@ public class Player : Singleton<Player>
         {
             BulletSO bulletSO = userWeapon.GetEqipWeapon().bulletSO;
             float atkspeed = bulletSO.atkspeed / (userAbility.GetAbility(Ability.공격속도) / 1000f + 1);
-            float atkspeedPercent = (int)userMove.idleTime * userAbility.GetAbility(Ability.멈춰있을때공격속도증가_최대1000);
+            float atkspeedPercent = (int)userMove.idleTime * userAbility.GetAbility(Ability.멈춰있을때공격속도증가_최대1000) * 0.25f;
             atkspeed = atkspeed - (atkspeed * atkspeedPercent / 1000);
             if (atkspeed < 0.1f)
             {
@@ -323,8 +324,13 @@ public class Player : Singleton<Player>
         invinceSequence = DOTween.Sequence();
 
         isInvince = true;
+        characterSprite.color = Color.gray;
+        weaponSprite.color = Color.gray;
 
-        invinceSequence.InsertCallback(time, () => isInvince = false);
+        invinceSequence.InsertCallback(time, () => { isInvince = false;
+            characterSprite.color = Color.white;
+            weaponSprite.color = Color.white;
+        });
     }
 
     // 적 수에 비례하여 체력회복
@@ -377,7 +383,7 @@ public class Player : Singleton<Player>
 
         barriorSequence = DOTween.Sequence();
 
-        barriorSequence.InsertCallback(1, () => {
+        barriorSequence.InsertCallback(time, () => {
 
             isBarrior = true;
             
@@ -390,5 +396,40 @@ public class Player : Singleton<Player>
         {
             barriorSequence.Kill();
         }
+    }
+
+    // 와이퍼
+    Sequence wipperSequence;
+    [ContextMenu("Wipper_Start")]
+    public void Wipper_Start()
+    {
+        if (wipperSequence != null)
+        {
+            wipperSequence.Kill();
+        }
+
+        isWiper = true;
+
+        wipperSequence = DOTween.Sequence();
+
+        wipperSequence.InsertCallback(1, () => {
+            if (isRW)
+            {
+                weaponTransform.DOLocalRotate(new Vector3(0, 0, 45), 1.2f).OnComplete(()=> isRW = !isRW);
+            }
+            else
+            {
+                weaponTransform.DOLocalRotate(new Vector3(0, 0, -45), 1.2f).OnComplete(() => isRW = !isRW);
+            }
+        }).SetLoops(-1, LoopType.Incremental);
+        wipperSequence.Play();
+    }
+    void Wipper_Stop()
+    {
+        if (wipperSequence != null)
+        {
+            wipperSequence.Kill();
+        }
+        isWiper = false;
     }
 }

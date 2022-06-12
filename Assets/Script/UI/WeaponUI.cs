@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class WeaponUI : MonoBehaviour
+public class WeaponUI : Singleton<WeaponUI>
 {
     public UserWeapon userWeapon;
 
@@ -60,6 +60,7 @@ public class WeaponUI : MonoBehaviour
 
         WeaponSO selectWeaponSO = weaponList[index];
         nameText.text = Language.Instance.GetScript(selectWeaponSO.nameCode);
+        nameText.font = Language.Instance.GetFont();
         bgBtn.onClick.RemoveAllListeners();
 
         if (userWeapon.GetHaveList().Find(n => n.code == selectWeaponSO.code) != null)

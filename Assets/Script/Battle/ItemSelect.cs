@@ -26,9 +26,8 @@ public class ItemSelect : Singleton<ItemSelect>
     [HideInInspector] public int doubleCount = 0;
 
     [Title("탐색")]
-    int q_default = 1;
-    [HideInInspector] public int q_charge;
     [HideInInspector] public int q_count;
+    [HideInInspector] public bool autocadFlag = false;
     public Transform q_card;
     public Text q_text;
 
@@ -38,15 +37,22 @@ public class ItemSelect : Singleton<ItemSelect>
     public void BattleStart()
     {
         cardCount = cardCount_default;
-        q_charge = q_default;
         rarePercent = rarePercent_default;
         heroPercent = heroPercent_default;
         doubleCount = 0;
+        autocadFlag = false;
     }
 
     public void Charge_Q()
     {
-        q_count += q_charge;
+        if (autocadFlag)
+        {
+            q_count += 2;
+        }
+        else
+        {
+            q_count = 1;
+        }
     }
 
     public void Show()
@@ -77,9 +83,13 @@ public class ItemSelect : Singleton<ItemSelect>
             }
 
             ItemSO temp = GetItemSO(battleManager.waveIndex);
-            while (selectItemSOListTemp.Contains(temp))
+            int maxLevel = temp.maxLevel;
+            int c_level = UserItem.Instance.GetLevel(temp);
+            while (selectItemSOListTemp.Contains(temp) || maxLevel <= c_level)
             {
                 temp = GetItemSO(battleManager.waveIndex);
+                maxLevel = temp.maxLevel;
+                c_level = UserItem.Instance.GetLevel(temp);
             }
             selectItemSOListTemp.Add(temp);
             itemSelectObj.Setting(temp, () => {
@@ -89,7 +99,6 @@ public class ItemSelect : Singleton<ItemSelect>
         }
         q_card.SetSiblingIndex(list.childCount - 1);
 
-        BulletSpawn.Instance.AllDestroy();
     }
     public void Close()
     {

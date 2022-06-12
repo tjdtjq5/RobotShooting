@@ -695,3 +695,28 @@ MonoBehaviour:
     en: "\uC544\uC774\uD15C \uC124\uBA85 51"
     jp: "\uC544\uC774\uD15C \uC124\uBA85 51"
     ch: "\uC544\uC774\uD15C \uC124\uBA85 51"
+  - code: option_bgSound
+    ko: "\uBC30\uACBD\uC74C"
+    en: "\uBC30\uACBD\uC74C"
+    jp: "\uBC30\uACBD\uC74C"
+    ch: "\uBC30\uACBD\uC74C"
+  - code: option_fxSound
+    ko: "\uD6A8\uACFC\uC74C"
+    en: "\uD6A8\uACFC\uC74C"
+    jp: "\uD6A8\uACFC\uC74C"
+    ch: "\uD6A8\uACFC\uC74C"
+  - code: option_language
+    ko: "\uC5B8\uC5B4"
+    en: "\uC5B8\uC5B4"
+    jp: "\uC5B8\uC5B4"
+    ch: "\uC5B8\uC5B4"
+  - code: option_producer
+    ko: "\uC81C\uC791\uC790/\uC57C\uBE54/\uBC30\uACE0\uD508 \uC218\uC120\uD654"
+    en: "\uC81C\uC791\uC790/\uC57C\uBE54/\uBC30\uACE0\uD508 \uC218\uC120\uD654"
+    jp: "\uC81C\uC791\uC790/\uC57C\uBE54/\uBC30\uACE0\uD508 \uC218\uC120\uD654"
+    ch: "\uC81C\uC791\uC790/\uC57C\uBE54/\uBC30\uACE0\uD508 \uC218\uC120\uD654"
+  - code: start
+    ko: "\uC804\uD22C \uC2DC\uC791"
+    en: "\uC804\uD22C \uC2DC\uC791"
+    jp: "\uC804\uD22C \uC2DC\uC791"
+    ch: "\uC804\uD22C \uC2DC\uC791"

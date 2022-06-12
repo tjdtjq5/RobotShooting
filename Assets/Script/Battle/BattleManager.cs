@@ -38,6 +38,7 @@ public class BattleManager : Singleton<BattleManager>
         c_battleSO = _battleSO;
         waveIndex = 0;
         difiText.text = Language.Instance.GetScript(_battleSO.nameCode);
+        difiText.font = Language.Instance.GetFont();
 
         itemSelect.BattleStart();
         userItem.BattleSetting();
@@ -130,28 +131,42 @@ public class BattleManager : Singleton<BattleManager>
     public void BattleClear()
     {
         BattleEnd();
-        TextMessage.Instance.Show(
-                 Language.Instance.GetScript(c_battleSO.nameCode) + "를 클리어 하셨습니다!"
-                 , () => {
-                 });
 
-        // 카운트 추가 
-        int count = PlayerPrefs.GetInt(battleKey + c_battleSO.code);
-        PlayerPrefs.SetInt(battleKey + c_battleSO.code, count + 1);
+        ScreenShow.Instance.Show("success", () => {
 
-        // unLock
-        if (!PlayerPrefs.HasKey(battleKey + c_battleSO.unLockBattleCode))
-        {
-            PlayerPrefs.SetInt(battleKey + c_battleSO.unLockBattleCode, 0);
-        }
+            player.BattleEnd(() => { canvasManager.LobbySet(); });
+
+            if (!string.IsNullOrEmpty(c_battleSO.unLockBattleCode))
+            {
+                TextMessage.Instance.Show(
+             Language.Instance.GetScript(c_battleSO.unLockBattleCode) + "가 해금되었습니다!"
+             , () => {
+             });
+            }
+
+            // 카운트 추가 
+            int count = PlayerPrefs.GetInt(battleKey + c_battleSO.code);
+            PlayerPrefs.SetInt(battleKey + c_battleSO.code, count + 1);
+
+            // unLock
+            if (!PlayerPrefs.HasKey(battleKey + c_battleSO.unLockBattleCode))
+            {
+                PlayerPrefs.SetInt(battleKey + c_battleSO.unLockBattleCode, 0);
+            }
+        });
     }
     public void BattleFailure()
     {
         BattleEnd();
-        TextMessage.Instance.Show(
-                 Language.Instance.GetScript(c_battleSO.nameCode) + "를 실패 하셨습니다"
-                 , () => {
-                 });
+
+        ScreenShow.Instance.Show("failure", () => {
+            player.BattleEnd(() => { canvasManager.LobbySet(); });
+
+            TextMessage.Instance.Show(
+                     Language.Instance.GetScript(c_battleSO.nameCode) + "를 실패 하셨습니다"
+                     , () => {
+                     });
+        });
     }
     void BattleEnd()
     {
@@ -167,6 +182,16 @@ public class BattleManager : Singleton<BattleManager>
             waveSequence.Kill();
         }
         CoreUI.Instance.Setting();
-        player.BattleEnd(()=> { canvasManager.LobbySet(); });
+    }
+    public void OnClickExit()
+    {
+        Time.timeScale = 0;
+        YesNoMessage.Instance.Show("로비로 돌아가시겠습니까?", () => {
+            Time.timeScale = 1;
+            BattleEnd();
+            player.BattleEnd(() => { canvasManager.LobbySet(); });
+        },()=> {
+            Time.timeScale = 1;
+        });
     }
 }

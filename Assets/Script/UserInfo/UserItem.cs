@@ -11,7 +11,7 @@ public class UserItem : Singleton<UserItem>
         userItemDics.Clear();
         UI_Setting();
     }
-    public void PushItem(ItemSO _itemSO)
+    public bool PushItem(ItemSO _itemSO)
     {
         if (userItemDics.ContainsKey(_itemSO))
         {
@@ -32,6 +32,8 @@ public class UserItem : Singleton<UserItem>
         }
 
         UI_Setting();
+
+        return _itemSO.plusItem != null && userItemDics[_itemSO] == _itemSO.plusItemLevel;
     }
     public int GetLevel(ItemSO _itemSO)
     {
@@ -198,7 +200,7 @@ public class UserItem : Singleton<UserItem>
                 Player.Instance.isPackman = true;
                 break;
             case ItemType.와이퍼:
-                Player.Instance.isWiper = true;
+                Player.Instance.Wipper_Start();
                 break;
             case ItemType.침착:
                 Player.Instance.isComposure = true;
@@ -231,7 +233,8 @@ public class UserItem : Singleton<UserItem>
                 Player.Instance.isMultiGubter = true;
                 break;
             case ItemType.오토캐드:
-                ItemSelect.Instance.q_charge += _itemSO.autoCAD;
+
+                ItemSelect.Instance.autocadFlag = true;
                 break;
             case ItemType.반사장치:
                 Player.Instance.isReflecterBarrior = true;
@@ -324,7 +327,7 @@ public class UserItem : Singleton<UserItem>
                 ItemSelect.Instance.cardCount++;
                 break;
             case ItemType.방어막:
-                Player.Instance.Barrior_Start(_itemSO.barrierTime - (_itemSO.barrierTime_levelup * (GetLevel(_itemSO) - 1)));
+                Player.Instance.Barrior_Start(_itemSO.barrierTime / (GetLevel(_itemSO)));
                 break;
             case ItemType.머신건:
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.멈춰있을때공격속도증가_최대1000, _itemSO.machineGun_levelup));

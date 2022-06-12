@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LobbyStartUI : MonoBehaviour
+public class LobbyStartUI : Singleton<LobbyStartUI>
 {
     public BattleManager battleManager;
     int index = 0;
@@ -19,6 +19,12 @@ public class LobbyStartUI : MonoBehaviour
     {
         index = _index;
         difiText.text = Language.Instance.GetScript(battleManager.battleSOs[_index].nameCode);
+        difiText.font = Language.Instance.GetFont();
+    }
+    public void Setting()
+    {
+        difiText.text = Language.Instance.GetScript(battleManager.battleSOs[index].nameCode);
+        difiText.font = Language.Instance.GetFont();
     }
 
     public void OnClickStart()

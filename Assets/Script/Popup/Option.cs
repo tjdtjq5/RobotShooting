@@ -17,6 +17,7 @@ public class Option : MonoBehaviour
             objs[i].SetActive(true);
         }
         Setting();
+        Time.timeScale = 0;
     }
     public void Close()
     {
@@ -24,6 +25,7 @@ public class Option : MonoBehaviour
         {
             objs[i].SetActive(false);
         }
+        Time.timeScale = 1;
     }
     void Setting()
     {
@@ -43,5 +45,8 @@ public class Option : MonoBehaviour
     public void LanguageOnValueChanged()
     {
         Language.Instance.ChangeLanguage((LanguageType)languageDropdown.value);
+        TextLanguage.Instance.Setting();
+        WeaponUI.Instance.Setting();
+        LobbyStartUI.Instance.Setting();
     }
 }

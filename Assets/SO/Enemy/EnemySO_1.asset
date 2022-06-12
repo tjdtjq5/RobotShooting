@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00258b32565c4be40b5b285ae0c5a383, type: 3}
   m_Name: EnemySO_1
   m_EditorClassIdentifier: 
-  code: Enemy_1
-  nameCode: Enemy_name_1
+  code: 
+  nameCode: 
   sprite: {fileID: 4608048447754632782, guid: 75e7bb5ca1a0d954caefb7c52edb4c7b, type: 3}
   atk: 1
   hp: 100
-  atkspeed: 1
   movespeed: 50
+  atkspeed: 1.5
   bulletSO: {fileID: 11400000, guid: 1440c64d225ac0e4a966040d15d035a2, type: 2}
   bulletHost: 1
   enemyMovePattern: 1
