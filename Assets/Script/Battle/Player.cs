@@ -251,14 +251,47 @@ public class Player : Singleton<Player>
             atk *= 1 + (percent * (userAbility.GetAbility(Ability.HP50이하일때공격력증가_최대1000) / 1000f));
         }
 
-        float angle = weaponTransform.localEulerAngles.z;
-        BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
-            (int)atk,
-            userAbility.GetAbility(Ability.치명데미지_최대1000)
-            , userAbility.GetAbility(Ability.치명데미지_최대1000)
-            , userAbility.GetAbility(Ability.손상피해)
-            , userAbility.GetAbility(Ability.발사체내구도)
-            , userAbility.GetAbility(Ability.발사체크기));
+        if (MultipleShot.Instance.isOpenItem)
+        {
+            for (int i = -3; i < 3; i++)
+            {
+                float angle = weaponTransform.localEulerAngles.z + (15 * i);
+                atk += MultipleShot.Instance.value;
+                BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
+                    (int)atk,
+                    userAbility.GetAbility(Ability.치명데미지_최대1000)
+                    , userAbility.GetAbility(Ability.치명데미지_최대1000)
+                    , userAbility.GetAbility(Ability.손상피해)
+                    , userAbility.GetAbility(Ability.발사체내구도)
+                    , userAbility.GetAbility(Ability.발사체크기));
+            }
+        }
+        else if (MultipleShot.Instance.isMultipleShot)
+        {
+            for (int i = -1; i < 2; i++)
+            {
+                float angle = weaponTransform.localEulerAngles.z + (45 * i);
+                atk += MultipleShot.Instance.value;
+                BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
+                    (int)atk,
+                    userAbility.GetAbility(Ability.치명데미지_최대1000)
+                    , userAbility.GetAbility(Ability.치명데미지_최대1000)
+                    , userAbility.GetAbility(Ability.손상피해)
+                    , userAbility.GetAbility(Ability.발사체내구도)
+                    , userAbility.GetAbility(Ability.발사체크기));
+            }
+        }
+        else
+        {
+            float angle = weaponTransform.localEulerAngles.z;
+            BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
+                (int)atk,
+                userAbility.GetAbility(Ability.치명데미지_최대1000)
+                , userAbility.GetAbility(Ability.치명데미지_최대1000)
+                , userAbility.GetAbility(Ability.손상피해)
+                , userAbility.GetAbility(Ability.발사체내구도)
+                , userAbility.GetAbility(Ability.발사체크기));
+        }
     }
 
     void LaserAttack(Transform _enemy)
@@ -397,7 +430,6 @@ public class Player : Singleton<Player>
             barriorSequence.Kill();
         }
     }
-
     // 와이퍼
     Sequence wipperSequence;
     [ContextMenu("Wipper_Start")]

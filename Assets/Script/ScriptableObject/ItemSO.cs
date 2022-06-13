@@ -98,6 +98,12 @@ public class ItemSO : ScriptableObject
     [LabelText("탐색 포인트 증가")] [ShowIf("itemType", ItemType.오토캐드)] [MinValue(0)] public int autoCAD;
 
     [LabelText("멈춰 있을 때 점점 방어력 증가")] [ShowIf("itemType", ItemType.벙커)] [MinValue(0)] public int bunker;
+
+    [LabelText("공격속도 증가")] [ShowIf("itemType", ItemType.직선탄)] [MinValue(0)] public int staightShot;
+
+    [LabelText("적 탄환 감속")] [ShowIf("itemType", ItemType.냉기)] [MinValue(0)] public int coldShot;
+
+    [LabelText("공격력 증가")] [ShowIf("itemType", ItemType.다발탄)] [MinValue(0)] public int multipleShot;
     #endregion
 
     [LabelText("아이템 설명")] public string scriptCode;
@@ -159,7 +165,13 @@ public enum ItemType
     반사장치,
     벙커,
     자동생성,
-    스포일러
+    스포일러,
+    직선탄,
+    냉기,
+    다발탄,
+    직선탄_강화,
+    냉기_강화,
+    다발탄_강화
 }
 public enum ItemGrade
 {

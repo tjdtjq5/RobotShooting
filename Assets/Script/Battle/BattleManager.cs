@@ -176,6 +176,9 @@ public class BattleManager : Singleton<BattleManager>
         satellite.StatelliteStop();
         itemSelect.Close();
         DronSpawn.Instance.AllDestroy();
+        StraightShot.Instance.End();
+        ColdShot.Instance.End();
+        MultipleShot.Instance.End();
 
         if (waveSequence != null)
         {

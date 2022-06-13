@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class UserItem : Singleton<UserItem>
         userItemDics.Clear();
         UI_Setting();
     }
+
+    [Button("PushItem")]
     public bool PushItem(ItemSO _itemSO)
     {
         if (userItemDics.ContainsKey(_itemSO))
@@ -77,7 +80,6 @@ public class UserItem : Singleton<UserItem>
             levelText.text = level.ToString();
         }
     }
-
 
     // 능력치 적용
     void Ability_Setting(ItemSO _itemSO)
@@ -233,7 +235,6 @@ public class UserItem : Singleton<UserItem>
                 Player.Instance.isMultiGubter = true;
                 break;
             case ItemType.오토캐드:
-
                 ItemSelect.Instance.autocadFlag = true;
                 break;
             case ItemType.반사장치:
@@ -247,6 +248,24 @@ public class UserItem : Singleton<UserItem>
                 break;
             case ItemType.스포일러:
                 Player.Instance.isSpo = true;
+                break;
+            case ItemType.직선탄:
+                StraightShot.Instance.Shot();
+                break;
+            case ItemType.냉기:
+                ColdShot.Instance.Shot();
+                break;
+            case ItemType.다발탄:
+                MultipleShot.Instance.Shot();
+                break;
+            case ItemType.직선탄_강화:
+                StraightShot.Instance.isUpgradeItemOpen = true;
+                break;
+            case ItemType.냉기_강화:
+                ColdShot.Instance.OpenItem();
+                break;
+            case ItemType.다발탄_강화:
+                MultipleShot.Instance.OpenItem();
                 break;
         }
     }
@@ -388,6 +407,21 @@ public class UserItem : Singleton<UserItem>
             case ItemType.자동생성:
                 break;
             case ItemType.스포일러:
+                break;
+            case ItemType.직선탄:
+                StraightShot.Instance.Upgrade(_itemSO.staightShot * GetLevel(_itemSO));
+                break;
+            case ItemType.냉기:
+                ColdShot.Instance.Upgrade(_itemSO.coldShot * GetLevel(_itemSO));
+                break;
+            case ItemType.다발탄:
+                MultipleShot.Instance.Upgrade(_itemSO.multipleShot * GetLevel(_itemSO));
+                break;
+            case ItemType.직선탄_강화:
+                break;
+            case ItemType.냉기_강화:
+                break;
+            case ItemType.다발탄_강화:
                 break;
             default:
                 break;

@@ -44,7 +44,19 @@ public class BulletObj : MonoBehaviour
         this.tickDmg = _tickDmg;
         this.cridmg = _cridmg;
         this.duration = _duration + _bulletSO.bulletDuration;
-        this.movespeed = _bulletSO.movespeed;
+        if (ColdShot.Instance.isCold && bulletHost == BulletHost.적)
+        {
+            float temp = _bulletSO.movespeed - (ColdShot.Instance.value / 1000f);
+            if (temp <= 0)
+            {
+                temp = 0;
+            }
+            this.movespeed = temp;
+        }
+        else
+        {
+            this.movespeed = _bulletSO.movespeed;
+        }
 
         this.transform.localRotation = Quaternion.Euler(0, 0, _angle);
 
