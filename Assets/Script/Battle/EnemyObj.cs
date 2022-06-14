@@ -104,7 +104,7 @@ public class EnemyObj : MonoBehaviour
 
             if (Player.Instance.isElectric)
             {
-                Electric.Instance.ElectricSpawn_1(this.transform, 8, (int)(dmg * 0.7f), 0, 0);
+                Electric.Instance.ElectricSpawn_1(this.transform, 4, (int)(dmg * 0.7f), 0, 0);
                 return;
             }
 

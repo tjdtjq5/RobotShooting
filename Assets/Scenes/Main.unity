@@ -2136,6 +2136,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 63dca178c61b06a44b1aa3a33fe308cf, type: 2}
   - {fileID: 11400000, guid: 1be53521be07f06458a9d2605fc9a7e1, type: 2}
   - {fileID: 11400000, guid: bf628a1d7bcc3bd45a24a92f345aa368, type: 2}
+  - {fileID: 11400000, guid: 96ecaffa69c7f1747bdf6cadd5b34786, type: 2}
+  - {fileID: 11400000, guid: 303567b842e031748a17a6b3f4252ba4, type: 2}
 --- !u!1 &349343960
 GameObject:
   m_ObjectHideFlags: 0
@@ -7854,6 +7856,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 935d56dcdb1480642913e7d625e4eafb, type: 2}
   rarePercent_default: 700
   heroPercent_default: 300
+  heroWaveIndex: 5
   rarePercent: 700
   heroPercent: 300
   cardCount: 3

@@ -133,14 +133,7 @@ public class UserItem : Singleton<UserItem>
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.HP50이하일때공격력증가_최대1000, _itemSO.overHeatCount));
                 break;
             case ItemType.인공위성:
-                if (_itemSO.itemGrade == ItemGrade.영웅)
-                {
-                    Satellite.Instance.StatelliteStart_1(0, 0, 6);
-                }
-                else
-                {
-                    Satellite.Instance.StatelliteStart_1(0, 0, 3);
-                }
+                Satellite.Instance.StatelliteStart_1(0, 0, 1);
                 break;
             case ItemType.정밀사격:
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.치명데미지_최대1000, _itemSO.precisionCount));
@@ -320,14 +313,7 @@ public class UserItem : Singleton<UserItem>
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.HP50이하일때공격력증가_최대1000, _itemSO.overHeatCount_levelup));
                 break;
             case ItemType.인공위성:
-                if (_itemSO.itemGrade == ItemGrade.영웅)
-                {
-                    Satellite.Instance.StatelliteStart_1(_itemSO.satelliteAtkCount_levelup * (GetLevel(_itemSO) - 1), _itemSO.satelliteAtkspeedCount_levelup * (GetLevel(_itemSO) - 1), 6);
-                }
-                else
-                {
-                    Satellite.Instance.StatelliteStart_1(_itemSO.satelliteAtkCount_levelup * (GetLevel(_itemSO) - 1), _itemSO.satelliteAtkspeedCount_levelup * (GetLevel(_itemSO) - 1), 3);
-                }
+                Satellite.Instance.StatelliteStart_1(_itemSO.satelliteAtkCount_levelup * (GetLevel(_itemSO) - 1), _itemSO.satelliteAtkspeedCount_levelup * (GetLevel(_itemSO) - 1), 1);
                 break;
             case ItemType.정밀사격:
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.치명데미지_최대1000, _itemSO.precisionCount_levelup));

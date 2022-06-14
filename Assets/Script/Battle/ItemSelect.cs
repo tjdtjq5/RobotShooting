@@ -15,8 +15,9 @@ public class ItemSelect : Singleton<ItemSelect>
     [LabelText("희귀 등급 아이템")] public List<ItemSO> rare_itemSO;
     [LabelText("영웅 등급 아이템")] public List<ItemSO> hero_itemSO;
 
-    [HideInInspector] public int rarePercent_default = 700;
-    [HideInInspector] public int heroPercent_default = 300;
+    [MinValue(0)] [MaxValue(1000)] public int rarePercent_default;
+    [MinValue(0)] [MaxValue(1000)] public int heroPercent_default;
+    [Min(1)] public int heroWaveIndex;
     [HideInInspector] public int rarePercent;
     [HideInInspector] public int heroPercent;
 
@@ -42,7 +43,6 @@ public class ItemSelect : Singleton<ItemSelect>
         doubleCount = 0;
         autocadFlag = false;
     }
-
     public void Charge_Q()
     {
         if (autocadFlag)
@@ -54,7 +54,6 @@ public class ItemSelect : Singleton<ItemSelect>
             q_count = 1;
         }
     }
-
     public void Show()
     {
         for (int i = 0; i < objs.Count; i++)
@@ -99,6 +98,7 @@ public class ItemSelect : Singleton<ItemSelect>
         }
         q_card.SetSiblingIndex(list.childCount - 1);
 
+        BulletSpawn.Instance.AllDestroy();
     }
     public void Close()
     {
@@ -126,7 +126,7 @@ public class ItemSelect : Singleton<ItemSelect>
     {
         wave++;
 
-        bool isHero = (wave == 1 || wave % 5 == 0);
+        bool isHero = (wave == 1 || wave % heroWaveIndex == 0);
         bool isRare = false;
 
         if (isHero)

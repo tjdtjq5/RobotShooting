@@ -123,7 +123,7 @@ public class Player : Singleton<Player>
 
             if (isReflecterBarrior)
             {
-                Electric.Instance.ElectricSpawn_1(this.transform, 16, 60, 0, 0);
+                Electric.Instance.ElectricSpawn_1(this.transform, 8, 60, 0, 0);
             }
 
             return;
@@ -315,11 +315,11 @@ public class Player : Singleton<Player>
             if (enemy != null)
             {
                 float angle = Function.Tool.GetAngle(bulletPos.position, enemy.position) - 90;
-                weaponTransform.DOLocalRotate(new Vector3(0, 0, angle), 0.6f);
+                weaponTransform.DOLocalRotate(new Vector3(0, 0, angle), 0.2f);
             }
             else
             {
-                weaponTransform.DOLocalRotate(new Vector3(0, 0, 0), 0.6f);
+                weaponTransform.DOLocalRotate(new Vector3(0, 0, 0), 0.2f);
             }
         }
 

@@ -124,8 +124,6 @@ public class BattleManager : Singleton<BattleManager>
         {
             ItemSelect.Instance.PushNomal();
         }
-
-        BulletSpawn.Instance.AllDestroy();
         UserMove.Instance.idleTime = 0;
     }
     public void BattleClear()
@@ -136,10 +134,11 @@ public class BattleManager : Singleton<BattleManager>
 
             player.BattleEnd(() => { canvasManager.LobbySet(); });
 
-            if (!string.IsNullOrEmpty(c_battleSO.unLockBattleCode))
+            BattleSO nextBattle = GetBattleSO(c_battleSO.unLockBattleCode);
+            if (nextBattle != null)
             {
                 TextMessage.Instance.Show(
-             Language.Instance.GetScript(c_battleSO.unLockBattleCode) + "가 해금되었습니다!"
+                Language.Instance.GetScript(nextBattle.nameCode) + "가 해금되었습니다!"
              , () => {
              });
             }
@@ -196,5 +195,22 @@ public class BattleManager : Singleton<BattleManager>
         },()=> {
             Time.timeScale = 1;
         });
+    }
+
+    BattleSO GetBattleSO(string _code)
+    {
+        return battleSOs.Find(n => n.code == _code);
+    }
+
+    [Button("Test")]
+    public void Test()
+    {
+        for (int i = 0; i < battleSOs.Count; i++)
+        {
+            if (PlayerPrefs.HasKey(battleKey + battleSOs[i].unLockBattleCode))
+            {
+                Debug.Log("있다 : " + battleKey + battleSOs[i].unLockBattleCode);
+            }
+        }
     }
 }
