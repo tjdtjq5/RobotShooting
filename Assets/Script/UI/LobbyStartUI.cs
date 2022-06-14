@@ -53,15 +53,16 @@ public class LobbyStartUI : Singleton<LobbyStartUI>
 
     public int GetMaxBattleSOIndex()
     {
+        int count = 0;
         for (int i = 1; i < battleManager.battleSOs.Count; i++)
         {
             string code = battleManager.battleSOs[i].code;
             if (PlayerPrefs.HasKey(battleManager.battleKey + code))
             {
-                return i;
+                count++;
             }
         }
 
-        return 0;
+        return count;
     }
 }

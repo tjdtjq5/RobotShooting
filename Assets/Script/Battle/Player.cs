@@ -74,7 +74,7 @@ public class Player : Singleton<Player>
         isWiper = false;
         isComposure = false;
         isElecitricField = false;
-        isResurrection = true;
+        isResurrection = false;
         isStarlink = false;
         isHighnon = false;
         isElectro = false;
@@ -395,8 +395,9 @@ public class Player : Singleton<Player>
     }
 
     // 사이즈
-    public void SizeSetting(float size)
+    public void SizeSetting(float _size)
     {
+        float size = this.transform.localScale.x * _size;
         this.transform.localScale = new Vector3(size, size, size);
     }
 

@@ -52,6 +52,7 @@ public class ItemSelectObj : MonoBehaviour
             if (isOpenItemFlag || isOpenItemDoubleFlag)
             {
                 ItemOpenShow.Instance.Show(itemSO.plusItem.plusItem,()=> { _callback(); });
+                ItemSelect.Instance.Close();
             }
             else
             {

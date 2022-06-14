@@ -42,14 +42,14 @@ public class BattleManager : Singleton<BattleManager>
 
         itemSelect.BattleStart();
         userItem.BattleSetting();
+        player.BattleSetting();
+        waveText.text = "wave " + (waveIndex + 1);
 
         canvasManager.BattleSet();
         TextMessage.Instance.Show(
             Language.Instance.GetScript(_battleSO.nameCode) + " 전투를 시작합니다"
             , () => {
-                player.BattleSetting();
                 WaveSetting();
-
             });
     }
     Sequence waveSequence;
@@ -135,7 +135,7 @@ public class BattleManager : Singleton<BattleManager>
             player.BattleEnd(() => { canvasManager.LobbySet(); });
 
             BattleSO nextBattle = GetBattleSO(c_battleSO.unLockBattleCode);
-            if (nextBattle != null)
+            if (nextBattle != null && !PlayerPrefs.HasKey(battleKey + c_battleSO.unLockBattleCode))
             {
                 TextMessage.Instance.Show(
                 Language.Instance.GetScript(nextBattle.nameCode) + "가 해금되었습니다!"
