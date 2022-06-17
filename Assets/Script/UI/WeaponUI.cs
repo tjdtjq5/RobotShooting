@@ -65,7 +65,7 @@ public class WeaponUI : Singleton<WeaponUI>
 
         if (userWeapon.GetHaveList().Find(n => n.code == selectWeaponSO.code) != null)
         {
-            userWeapon.ChangeEqipWeapon(index);
+            userWeapon.ChangeEqipWeapon(selectWeaponSO.code);
             bgBtn.image.color = Color.white;
         }
         else

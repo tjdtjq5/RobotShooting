@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,6 +13,7 @@ public class ItemOpenShow : Singleton<ItemOpenShow>
 
     System.Action callback;
  
+    [Button("Show")]
     public void Show(ItemSO _itemSO, System.Action _callback)
     {
         callback = _callback;

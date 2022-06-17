@@ -49,7 +49,10 @@ public class BattleManager : Singleton<BattleManager>
         TextMessage.Instance.Show(
             Language.Instance.GetScript(_battleSO.nameCode) + " 전투를 시작합니다"
             , () => {
-                WaveSetting();
+                if (isBattle)
+                {
+                    WaveSetting();
+                }
             });
     }
     Sequence waveSequence;
@@ -125,6 +128,7 @@ public class BattleManager : Singleton<BattleManager>
             ItemSelect.Instance.PushNomal();
         }
         UserMove.Instance.idleTime = 0;
+        UserMove.Instance.moveTime = 0;
     }
     public void BattleClear()
     {
@@ -170,6 +174,12 @@ public class BattleManager : Singleton<BattleManager>
     void BattleEnd()
     {
         isBattle = false;
+
+        if (waveSequence != null)
+        {
+            waveSequence.Kill();
+        }
+
         enemySpawn.AllDestroy();
         bulletSpawn.AllDestroy();
         satellite.StatelliteStop();
@@ -178,11 +188,7 @@ public class BattleManager : Singleton<BattleManager>
         StraightShot.Instance.End();
         ColdShot.Instance.End();
         MultipleShot.Instance.End();
-
-        if (waveSequence != null)
-        {
-            waveSequence.Kill();
-        }
+    
         CoreUI.Instance.Setting();
     }
     public void OnClickExit()
@@ -191,7 +197,9 @@ public class BattleManager : Singleton<BattleManager>
         YesNoMessage.Instance.Show("로비로 돌아가시겠습니까?", () => {
             Time.timeScale = 1;
             BattleEnd();
-            player.BattleEnd(() => { canvasManager.LobbySet(); });
+            ScreenShow.Instance.Show("failure", () => {
+                player.BattleEnd(() => { canvasManager.LobbySet(); });
+            });
         },()=> {
             Time.timeScale = 1;
         });

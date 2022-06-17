@@ -22,6 +22,7 @@ public class UserMove : Singleton<UserMove>
     [HideInInspector] public string walkR = "WalkR";
 
     [HideInInspector] public float idleTime = 0;
+    [HideInInspector] public float moveTime = 0;
 
     private void Start()
     {
@@ -53,11 +54,13 @@ public class UserMove : Singleton<UserMove>
                 aniManager.PlayAnimation(walkL, false);
             }
             idleTime = 0;
+            moveTime += Time.fixedDeltaTime;
         }
         else
         {
             aniManager.PlayAnimation(waitAniKey, false);
             idleTime += Time.fixedDeltaTime;
+            moveTime = 0;
         }
     }
 }

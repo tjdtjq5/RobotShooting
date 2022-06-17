@@ -34,7 +34,9 @@ public class EnemySpawn : Singleton<EnemySpawn>
         }
 
         EnemyObj enemy = obj.GetComponent<EnemyObj>();
-        enemy.Spawn(_enemySO, player, new Vector2(Random.Range(-5.0f, 5) , startTrans.position.y), GetEndPositionY(_spawnPoint));
+        float rx = Random.Range(-5.0f, 5);
+        float ey = GetEndPositionY(_spawnPoint);
+        enemy.Spawn(_enemySO, player, new Vector2(rx , startTrans.position.y), ey);
     }
     float GetEndPositionY(SpawnPoint _spawnPoint)
     {

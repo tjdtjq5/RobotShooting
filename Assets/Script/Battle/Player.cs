@@ -98,7 +98,7 @@ public class Player : Singleton<Player>
             return;
 
         bool isMiss = Function.GameInfo.IsCritical(userAbility.GetAbility(Ability.회피_최대1000));
-        if (isMiss)
+        if (isMiss && userMove.moveTime > 1)
         {
             // 회피
             DmgSpawn.Instance.MissSpawn(this.transform.position);
@@ -217,6 +217,7 @@ public class Player : Singleton<Player>
         SizeSetting(1);
         Barrior_Stop();
         Wipper_Stop();
+        this.transform.localScale = new Vector3(1,1,1);
 
         weaponTransform.DOLocalRotate(new Vector3(0, 0, 0), 0.6f);
 
@@ -303,12 +304,6 @@ public class Player : Singleton<Player>
 
     private void FixedUpdate()
     {
-        if (!isBattle)
-            return;
-
-        a_time += Time.fixedDeltaTime;
-        r_time += Time.fixedDeltaTime;
-
         Transform enemy = Function.Tool.SearchCharacter(searchRadius, this.transform.position, "Enemy");
         if (!isWiper)
         {
@@ -322,6 +317,12 @@ public class Player : Singleton<Player>
                 weaponTransform.DOLocalRotate(new Vector3(0, 0, 0), 0.2f);
             }
         }
+
+        if (!isBattle)
+            return;
+
+        a_time += Time.fixedDeltaTime;
+        r_time += Time.fixedDeltaTime;
 
         if (enemy != null)
         {

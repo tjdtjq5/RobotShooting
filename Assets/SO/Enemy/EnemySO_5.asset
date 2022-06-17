@@ -21,6 +21,6 @@ MonoBehaviour:
   atkspeed: 1.5
   bulletSO: {fileID: 11400000, guid: 1440c64d225ac0e4a966040d15d035a2, type: 2}
   bulletHost: 1
-  enemyMovePattern: 1
+  enemyMovePattern: 0
   spawnTime: 0.5
   colliderSize: {x: 1, y: 1}

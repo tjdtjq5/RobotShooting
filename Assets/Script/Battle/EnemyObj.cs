@@ -35,11 +35,11 @@ public class EnemyObj : MonoBehaviour
         a_time = 10;
         e_time = 0;
         tick = 0;
-        isSpawn = false;
     }
 
     public void Spawn(EnemySO _enemySO, Transform _target, Vector2 _startPos, float _endPosY)
     {
+        isSpawn = false;
         spriteRenderer.color = Color.white;
         this.enemySO = _enemySO;
         this.target = _target; 

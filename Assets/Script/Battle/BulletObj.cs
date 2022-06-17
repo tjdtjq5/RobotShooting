@@ -119,7 +119,7 @@ public class BulletObj : MonoBehaviour
                 this.transform.Translate(Vector2.up * movespeed * Time.fixedDeltaTime);
                 break;
             case BulletType.유도:
-                if (target != null)
+                if (target != null && target.gameObject.activeSelf)
                 {
                     u_time += Time.fixedDeltaTime;
                     if (u_time < 0.3f)
@@ -142,7 +142,7 @@ public class BulletObj : MonoBehaviour
                 }
                 else
                 {
-                    string tag = (bulletHost == BulletHost.플레이어) ? "Player" : "Enemy";
+                    string tag = (bulletHost == BulletHost.플레이어) ? "Enemy" : "Player";
                     Transform tempTarget = Function.Tool.SearchCharacter(20, this.transform.position, tag);
                     if (tempTarget == null)
                         Destroy();

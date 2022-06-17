@@ -66,9 +66,9 @@ public class UserWeapon : Singleton<UserWeapon>
         }
     }
 
-    public void ChangeEqipWeapon(int _index)
+    public void ChangeEqipWeapon(string _code)
     {
-        WeaponSO weaponSO = GetHaveList()[_index];
+        WeaponSO weaponSO = GetHaveList().Find(n => n.code == _code);
 
         PlayerPrefs.SetString(eqipKey, weaponSO.code);
         Setting();

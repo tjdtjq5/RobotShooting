@@ -56,7 +56,6 @@ MonoBehaviour:
   electricExplosionCount: 0
   electricExplosionCount_levelup: 0
   barrierTime: 0
-  barrierTime_levelup: 0
   machineGun: 0
   machineGun_levelup: 0
   copy: 0
@@ -71,6 +70,9 @@ MonoBehaviour:
   pokebot: 0
   autoCAD: 0
   bunker: 0
+  staightShot: 0
+  coldShot: 0
+  multipleShot: 0
   scriptCode: itemScript_1
   maxLevel: 3
   plusItemLevel: 3

@@ -62,7 +62,7 @@ public class ItemSelect : Singleton<ItemSelect>
         }
         Q_Setting();
 
-        for (int i = 0; i < list.childCount - 1; i++)
+        for (int i = 0; i < list.childCount; i++)
         {
             list.GetChild(i).gameObject.SetActive(false);
         }
@@ -84,18 +84,21 @@ public class ItemSelect : Singleton<ItemSelect>
             ItemSO temp = GetItemSO(battleManager.waveIndex);
             int maxLevel = temp.maxLevel;
             int c_level = UserItem.Instance.GetLevel(temp);
+            
             while (selectItemSOListTemp.Contains(temp) || maxLevel <= c_level)
             {
                 temp = GetItemSO(battleManager.waveIndex);
                 maxLevel = temp.maxLevel;
                 c_level = UserItem.Instance.GetLevel(temp);
             }
+            
             selectItemSOListTemp.Add(temp);
             itemSelectObj.Setting(temp, () => {
                 Close();
                 battleManager.NextWave();
             });
         }
+        q_card.gameObject.SetActive(true);
         q_card.SetSiblingIndex(list.childCount - 1);
 
         BulletSpawn.Instance.AllDestroy();

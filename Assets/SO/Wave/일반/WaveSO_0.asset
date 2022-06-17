@@ -22,6 +22,33 @@ MonoBehaviour:
   - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
     spawnPoint: 0
     spawnTime: 0.5
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
+  - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
+    spawnPoint: 0
+    spawnTime: 0
   enemyBuffs:
   - ability: 0
     count: 10
