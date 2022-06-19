@@ -127,9 +127,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e6464f6c69dbaa41bbe192797a9c1e7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bound: {fileID: 0}
   minBound: {x: 0, y: 0}
   maxBound: {x: 0, y: 0}
+  speed: 50
 --- !u!114 &7386621873715897104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -142,3 +142,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5181a4cc0a744f649b8c8a095deb5e27, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bullet: {fileID: 0}

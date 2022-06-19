@@ -18,7 +18,7 @@ public class WeaponUI : Singleton<WeaponUI>
     string weaponUIIndexKey = "weaponUIIndexKey";
 
     public AudioSource weaponPurchaseAudio;
-
+    public AudioSource failPerchaseAuio;
 
     private void Start()
     {
@@ -88,6 +88,7 @@ public class WeaponUI : Singleton<WeaponUI>
                         else
                         {
                             // 코어가 모자람 
+                            SoundManager.Instance.FXSoundPlay(failPerchaseAuio);
                         }
                     });;
             });

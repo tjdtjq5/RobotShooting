@@ -171,7 +171,9 @@ public class UserItem : Singleton<UserItem>
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.발사체공격력, _itemSO.magnum));
                 break;
             case ItemType.수퍼로봇:
-                UserAbility.Instance.BuffAbility(new AbilityData(Ability.체력, _itemSO.superRobot_maxhp));
+                int superrobbotMaxHP = (int)(UserAbility.Instance.GetAbility(Ability.체력) * _itemSO.superRobot_maxhp);
+                UserAbility.Instance.BuffAbility(new AbilityData(Ability.체력, superrobbotMaxHP));
+                Player.Instance.hp += superrobbotMaxHP;
                 Player.Instance.HP_Setting();
                 Player.Instance.DoubleSize();
                 break;

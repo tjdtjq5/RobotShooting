@@ -88,8 +88,7 @@ public class ItemSO : ScriptableObject
 
     [LabelText("발사체 공격력 증가")] [ShowIf("itemType", ItemType.매그넘44)] [MinValue(0)] public int magnum;
 
-    [LabelText("최대 HP증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] public int superRobot_maxhp;
-    [LabelText("크기 증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] public int superRobot_size;
+    [LabelText("최대 HP증가%")] [ShowIf("itemType", ItemType.수퍼로봇)] [MinValue(0)] [MaxValue(1000)] public float superRobot_maxhp;
 
     [LabelText("HP흡수")] [ShowIf("itemType", ItemType.스펀지)] [MinValue(0)] [MaxValue(1000)] public int sponge;
 

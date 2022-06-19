@@ -12,7 +12,7 @@ public class DronMove : MonoBehaviour
     float clampedX = 0;
     float clampedY = 0;
     float speedVelocity = 0.025f;
-    int speed = 100;
+    public int speed = 50;
 
     private void Start()
     {

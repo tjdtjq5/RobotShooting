@@ -10,6 +10,7 @@ public class DronAttack : MonoBehaviour
         AttackMode();
     }
 
+    public BulletSO bullet;
     Sequence atkSequence;
     float searchRadius = 20;
 
@@ -20,12 +21,16 @@ public class DronAttack : MonoBehaviour
             atkSequence.Kill();
         }
         atkSequence = DOTween.Sequence();
-
-        BulletSO bulletSO = UserWeapon.Instance.GetEqipWeapon().bulletSO;
-        if (bulletSO.bulletType == BulletType.위성레이저)
+        BulletSO bulletSO = bullet;
+        if (bulletSO == null)
         {
-            bulletSO = BulletSpawn.Instance.bulletSOList[0];
+            bulletSO = UserWeapon.Instance.GetEqipWeapon().bulletSO;
+            if (bulletSO.bulletType == BulletType.위성레이저)
+            {
+                bulletSO = BulletSpawn.Instance.bulletSOList[0];
+            }
         }
+        
         float atkspeed = bulletSO.atkspeed / (UserAbility.Instance.GetAbility(Ability.공격속도) / 1000f + 1) * 2;
         if (Player.Instance.isMultiGubter)
         {

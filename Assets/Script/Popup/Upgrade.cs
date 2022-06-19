@@ -18,6 +18,8 @@ public class Upgrade : MonoBehaviour
     int reStartCore = 2;
     int upgradeCore = 1000;
 
+    public AudioSource failPerchaseAudio;
+
     private void Start()
     {
         restartCoreText.text = reStartCore.ToString();
@@ -56,6 +58,10 @@ public class Upgrade : MonoBehaviour
 
             Image iconImg = card.Find("icon").GetComponent<Image>();
             iconImg.sprite = upgradeData.icon;
+
+            Text nameText = card.Find("name").GetComponent<Text>();
+            nameText.text = Language.Instance.GetScript(upgradeData.nameTextCode);
+            nameText.font = Language.Instance.GetFont();
 
             Transform countList = card.Find("list");
             if (countList.childCount == 0)
@@ -103,6 +109,8 @@ public class Upgrade : MonoBehaviour
 
             PlayerPrefs.SetInt(upgradeKey + upgradeData.code, 0);
         }
+
+
         Setting();
     }
     public void OnClickUpgrade()
@@ -121,12 +129,14 @@ public class Upgrade : MonoBehaviour
         if (dataList.Count == 0)
         {
             Debug.Log("더 이상 업그레이드 할 수 있는것이 없음");
+            SoundManager.Instance.FXSoundPlay(failPerchaseAudio);
             return;
         }
 
         if (UserInfo.Instance.Core < upgradeCore)
         {
             Debug.Log("코어 부족");
+            SoundManager.Instance.FXSoundPlay(failPerchaseAudio);
             return;
         }
 
@@ -136,6 +146,8 @@ public class Upgrade : MonoBehaviour
         UpgradeData upgrade = dataList[Random.Range(0, dataList.Count)];
         int upCount = GetUpgradeCount(upgrade.code) + 1;
         PlayerPrefs.SetInt(upgradeKey + upgrade.code, upCount);
+
+        UpgradeMessage.Instance.Show(Language.Instance.GetScript(upgrade.nameTextCode) + " 증가");
 
         Setting();
     }

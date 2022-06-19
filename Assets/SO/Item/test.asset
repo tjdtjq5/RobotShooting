@@ -16,7 +16,7 @@ MonoBehaviour:
   nameCode: test
   sprite: {fileID: 21300000, guid: a68ebe746981a4140a06e676878b9e18, type: 3}
   itemGrade: 2
-  itemType: 18
+  itemType: 27
   boosterCount: 0
   boosterCount_levelup: 0
   bulletCount: 0
@@ -66,7 +66,6 @@ MonoBehaviour:
   nitro: 0
   magnum: 0
   superRobot_maxhp: 0
-  superRobot_size: 0
   sponge: 0
   luckyBag: 0
   pokebot: 0
