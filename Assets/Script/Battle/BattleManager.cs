@@ -27,6 +27,8 @@ public class BattleManager : Singleton<BattleManager>
     public Text difiText;
     public Text waveText;
 
+    public AudioSource victoryAudio, failureAudio , unlockAudio;
+
     public void BattleStart(BattleSO _battleSO)
     {
         if (canvasManager.canvasStatus != CanvasStatus.로비)
@@ -76,7 +78,7 @@ public class BattleManager : Singleton<BattleManager>
             SpawnPoint spawnPoint = waveEnemies[i].spawnPoint;
             float waitTime = waveEnemies[i].spawnTime;
             waveSequence.InsertCallback(waitTime, () => {
-                enemySpawn.Spawn(enemySO, spawnPoint);
+                enemySpawn.Spawn(enemySO, c_battleSO, spawnPoint);
             });
         }
 
@@ -134,6 +136,8 @@ public class BattleManager : Singleton<BattleManager>
     {
         BattleEnd();
 
+        SoundManager.Instance.FXSoundPlay(victoryAudio);
+
         ScreenShow.Instance.Show("success", () => {
 
             player.BattleEnd(() => { canvasManager.LobbySet(); });
@@ -141,6 +145,7 @@ public class BattleManager : Singleton<BattleManager>
             BattleSO nextBattle = GetBattleSO(c_battleSO.unLockBattleCode);
             if (nextBattle != null && !PlayerPrefs.HasKey(battleKey + c_battleSO.unLockBattleCode))
             {
+                SoundManager.Instance.FXSoundPlay(unlockAudio);
                 TextMessage.Instance.Show(
                 Language.Instance.GetScript(nextBattle.nameCode) + "가 해금되었습니다!"
              , () => {
@@ -161,6 +166,8 @@ public class BattleManager : Singleton<BattleManager>
     public void BattleFailure()
     {
         BattleEnd();
+
+        SoundManager.Instance.FXSoundPlay(failureAudio);
 
         ScreenShow.Instance.Show("failure", () => {
             player.BattleEnd(() => { canvasManager.LobbySet(); });

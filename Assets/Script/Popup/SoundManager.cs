@@ -11,6 +11,9 @@ public class SoundManager : Singleton<SoundManager>
 
     AudioSource c_bgmAudio;
 
+    public AudioSource btnAudio;
+    public AudioSource enemyDeadAudio;
+
     private void Awake()
     {
         t_volume = PlayerPrefs.HasKey("t_volume") ? PlayerPrefs.GetFloat("t_volume") : 1;
@@ -47,6 +50,10 @@ public class SoundManager : Singleton<SoundManager>
 
     public void BGMSoundPlay(AudioSource _audioSource)
     {
+        if (c_bgmAudio != null)
+        {
+            c_bgmAudio.Stop();
+        }
         _audioSource.volume = t_volume * bgm_volume;
         _audioSource.Play();
         c_bgmAudio = _audioSource;
@@ -55,5 +62,16 @@ public class SoundManager : Singleton<SoundManager>
     {
         _audioSource.volume = t_volume * fx_volume;
         _audioSource.Play();
+    }
+
+    public void BtnPlay()
+    {
+        btnAudio.volume = t_volume * fx_volume;
+        btnAudio.Play();
+    }
+    public void EnemyDeadPlay()
+    {
+        enemyDeadAudio.volume = t_volume * fx_volume;
+        enemyDeadAudio.Play();
     }
 }

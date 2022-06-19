@@ -8,14 +8,13 @@ public class EnemySpawn : Singleton<EnemySpawn>
     public GameObject enemyObj;
     public Transform startTrans;
     public Transform player;
-    public EnemySO testSO;
 
     public List<BoxCollider2D> bounds = new List<BoxCollider2D>();
 
 
     public List<GameObject> spawnObjList = new List<GameObject>();
 
-    public void Spawn(EnemySO _enemySO , SpawnPoint _spawnPoint)
+    public void Spawn(EnemySO _enemySO , BattleSO _battleSO ,SpawnPoint _spawnPoint)
     {
         GameObject obj = null;
         for (int i = 0; i < spawnObjList.Count; i++)
@@ -36,7 +35,7 @@ public class EnemySpawn : Singleton<EnemySpawn>
         EnemyObj enemy = obj.GetComponent<EnemyObj>();
         float rx = Random.Range(-5.0f, 5);
         float ey = GetEndPositionY(_spawnPoint);
-        enemy.Spawn(_enemySO, player, new Vector2(rx , startTrans.position.y), ey);
+        enemy.Spawn(_enemySO, _battleSO, player, new Vector2(rx , startTrans.position.y), ey);
     }
     float GetEndPositionY(SpawnPoint _spawnPoint)
     {

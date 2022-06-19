@@ -10,6 +10,7 @@ public class EnemyObj : MonoBehaviour
     public Transform spriteTrans;
     public SpriteRenderer spriteRenderer;
     public Transform bulletTrans;
+    public List<BoxCollider2D> boxCollider2Ds = new List<BoxCollider2D>();
 
     EnemySO enemySO;
 
@@ -18,6 +19,8 @@ public class EnemyObj : MonoBehaviour
     float movespeedVelocity = 100;
     float movespeed = 0;
 
+    int atk = 0;
+    float atkspeed = 0;
     int hp = 0;
     int tick = 0;
 
@@ -37,8 +40,11 @@ public class EnemyObj : MonoBehaviour
         tick = 0;
     }
 
-    public void Spawn(EnemySO _enemySO, Transform _target, Vector2 _startPos, float _endPosY)
+    public void Spawn(EnemySO _enemySO, BattleSO _battleSO ,Transform _target, Vector2 _startPos, float _endPosY)
     {
+        for (int i = 0; i < boxCollider2Ds.Count; i++)
+            boxCollider2Ds[i].enabled = false;
+
         isSpawn = false;
         spriteRenderer.color = Color.white;
         this.enemySO = _enemySO;
@@ -47,12 +53,26 @@ public class EnemyObj : MonoBehaviour
         this.GetComponent<BoxCollider2D>().size = enemySO.colliderSize;
         spriteRenderer.sprite = enemySO.sprite;
 
+        atk = _enemySO.atk + _battleSO.atkBuff;
+        atkspeed = _enemySO.atkspeed + _battleSO.atkspeedBuff;
+        hp = _enemySO.hp + _battleSO.hpBuff;
+
+        if (atk < 1)
+            atk = 1;
+
+        if (atkspeed < 0.1f)
+            atkspeed = 0.1f;
+
+        if (hp < 1)
+            hp = 1;
+
+        movespeed = movespeedVelocity / _enemySO.movespeed;
+
         this.transform.DOMoveY(_endPosY, enemySO.spawnTime).OnComplete(() => {
             isSpawn = true;
+            for (int i = 0; i < boxCollider2Ds.Count; i++)
+                boxCollider2Ds[i].enabled = true;
         });
-
-        hp = _enemySO.hp;
-        movespeed = movespeedVelocity / _enemySO.movespeed;
     }
 
     public void Hit(int dmg , int cri , int cridmg, BulletSO _bulletSO , int ticDmg)
@@ -96,7 +116,7 @@ public class EnemyObj : MonoBehaviour
 
         HitSpawn.Instance.Spawn(this.transform.position);
 
-        TickStart(ticDmg);
+        TickStart(ticDmg , dmg);
 
         if (hp <= 0)
         {
@@ -139,7 +159,6 @@ public class EnemyObj : MonoBehaviour
     {
         a_time = 0;
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
-        int atk = enemySO.atk + _bulletSO.atk;
         BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletTrans, _enemy, angle, enemySO.bulletHost , atk, 10, 10, 0,1, 1);
     }
 
@@ -161,6 +180,8 @@ public class EnemyObj : MonoBehaviour
             UserInfo.Instance.Core += dropCoin;
             CoreSpawn.Instance.Spawn(this.transform.position, dropCoin);
         }
+
+        SoundManager.Instance.EnemyDeadPlay();
 
         this.gameObject.SetActive(false);
     }
@@ -198,7 +219,7 @@ public class EnemyObj : MonoBehaviour
 
         float angle = Function.Tool.GetAngle(this.transform.position, target.position) + 90;
         this.transform.DOLocalRotate(new Vector3(0, 0, angle), 0.6f);
-        if (a_time >= enemySO.atkspeed)
+        if (a_time >= atkspeed)
         {
             Attack(enemySO.bulletSO, target);
         }
@@ -226,7 +247,7 @@ public class EnemyObj : MonoBehaviour
 
     // 손상데미지 
     Sequence tickSequence;
-    void TickStart(int _tick)
+    void TickStart(int _tick , int _dmg)
     {
         if (_tick <= 0)
         {
@@ -250,6 +271,12 @@ public class EnemyObj : MonoBehaviour
 
             if (hp <= 0)
             {
+                if (Player.Instance.isElectric)
+                {
+                    Electric.Instance.ElectricSpawn_1(this.transform, 4, (int)(_dmg * 0.7f), 0, 0);
+                    return;
+                }
+
                 Destroy();
             }
 

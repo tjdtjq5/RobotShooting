@@ -18,6 +18,10 @@ public class CanvasManager : MonoBehaviour
     public WeaponUI weaponUI;
     public UserAbility userAbility;
 
+    [Title("오디오")]
+    public AudioSource lobbyBGM;
+    public AudioSource battleBGM;
+
     private void Start()
     {
         dics.Add(CanvasStatus.타이틀, titleObjs);
@@ -85,6 +89,8 @@ public class CanvasManager : MonoBehaviour
         });
 
         Camera.main.DOOrthoSize(5, fadeTime);
+
+        SoundManager.Instance.BGMSoundPlay(lobbyBGM);
     }
     [Button("BattleSet")]
     public void BattleSet()
@@ -117,6 +123,8 @@ public class CanvasManager : MonoBehaviour
         });
 
         Camera.main.DOOrthoSize(8, fadeTime);
+
+        SoundManager.Instance.BGMSoundPlay(battleBGM);
     }
    
 }

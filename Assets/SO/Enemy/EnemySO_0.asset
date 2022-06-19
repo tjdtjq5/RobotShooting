@@ -17,10 +17,10 @@ MonoBehaviour:
   sprite: {fileID: 4608048447754632782, guid: 75e7bb5ca1a0d954caefb7c52edb4c7b, type: 3}
   atk: 1
   hp: 100
-  movespeed: 50
   atkspeed: 1.5
+  movespeed: 1
   bulletSO: {fileID: 11400000, guid: 1440c64d225ac0e4a966040d15d035a2, type: 2}
   bulletHost: 1
-  enemyMovePattern: 2
+  enemyMovePattern: 0
   spawnTime: 0.5
   colliderSize: {x: 1, y: 1}

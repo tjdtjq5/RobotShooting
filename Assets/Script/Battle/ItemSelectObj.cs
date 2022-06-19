@@ -12,6 +12,8 @@ public class ItemSelectObj : MonoBehaviour
     public Text infoText;
     public Button btn;
 
+    public AudioSource selectAudio;
+
     public void Setting(ItemSO itemSO, System.Action _callback)
     {
         itemImg.sprite = itemSO.sprite;
@@ -41,6 +43,9 @@ public class ItemSelectObj : MonoBehaviour
 
         btn.onClick.RemoveAllListeners();
         btn.onClick.AddListener(() => {
+
+            SoundManager.Instance.FXSoundPlay(selectAudio);
+
             bool isOpenItemFlag = UserItem.Instance.PushItem(itemSO);
             bool isOpenItemDoubleFlag = false;
             bool isDouble = Function.GameInfo.IsCritical(ItemSelect.Instance.doubleCount);

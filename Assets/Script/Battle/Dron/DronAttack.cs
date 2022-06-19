@@ -36,7 +36,7 @@ public class DronAttack : MonoBehaviour
             float angle = Function.Tool.GetAngle(this.transform.position, enemy.position) - 90;
             BulletSpawn.Instance.Spawn(Player.Instance.transform, bulletSO, bulletSO.bulletType, this.transform, enemy, angle, BulletHost.플레이어,
                   UserAbility.Instance.GetAbility(Ability.발사체공격력) / 2,
-                 UserAbility.Instance.GetAbility(Ability.치명데미지_최대1000)
+                 UserAbility.Instance.GetAbility(Ability.치명타확률_최대1000)
                  , UserAbility.Instance.GetAbility(Ability.치명데미지_최대1000),
                    0
                  , UserAbility.Instance.GetAbility(Ability.발사체내구도)

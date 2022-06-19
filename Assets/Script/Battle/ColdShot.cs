@@ -8,6 +8,7 @@ public class ColdShot : Singleton<ColdShot>
     public int DefaultValue;
     [HideInInspector] public int value = 1000;
     public float openItemTime;
+    public ParticleSystem particleSystem;
 
     public void Shot()
     {
@@ -48,6 +49,7 @@ public class ColdShot : Singleton<ColdShot>
         {
             yield return waitTime;
             BulletSpawn.Instance.AllDestroy();
+            particleSystem.Play();
         }
     }
 }

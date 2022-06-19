@@ -17,6 +17,8 @@ public class WeaponUI : Singleton<WeaponUI>
 
     string weaponUIIndexKey = "weaponUIIndexKey";
 
+    public AudioSource weaponPurchaseAudio;
+
 
     private void Start()
     {
@@ -81,6 +83,7 @@ public class WeaponUI : Singleton<WeaponUI>
                             userWeapon.PushWeapon(selectWeaponSO.code);
                             TextMessage.Instance.Show("구매완료");
                             Setting();
+                            SoundManager.Instance.FXSoundPlay(weaponPurchaseAudio);
                         }
                         else
                         {

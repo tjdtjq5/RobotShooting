@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using Sirenix.OdinInspector;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -13,6 +14,10 @@ public class BulletObj : MonoBehaviour
     float movespeed = 0;
     BulletType bulletType;
     BulletHost bulletHost;
+
+    [Title("오디오")]
+    public AudioSource penetrateAudio;
+    public AudioSource nomalAudio, multiAudio, satelliteAudio, guideAudio, electricAudio;
 
     // 유도
     float u_time = 0;
@@ -63,19 +68,24 @@ public class BulletObj : MonoBehaviour
         switch (bulletType)
         {
             case BulletType.기본:
+                SoundManager.Instance.FXSoundPlay(nomalAudio);
                 break;
             case BulletType.유도:
+                SoundManager.Instance.FXSoundPlay(guideAudio);
                 u_time = 0;
                 dis = Vector3.Distance(this.transform.position, _target.position);
                 this.transform.localRotation = Quaternion.Euler(0, 0, _angle + Random.Range(-_angle, _angle));
                 break;
             case BulletType.다발:
+                SoundManager.Instance.FXSoundPlay(multiAudio);
                 BulletSpawn.Instance.Spawn(_spawnTransform, _bulletSO, BulletType.기본, this.transform, _target, _angle + 30, _bulletHost, _atk, _cri, _cridmg, _tickDmg, _duration, bulletSize);
                 BulletSpawn.Instance.Spawn(_spawnTransform, _bulletSO, BulletType.기본, this.transform, _target, _angle - 30, _bulletHost, _atk, _cri, _cridmg, _tickDmg, _duration, bulletSize);
                 break;
             case BulletType.관통:
+                SoundManager.Instance.FXSoundPlay(penetrateAudio);
                 break;
             case BulletType.위성레이저:
+                SoundManager.Instance.FXSoundPlay(satelliteAudio);
                 this.transform.localRotation = Quaternion.Euler(0, 0, 0);
                 this.transform.position = new Vector2(target.position.x, 12);
                 if (_bulletHost == BulletHost.플레이어 && Player.Instance.isStarlink)
@@ -84,8 +94,10 @@ public class BulletObj : MonoBehaviour
                 }
                 break;
             case BulletType.전기_1:
+                SoundManager.Instance.FXSoundPlay(electricAudio);
                 break;
             case BulletType.전기_2:
+                SoundManager.Instance.FXSoundPlay(electricAudio);
                 break;
         }
 

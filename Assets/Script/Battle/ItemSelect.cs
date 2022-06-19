@@ -35,6 +35,8 @@ public class ItemSelect : Singleton<ItemSelect>
     [Title("스크립트")]
     public BattleManager battleManager;
 
+   
+
     public void BattleStart()
     {
         cardCount = cardCount_default;

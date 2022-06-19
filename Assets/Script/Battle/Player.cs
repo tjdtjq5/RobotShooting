@@ -32,6 +32,9 @@ public class Player : Singleton<Player>
     [Title("오브젝트")]
     public ParticleSystem restartEffect;
 
+    [Title("오디오")]
+    public AudioSource hitAudio;
+
     // 특수능력 bool 
     [HideInInspector] public bool isElectric;
     [HideInInspector] public int electricCount = 1;
@@ -156,6 +159,8 @@ public class Player : Singleton<Player>
         hp -= dmg;
         HP_Setting();
 
+        SoundManager.Instance.FXSoundPlay(hitAudio);
+
         if (hp <= 0)
         {
             hp_text.text = "0 / " + userAbility.GetAbility(Ability.체력);
@@ -260,7 +265,7 @@ public class Player : Singleton<Player>
                 atk += MultipleShot.Instance.value;
                 BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
                     (int)atk,
-                    userAbility.GetAbility(Ability.치명데미지_최대1000)
+                    userAbility.GetAbility(Ability.치명타확률_최대1000)
                     , userAbility.GetAbility(Ability.치명데미지_최대1000)
                     , userAbility.GetAbility(Ability.손상피해)
                     , userAbility.GetAbility(Ability.발사체내구도)
@@ -275,7 +280,7 @@ public class Player : Singleton<Player>
                 atk += MultipleShot.Instance.value;
                 BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
                     (int)atk,
-                    userAbility.GetAbility(Ability.치명데미지_최대1000)
+                    userAbility.GetAbility(Ability.치명타확률_최대1000)
                     , userAbility.GetAbility(Ability.치명데미지_최대1000)
                     , userAbility.GetAbility(Ability.손상피해)
                     , userAbility.GetAbility(Ability.발사체내구도)
@@ -287,7 +292,7 @@ public class Player : Singleton<Player>
             float angle = weaponTransform.localEulerAngles.z;
             BulletSpawn.Instance.Spawn(this.transform, _bulletSO, _bulletSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어,
                 (int)atk,
-                userAbility.GetAbility(Ability.치명데미지_최대1000)
+                userAbility.GetAbility(Ability.치명타확률_최대1000)
                 , userAbility.GetAbility(Ability.치명데미지_최대1000)
                 , userAbility.GetAbility(Ability.손상피해)
                 , userAbility.GetAbility(Ability.발사체내구도)
@@ -299,7 +304,8 @@ public class Player : Singleton<Player>
     {
         r_time = 0;
         float angle = Function.Tool.GetAngle(this.transform.position, _enemy.position) - 90;
-        BulletSpawn.Instance.Spawn(this.transform, laserSO, laserSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어, 0, 0, 0, 0, 0, 1);
+
+        BulletSpawn.Instance.Spawn(this.transform, laserSO, laserSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어, 0, 0, 0, UserAbility.Instance.GetAbility(Ability.손상피해), 0, 1);
     }
 
     private void FixedUpdate()

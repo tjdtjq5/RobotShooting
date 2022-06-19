@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: WaveSO_0
   m_EditorClassIdentifier: 
   waveEnemies:
-  - enemySO: {fileID: 11400000, guid: a98cbcd236b062047984e24bd94b2712, type: 2}
-    spawnPoint: 1
-    spawnTime: 0
-  - enemySO: {fileID: 11400000, guid: 6c11d2b9abbf3e448afa2363e5e8db8a, type: 2}
-    spawnPoint: 0
-    spawnTime: 0.3
   - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
     spawnPoint: 0
     spawnTime: 0.5
@@ -49,8 +43,3 @@ MonoBehaviour:
   - enemySO: {fileID: 11400000, guid: 788dd064e199811498cda99d92f1d3be, type: 2}
     spawnPoint: 0
     spawnTime: 0
-  enemyBuffs:
-  - ability: 0
-    count: 10
-  - ability: 4
-    count: 5

@@ -29,10 +29,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 993422e0082c21a4780441c90f6569f7, type: 2}
   - {fileID: 11400000, guid: 993422e0082c21a4780441c90f6569f7, type: 2}
   - {fileID: 11400000, guid: 993422e0082c21a4780441c90f6569f7, type: 2}
-  enemyBuffs:
-  - ability: 2
-    count: 10
-  - ability: 0
-    count: 0
+  atkBuff: 0
+  atkspeedBuff: 0
+  hpBuff: 0
   rewardCoreCount: 100
   unLockBattleCode: BattleSO_1
