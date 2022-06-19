@@ -60,8 +60,10 @@ public class ItemSO : ScriptableObject
     [LabelText("체력50%이하일때 공격력 증가")] [ShowIf("itemType", ItemType.과열)] [MinValue(0)] public int overHeatCount;
     [LabelText("+ 체력50%이하일때 공격력 증가")] [ShowIf("itemType", ItemType.과열)] [MinValue(0)] public int overHeatCount_levelup;
 
+    [LabelText("인공위성 레이저 기본 공격력")] [ShowIf("itemType", ItemType.인공위성)] [MinValue(0)] public int satelliteAtkCount;
+    [LabelText("인공위성 레이저 기본 공격속도")] [ShowIf("itemType", ItemType.인공위성)] [MinValue(0)] public float satelliteAtkspeedCount;
     [LabelText("+ 인공위성 레이저 공격력")] [ShowIf("itemType", ItemType.인공위성)] [MinValue(0)] public int satelliteAtkCount_levelup;
-    [LabelText("+ 인공위성 레이저 공격속도 (최대1000)")] [ShowIf("itemType", ItemType.인공위성)] [MinValue(0)] [MaxValue(1000)] public int satelliteAtkspeedCount_levelup;
+    [LabelText("+ 인공위성 레이저 공격속도")] [ShowIf("itemType", ItemType.인공위성)] [MaxValue(0)] public float satelliteAtkspeedCount_levelup;
 
     [LabelText("치명 데미지 증가 (최대1000)")] [ShowIf("itemType", ItemType.정밀사격)] [MinValue(0)] [MaxValue(1000)] public int precisionCount;
     [LabelText("+ 치명 데미지 증가 (최대1000)")] [ShowIf("itemType", ItemType.정밀사격)] [MinValue(0)] [MaxValue(1000)] public int precisionCount_levelup;
@@ -69,8 +71,8 @@ public class ItemSO : ScriptableObject
     [LabelText("크기 축소 (최대1000)")] [ShowIf("itemType", ItemType.축소장치)] [MinValue(0)] [MaxValue(1000)] public int smallCount;
     [LabelText("+ 크기 축소 (최대1000)")] [ShowIf("itemType", ItemType.축소장치)] [MinValue(0)] [MaxValue(1000)] public int smallCount_levelup;
 
-    [LabelText("전기 발사체 기본 횟수")] [ShowIf("itemType", ItemType.전기폭발)] [MinValue(0)] public int electricExplosionCount;
-    [LabelText("+ 전기 발사체 횟수 증가")] [ShowIf("itemType", ItemType.전기폭발)] [MinValue(0)] public int electricExplosionCount_levelup;
+    [LabelText("전기 발사체 기본 공격력")] [ShowIf("itemType", ItemType.전기폭발)] [MinValue(0)] public int electricExplosionCount;
+    [LabelText("+ 전기 발사체 공격력 증가")] [ShowIf("itemType", ItemType.전기폭발)] [MinValue(0)] public int electricExplosionCount_levelup;
 
     [LabelText("방어막 생성 시간")] [ShowIf("itemType", ItemType.방어막)] [MinValue(1)] public float barrierTime;
 
@@ -104,6 +106,8 @@ public class ItemSO : ScriptableObject
     [LabelText("적 탄환 감속")] [ShowIf("itemType", ItemType.냉기)] [MinValue(0)] public int coldShot;
 
     [LabelText("공격력 증가")] [ShowIf("itemType", ItemType.다발탄)] [MinValue(0)] public int multipleShot;
+
+    [LabelText("회복 수치")] [ShowIf("itemType", ItemType.침착)] [MinValue(0)] public int composure;
     #endregion
 
     [LabelText("아이템 설명")] public string scriptCode;

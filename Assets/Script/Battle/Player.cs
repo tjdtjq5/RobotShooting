@@ -44,7 +44,7 @@ public class Player : Singleton<Player>
     [HideInInspector] public bool isGyroscope;
     [HideInInspector] public bool isPackman;
     [HideInInspector] public bool isWiper; bool isRW;
-    [HideInInspector] public bool isComposure;
+    [HideInInspector] public int composure;
     [HideInInspector] public bool isElecitricField;
     [HideInInspector] public bool isResurrection;
     [HideInInspector] public bool isStarlink;
@@ -75,7 +75,7 @@ public class Player : Singleton<Player>
         isLaser = false;
         isGyroscope = false;
         isWiper = false;
-        isComposure = false;
+        composure = 0;
         isElecitricField = false;
         isResurrection = false;
         isStarlink = false;
@@ -110,10 +110,7 @@ public class Player : Singleton<Player>
 
         if (isInvince)
         {
-            if (isComposure)
-            {
-                HP_Recovery(1);
-            }
+            HP_Recovery(composure);
 
             // 무적
             return;
@@ -137,7 +134,7 @@ public class Player : Singleton<Player>
 
         if (isReflect && _enemyObj!= null && _enemyObj.gameObject.activeSelf)
         {
-            int reflact = shild + (shild * (shild + 10 / 100));
+            int reflact = shild + (shild * (int)((shild + 10) / 100f));
             _enemyObj.Hit(reflact,0,0, null, 0);
         }
 
@@ -177,6 +174,10 @@ public class Player : Singleton<Player>
     public void HP_Recovery(int _hp)
     {
         if (!isBattle)
+        {
+            return;
+        }
+        if (_hp <= 0)
         {
             return;
         }
@@ -308,9 +309,14 @@ public class Player : Singleton<Player>
         BulletSpawn.Instance.Spawn(this.transform, laserSO, laserSO.bulletType, bulletPos, _enemy, angle, BulletHost.플레이어, 0, 0, 0, UserAbility.Instance.GetAbility(Ability.손상피해), 0, 1);
     }
 
+    Transform enemy = null;
     private void FixedUpdate()
     {
-        Transform enemy = Function.Tool.SearchCharacter(searchRadius, this.transform.position, "Enemy");
+        if (enemy == null || !enemy.gameObject.activeSelf)
+        {
+            enemy = Function.Tool.SearchCharacter(searchRadius, this.transform.position, "Enemy");
+        }
+
         if (!isWiper)
         {
             if (enemy != null)
@@ -452,7 +458,7 @@ public class Player : Singleton<Player>
 
         wipperSequence = DOTween.Sequence();
 
-        wipperSequence.InsertCallback(1, () => {
+        wipperSequence.InsertCallback(0.1f, () => {
             if (isRW)
             {
                 weaponTransform.DOLocalRotate(new Vector3(0, 0, 45), 1.2f).OnComplete(()=> isRW = !isRW);

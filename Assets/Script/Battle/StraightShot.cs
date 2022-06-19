@@ -25,10 +25,9 @@ public class StraightShot : Singleton<StraightShot>
 
     IEnumerator ShotCoroutine()
     {
-        WaitForSeconds waitTime = new WaitForSeconds(atkspeed);
         while (true)
         {
-            yield return waitTime;
+            yield return new WaitForSeconds(atkspeed);
 
             float angle = 0;
             int atk = isUpgradeItemOpen ? bulletSO.atk * 3 : bulletSO.atk;

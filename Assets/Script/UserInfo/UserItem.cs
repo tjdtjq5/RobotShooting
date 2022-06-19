@@ -133,7 +133,7 @@ public class UserItem : Singleton<UserItem>
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.HP50이하일때공격력증가_최대1000, _itemSO.overHeatCount));
                 break;
             case ItemType.인공위성:
-                Satellite.Instance.StatelliteStart_1(0, 0, 1);
+                Satellite.Instance.StatelliteStart_1(_itemSO.satelliteAtkCount, _itemSO.satelliteAtkspeedCount, 1);
                 break;
             case ItemType.정밀사격:
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.치명데미지_최대1000, _itemSO.precisionCount));
@@ -198,7 +198,7 @@ public class UserItem : Singleton<UserItem>
                 Player.Instance.Wipper_Start();
                 break;
             case ItemType.침착:
-                Player.Instance.isComposure = true;
+                Player.Instance.composure = _itemSO.composure;
                 break;
             case ItemType.전기장:
                 Player.Instance.isElecitricField = true;
@@ -313,7 +313,7 @@ public class UserItem : Singleton<UserItem>
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.HP50이하일때공격력증가_최대1000, _itemSO.overHeatCount_levelup));
                 break;
             case ItemType.인공위성:
-                Satellite.Instance.StatelliteStart_1(_itemSO.satelliteAtkCount_levelup * (GetLevel(_itemSO) - 1), _itemSO.satelliteAtkspeedCount_levelup * (GetLevel(_itemSO) - 1), 1);
+                Satellite.Instance.StatelliteStart_1(_itemSO.satelliteAtkCount + _itemSO.satelliteAtkCount_levelup * (GetLevel(_itemSO) - 1), _itemSO.satelliteAtkspeedCount +  _itemSO.satelliteAtkspeedCount_levelup * (GetLevel(_itemSO) - 1), 1);
                 break;
             case ItemType.정밀사격:
                 UserAbility.Instance.BuffAbility(new AbilityData(Ability.치명데미지_최대1000, _itemSO.precisionCount_levelup));

@@ -49,7 +49,7 @@ public class BattleManager : Singleton<BattleManager>
 
         canvasManager.BattleSet();
         TextMessage.Instance.Show(
-            Language.Instance.GetScript(_battleSO.nameCode) + " 전투를 시작합니다"
+            Language.Instance.GetScript(_battleSO.nameCode) + "전투 시작합니다"
             , () => {
                 if (isBattle)
                 {
@@ -123,7 +123,8 @@ public class BattleManager : Singleton<BattleManager>
 
         // 유저 체력 상승
         int waveHPAbility = UserAbility.Instance.GetAbility(Ability.웨이브마다최대체력상승);
-        Player.Instance.HP_Recovery(waveHPAbility);
+        int recoveryValue = (int)(waveHPAbility / 1000f * UserAbility.Instance.GetAbility(Ability.체력));
+        Player.Instance.HP_Recovery(recoveryValue);
 
         if (player.isAutoCreate)
         {

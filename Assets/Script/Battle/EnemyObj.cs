@@ -93,11 +93,6 @@ public class EnemyObj : MonoBehaviour
             t_dmg = supperCri ? (int)(t_dmg * (cridmg / 1000f)) + t_dmg : t_dmg;
         }
 
-        t_dmg -= UserAbility.Instance.GetAbility(Ability.방어력);
-        if (t_dmg <= 0)
-        {
-            t_dmg = 1;
-        }
 
         if (_bulletSO != null)
         {
@@ -124,14 +119,16 @@ public class EnemyObj : MonoBehaviour
 
             if (Player.Instance.isElectric)
             {
-                Electric.Instance.ElectricSpawn_1(this.transform, 4, (int)(dmg * 0.7f), 0, 0);
+                int elecDmg = Player.Instance.electricCount;
+                Electric.Instance.ElectricSpawn_1(this.transform, 4, elecDmg, 0, 0);
                 return;
             }
 
             if (_bulletSO != null && _bulletSO.bulletType == BulletType.전기_1)
             {
+                int elecDmg = Player.Instance.electricCount;
                 float p = Player.Instance.isElectro ? 0.7f : 0.3f;
-                Electric.Instance.ElectricSpawn_2(this.transform, 2, (int)(dmg * p), 0, 0);
+                Electric.Instance.ElectricSpawn_2(this.transform, 2, (int)(elecDmg * p), 0, 0);
                 return;
             }
         }

@@ -3747,6 +3747,8 @@ MonoBehaviour:
     text: {fileID: 834938414}
   - code: start
     text: {fileID: 1598694893}
+  - code: tabToScreen
+    text: {fileID: 1270449645}
 --- !u!1 &499112580
 GameObject:
   m_ObjectHideFlags: 0
@@ -6473,7 +6475,7 @@ MonoBehaviour:
   isGyroscope: 0
   isPackman: 0
   isWiper: 0
-  isComposure: 0
+  composure: 0
   isElecitricField: 0
   isResurrection: 0
   isStarlink: 0
@@ -8988,6 +8990,8 @@ MonoBehaviour:
   heroPercent: 300
   cardCount: 3
   doubleCount: 0
+  defaultQCount: 1
+  autocadQCount: 2
   q_count: 0
   autocadFlag: 0
   q_card: {fileID: 603672667}
@@ -10808,7 +10812,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844d269bb815dd648999b387d56c12f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 1779471882}
 --- !u!82 &1779471882
 AudioSource:
   m_ObjectHideFlags: 0
@@ -13329,7 +13333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 844d269bb815dd648999b387d56c12f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 0}
+  audioSource: {fileID: 2130944589}
 --- !u!1 &2139697110
 GameObject:
   m_ObjectHideFlags: 0

@@ -27,6 +27,8 @@ public class ItemSelect : Singleton<ItemSelect>
     [HideInInspector] public int doubleCount = 0;
 
     [Title("탐색")]
+    public int defaultQCount;
+    public int autocadQCount;
     [HideInInspector] public int q_count;
     [HideInInspector] public bool autocadFlag = false;
     public Transform q_card;
@@ -49,11 +51,11 @@ public class ItemSelect : Singleton<ItemSelect>
     {
         if (autocadFlag)
         {
-            q_count += 2;
+            q_count += autocadQCount;
         }
         else
         {
-            q_count = 1;
+            q_count = defaultQCount;
         }
     }
     public void Show()

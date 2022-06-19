@@ -16,7 +16,7 @@ public class Satellite : Singleton<Satellite>
     int satelliteCount;
 
     [Button("StatelliteStart")]
-    public void StatelliteStart_1(int _atk, int _atkspeed, int _satelliteCount)
+    public void StatelliteStart_1(int _atk, float _atkspeed, int _satelliteCount)
     {
         if (satelliteSequence_1 != null)
         {
@@ -30,9 +30,12 @@ public class Satellite : Singleton<Satellite>
         }
 
         int atk = _atk;
-        float atkspeed = bulletSO.atkspeed + bulletSO.atkspeed * (_atkspeed / 1000f);
+        if (_atkspeed <= 0.1f)
+        {
+            _atkspeed = 0.1f;
+        }
 
-        satelliteSequence_1.InsertCallback(atkspeed, () => {
+        satelliteSequence_1.InsertCallback(_atkspeed, () => {
 
             bool flag = false;
             for (int i = 0; i < enemySpawn.spawnObjList.Count; i++)

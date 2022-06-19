@@ -74,7 +74,7 @@ public class WeaponUI : Singleton<WeaponUI>
         {
             bgBtn.image.color = new Color(0.5f, 0.5f, 0.5f, 1);
             bgBtn.onClick.AddListener(() => {
-                YesNoMessage.Instance.Show(Language.Instance.GetScript(selectWeaponSO.nameCode) + "을 구매 하시겠습니까?\n" +
+                YesNoMessage.Instance.Show(Language.Instance.GetScript(selectWeaponSO.nameCode) + "을 구매하시겠습니까?\n" +
                     "필요한 코어 : " + selectWeaponSO.coreCount
                     , () => {
                         if (UserInfo.Instance.Core >= selectWeaponSO.coreCount)
@@ -87,7 +87,7 @@ public class WeaponUI : Singleton<WeaponUI>
                         }
                         else
                         {
-                            TextMessage.Instance.Show("보유한 코어가 모자랍니다");
+                            // 코어가 모자람 
                         }
                     });;
             });

@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8f309f179c5c77438b4746cc8a2ff5f, type: 3}
-  m_Name: ItemSO_52
+  m_Name: test
   m_EditorClassIdentifier: 
-  code: ItemSO_52
-  nameCode: ItemSO_name_52
+  code: test
+  nameCode: test
   sprite: {fileID: 21300000, guid: a68ebe746981a4140a06e676878b9e18, type: 3}
   itemGrade: 2
-  itemType: 50
+  itemType: 18
   boosterCount: 0
   boosterCount_levelup: 0
   bulletCount: 0
@@ -55,8 +55,8 @@ MonoBehaviour:
   precisionCount_levelup: 0
   smallCount: 0
   smallCount_levelup: 0
-  electricExplosionCount: 0
-  electricExplosionCount_levelup: 0
+  electricExplosionCount: 1
+  electricExplosionCount_levelup: 1
   barrierTime: 0
   machineGun: 0
   machineGun_levelup: 0
@@ -73,9 +73,10 @@ MonoBehaviour:
   autoCAD: 0
   bunker: 0
   staightShot: 100
-  coldShot: 0
-  multipleShot: 0
-  scriptCode: itemScript_52
+  coldShot: 500
+  multipleShot: 10
+  composure: 1
+  scriptCode: itemScript_57
   maxLevel: 3
   plusItemLevel: 3
-  plusItem: {fileID: 11400000, guid: 3116e00f0addd544db67e961a62ee5bb, type: 2}
+  plusItem: {fileID: 0}
